@@ -1953,12 +1953,12 @@ void SSD_DigitSelector(void)
 
             case Digit_4_:
                       (PORTA|=(1<<5));
-                      (PORTA&=~(1<<2));
+                      (PORTA|=(1<<2));
                       (PORTA&=~(1<<3));
                       (PORTA&=~(1<<4));
 
       }
-      DigitSelector=(DigitSelector+1)%4;
+      DigitSelector=(DigitSelector+1)%1;
 
 
     }

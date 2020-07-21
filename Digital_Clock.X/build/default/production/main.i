@@ -1882,6 +1882,7 @@ typedef uint16_t uintptr_t;
 void Timer_Init(void);
 void Timer_Start(void);
 void Timer0_CB(void);
+extern uint32_t Tick;
 # 9 "main.c" 2
 
 # 1 "./Scheduler/Scheduler.h" 1
@@ -1963,7 +1964,6 @@ extern const Tasks_t Tasks[(3UL)];
 
 
 
-void Scheduler_Active(uint32_t System_Tick) ;
 void Scheduler_Update(void) ;
 void Scheduler_Init(void) ;
 # 10 "main.c" 2
@@ -2035,15 +2035,64 @@ void Clock_Minutes_Setting(void);
 
 
 
+# 1 "./Interrupt/Interrupt.h" 1
+# 15 "./Interrupt/Interrupt.h"
+# 1 "./Interrupt/Interrupt_Cfg.h" 1
+# 17 "./Interrupt/Interrupt_Cfg.h"
+# 1 "./Interrupt/../Buttons/Buttons.h" 1
+# 14 "./Interrupt/../Buttons/Buttons.h"
+# 1 "./Interrupt/../Buttons/Buttons_Cfg.h" 1
+# 14 "./Interrupt/../Buttons/Buttons.h" 2
+
+
+
+
+
+
+
+typedef struct ButtonsFlag_T
+{
+   uint8_t UpButton_Flag :1;
+   uint8_t DownButton_Flag :1;
+   uint8_t SettingButton_Flag :1;
+}ButtonsFlag_t;
+ButtonsFlag_t ButtonsFlag;
+
+void Buttons_Init(void);
+void Buttons_Update(void);
+void EXTI_SettingButton_CB(void);
+# 17 "./Interrupt/Interrupt_Cfg.h" 2
+
+
+
+
+typedef void(*Interrupt_CB_t)(void);
+
+typedef struct Interrupt_CbStruct_T
+{
+ Interrupt_CB_t Timer_CB;
+ Interrupt_CB_t EXTI_CB;
+
+}Interrupt_CbStruct_t ;
+
+extern const Interrupt_CbStruct_t Interrupt_CbStruct ;
+# 15 "./Interrupt/Interrupt.h" 2
+
+
+    extern char value;
+# 16 "main.c" 2
+
+
 void main(void) {
     GPIO_Init();
     Display_Init();
     Clock_Init();
     ModeManager_Init();
+    Buttons_Init();
     Timer_Init();
     Scheduler_Init();
     Timer_Start();
-    Scheduler_Update();
+    while(1);
 
     return;
 }

@@ -14,7 +14,7 @@ extern "C" {
 
 #include"Interrupt_Cfg.h"
 
-    
+    extern char value;
  
     
 #ifdef	__cplusplus

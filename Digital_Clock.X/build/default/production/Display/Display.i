@@ -1980,7 +1980,10 @@ Digit1=Clock.Hours/10;
 Digit2=Clock.Hours%10;
 Digit3=Clock.Minutes/10;
 Digit4=Clock.Minutes%10;
-
+(PORTA&=~(1<<2));
+(PORTA&=~(1<<3));
+(PORTA&=~(1<<4));
+(PORTA&=~(1<<5));
 }
 
 void Display_Update(void)

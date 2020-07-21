@@ -1956,10 +1956,17 @@ extern const Tasks_t Tasks[(3UL)];
 
 
 
-void Scheduler_Active(uint32_t System_Tick) ;
 void Scheduler_Update(void) ;
 void Scheduler_Init(void) ;
 # 8 "Scheduler/Scheduler.c" 2
+
+# 1 "Scheduler/../Timer/Timer.h" 1
+# 16 "Scheduler/../Timer/Timer.h"
+void Timer_Init(void);
+void Timer_Start(void);
+void Timer0_CB(void);
+extern uint32_t Tick;
+# 9 "Scheduler/Scheduler.c" 2
 
 
 void Scheduler_Init(void)
@@ -1969,34 +1976,16 @@ void Scheduler_Init(void)
 
 void Scheduler_Update(void)
 {
-    while(1)
-    {
 
        for(uint8_t i=0 ;i<(3UL);i++)
        {
 
-           if(Task_Flag[i]==1)
-           {
-               Tasks[i].Task();
-           }
+           if((Tick%(Tasks[i].Task_Peroid/(1UL))) ? 0:1)
+            {
+              Tasks[i].Task();
+            }
 
        }
 
-    }
-}
 
-void Scheduler_Active(uint32_t System_Tick)
-{
-    for(uint8_t i=0 ;i<(3UL);i++)
-    {
-        if((System_Tick%(Tasks[i].Task_Peroid/(20UL))) ? 0:1)
-        {
-            Task_Flag[i]=1;
-        }
-        else
-        {
-          Task_Flag[i]=0;
-        }
-
-    }
 }

@@ -15,6 +15,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Display/../ModeManger/ModeManager.h: 23: MODE_T MODE;
 [c E911 0 1 2 .. ]
 [n E911 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+"166 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
+[v _PORTA `Vuc ~T0 @X0 0 e@5 ]
 "26 Display/Display.h
 [; ;Display/Display.h: 26: void Display_Normal(void);
 [v _Display_Normal `(v ~T0 @X0 0 ef ]
@@ -282,53 +285,65 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28
 [; ;Display/Display.c: 28: Digit4=Clock.Minutes%10;
 [e = _Digit4 -> % -> . _Clock 1 `i -> 10 `i `uc ]
+"29
+[; ;Display/Display.c: 29: (PORTA&=~(1<<2));
+[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
 "30
-[; ;Display/Display.c: 30: }
+[; ;Display/Display.c: 30: (PORTA&=~(1<<3));
+[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
+"31
+[; ;Display/Display.c: 31: (PORTA&=~(1<<4));
+[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+"32
+[; ;Display/Display.c: 32: (PORTA&=~(1<<5));
+[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"33
+[; ;Display/Display.c: 33: }
 [e :UE 96 ]
 }
-"32
-[; ;Display/Display.c: 32: void Display_Update(void)
+"35
+[; ;Display/Display.c: 35: void Display_Update(void)
 [v _Display_Update `(v ~T0 @X0 1 ef ]
-"33
-[; ;Display/Display.c: 33: {
+"36
+[; ;Display/Display.c: 36: {
 {
 [e :U _Display_Update ]
 [f ]
-"34
-[; ;Display/Display.c: 34:    switch(MODE)
-[e $U 99  ]
-"35
-[; ;Display/Display.c: 35:     {
-{
-"36
-[; ;Display/Display.c: 36:         case Normal_Mode:
-[e :U 100 ]
 "37
-[; ;Display/Display.c: 37:                               Display_Normal();
-[e ( _Display_Normal ..  ]
+[; ;Display/Display.c: 37:    switch(MODE)
+[e $U 99  ]
 "38
-[; ;Display/Display.c: 38:                               break;
-[e $U 98  ]
+[; ;Display/Display.c: 38:     {
+{
+"39
+[; ;Display/Display.c: 39:         case Normal_Mode:
+[e :U 100 ]
 "40
-[; ;Display/Display.c: 40:         case Hour_Mode:
-[e :U 101 ]
+[; ;Display/Display.c: 40:                               Display_Normal();
+[e ( _Display_Normal ..  ]
 "41
-[; ;Display/Display.c: 41:                               Display_Hour_Setting();
-[e ( _Display_Hour_Setting ..  ]
-"42
-[; ;Display/Display.c: 42:                               break;
+[; ;Display/Display.c: 41:                               break;
 [e $U 98  ]
+"43
+[; ;Display/Display.c: 43:         case Hour_Mode:
+[e :U 101 ]
 "44
-[; ;Display/Display.c: 44:         case Minutes_Mode:
-[e :U 102 ]
+[; ;Display/Display.c: 44:                               Display_Hour_Setting();
+[e ( _Display_Hour_Setting ..  ]
 "45
-[; ;Display/Display.c: 45:                               Display_Minutes_Setting();
-[e ( _Display_Minutes_Setting ..  ]
-"46
-[; ;Display/Display.c: 46:                               break;
+[; ;Display/Display.c: 45:                               break;
 [e $U 98  ]
 "47
-[; ;Display/Display.c: 47:     }
+[; ;Display/Display.c: 47:         case Minutes_Mode:
+[e :U 102 ]
+"48
+[; ;Display/Display.c: 48:                               Display_Minutes_Setting();
+[e ( _Display_Minutes_Setting ..  ]
+"49
+[; ;Display/Display.c: 49:                               break;
+[e $U 98  ]
+"50
+[; ;Display/Display.c: 50:     }
 }
 [e $U 98  ]
 [e :U 99 ]
@@ -337,87 +352,87 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E911 2 `ui 102
  98 ]
 [e :U 98 ]
-"49
-[; ;Display/Display.c: 49: }
+"52
+[; ;Display/Display.c: 52: }
 [e :UE 97 ]
 }
-"54
-[; ;Display/Display.c: 54: void Display_Normal(void)
+"57
+[; ;Display/Display.c: 57: void Display_Normal(void)
 [v _Display_Normal `(v ~T0 @X0 1 ef ]
-"55
-[; ;Display/Display.c: 55: {
+"58
+[; ;Display/Display.c: 58: {
 {
 [e :U _Display_Normal ]
 [f ]
-"56
-[; ;Display/Display.c: 56:     Display^=1;
-[e =^ _Display -> -> 1 `i `E879 ]
-"58
-[; ;Display/Display.c: 58:     if(Display==Minutes)
-[e $ ! == -> _Display `ui -> . `E879 0 `ui 104  ]
 "59
-[; ;Display/Display.c: 59:     {
-{
-"60
-[; ;Display/Display.c: 60:         SSD_Display(Clock.Minutes);
-[e ( _SSD_Display (1 . _Clock 1 ]
+[; ;Display/Display.c: 59:     Display^=1;
+[e =^ _Display -> -> 1 `i `E879 ]
 "61
-[; ;Display/Display.c: 61:     }
+[; ;Display/Display.c: 61:     if(Display==Minutes)
+[e $ ! == -> _Display `ui -> . `E879 0 `ui 104  ]
+"62
+[; ;Display/Display.c: 62:     {
+{
+"63
+[; ;Display/Display.c: 63:         SSD_Display(Clock.Minutes);
+[e ( _SSD_Display (1 . _Clock 1 ]
+"64
+[; ;Display/Display.c: 64:     }
 }
 [e $U 105  ]
-"62
-[; ;Display/Display.c: 62:     else
-[e :U 104 ]
-"63
-[; ;Display/Display.c: 63:     {
-{
-"64
-[; ;Display/Display.c: 64:         SSD_Display(Clock.Hours);
-[e ( _SSD_Display (1 . _Clock 2 ]
 "65
-[; ;Display/Display.c: 65:     }
+[; ;Display/Display.c: 65:     else
+[e :U 104 ]
+"66
+[; ;Display/Display.c: 66:     {
+{
+"67
+[; ;Display/Display.c: 67:         SSD_Display(Clock.Hours);
+[e ( _SSD_Display (1 . _Clock 2 ]
+"68
+[; ;Display/Display.c: 68:     }
 }
 [e :U 105 ]
-"66
-[; ;Display/Display.c: 66:    SSD_DigitSelector();
+"69
+[; ;Display/Display.c: 69:    SSD_DigitSelector();
 [e ( _SSD_DigitSelector ..  ]
-"67
-[; ;Display/Display.c: 67: }
+"70
+[; ;Display/Display.c: 70: }
 [e :UE 103 ]
 }
-"71
-[; ;Display/Display.c: 71: void Display_Hour_Setting(void)
+"74
+[; ;Display/Display.c: 74: void Display_Hour_Setting(void)
 [v _Display_Hour_Setting `(v ~T0 @X0 1 ef ]
-"72
-[; ;Display/Display.c: 72: {
+"75
+[; ;Display/Display.c: 75: {
 {
 [e :U _Display_Hour_Setting ]
 [f ]
-"75
-[; ;Display/Display.c: 75: }
+"78
+[; ;Display/Display.c: 78: }
 [e :UE 106 ]
 }
-"78
-[; ;Display/Display.c: 78: void Display_Minutes_Setting(void)
+"81
+[; ;Display/Display.c: 81: void Display_Minutes_Setting(void)
 [v _Display_Minutes_Setting `(v ~T0 @X0 1 ef ]
-"79
-[; ;Display/Display.c: 79: {
+"82
+[; ;Display/Display.c: 82: {
 {
 [e :U _Display_Minutes_Setting ]
 [f ]
-"82
-[; ;Display/Display.c: 82: }
+"85
+[; ;Display/Display.c: 85: }
 [e :UE 107 ]
 }
-"85
-[; ;Display/Display.c: 85: void Display_Blink(void)
+"88
+[; ;Display/Display.c: 88: void Display_Blink(void)
 [v _Display_Blink `(v ~T0 @X0 1 ef ]
-"86
-[; ;Display/Display.c: 86: {
+"89
+[; ;Display/Display.c: 89: {
 {
 [e :U _Display_Blink ]
 [f ]
-"89
-[; ;Display/Display.c: 89: }
+"92
+[; ;Display/Display.c: 92: }
 [e :UE 108 ]
 }

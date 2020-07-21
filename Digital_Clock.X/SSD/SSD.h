@@ -13,7 +13,7 @@ extern "C" {
 #endif
 #include"SSD_Cfg.h"
     
-#define NumberOfDigits 4 
+#define NumberOfDigits 1 
     
     
 #define SSD_Zero                        0b00111111

@@ -6,6 +6,7 @@
  */
 
 #include"Scheduler.h"
+#include"../Timer/Timer.h"
 
 void Scheduler_Init(void) 
 {
@@ -14,36 +15,16 @@ void Scheduler_Init(void)
 
 void Scheduler_Update(void) 
 {
-    while(1)
-    {
     
        for(uint8_t i=0 ;i<NumberOfTasks;i++)
        {
-       
-           if(Task_Flag[i]==1)
-           {
-               Tasks[i].Task();
-           }
         
+           if(Active_Task(Tick,Tasks[i].Task_Peroid))
+            {
+              Tasks[i].Task();
+            }    
+           
        }
     
-    }  
+         
 }
-
-void Scheduler_Active(uint32_t System_Tick) 
-{
-    for(uint8_t i=0 ;i<NumberOfTasks;i++)
-    {
-        if(Active_Task(System_Tick,Tasks[i].Task_Peroid))
-        {
-            Task_Flag[i]=1;  
-        }
-        else
-        {
-          Task_Flag[i]=0;
-        }    
-    
-    }
-}
-
-

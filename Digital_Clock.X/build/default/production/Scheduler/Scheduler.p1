@@ -5,15 +5,18 @@ Version 4.0 HI-TECH Software Intermediate Code
 "33 Scheduler/Scheduler_Cfg.h
 [; ;Scheduler/Scheduler_Cfg.h: 33: extern uint8_t Task_Flag[(3UL)];
 [v _Task_Flag `uc ~T0 @X0 -> 0 `x e ]
+"19 Scheduler/../Timer/Timer.h
+[; ;Scheduler/../Timer/Timer.h: 19: extern uint32_t Tick;
+[v _Tick `ul ~T0 @X0 0 e ]
 [v F971 `(v ~T0 @X0 0 tf ]
-"28
+"28 Scheduler/Scheduler_Cfg.h
 [; ;Scheduler/Scheduler_Cfg.h: 28: {
 [s S95 `ui 1 `*F971 1 ]
 [n S95 Tasks_T Task_Peroid Task ]
 "34
 [; ;Scheduler/Scheduler_Cfg.h: 34: extern const Tasks_t Tasks[(3UL)];
 [v _Tasks `CS95 ~T0 @X0 -> 0 `x e ]
-"21 Scheduler/../config.h
+"21 Scheduler/../Timer/../config.h
 [p x FOSC = HS ]
 "22
 [p x WDTE = OFF ]
@@ -209,134 +212,61 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"10 Scheduler/Scheduler.c
-[; ;Scheduler/Scheduler.c: 10: void Scheduler_Init(void)
+"11 Scheduler/Scheduler.c
+[; ;Scheduler/Scheduler.c: 11: void Scheduler_Init(void)
 [v _Scheduler_Init `(v ~T0 @X0 1 ef ]
-"11
-[; ;Scheduler/Scheduler.c: 11: {
+"12
+[; ;Scheduler/Scheduler.c: 12: {
 {
 [e :U _Scheduler_Init ]
 [f ]
-"12
-[; ;Scheduler/Scheduler.c: 12:     memset(Task_Flag,0,sizeof(Task_Flag));
-[e ( _memset (3 , , -> &U _Task_Flag `*v -> 0 `i -> * -> 3 `i # `uc `ui ]
 "13
-[; ;Scheduler/Scheduler.c: 13: }
+[; ;Scheduler/Scheduler.c: 13:     memset(Task_Flag,0,sizeof(Task_Flag));
+[e ( _memset (3 , , -> &U _Task_Flag `*v -> 0 `i -> * -> 3 `i # `uc `ui ]
+"14
+[; ;Scheduler/Scheduler.c: 14: }
 [e :UE 96 ]
 }
-"15
-[; ;Scheduler/Scheduler.c: 15: void Scheduler_Update(void)
-[v _Scheduler_Update `(v ~T0 @X0 1 ef ]
 "16
-[; ;Scheduler/Scheduler.c: 16: {
+[; ;Scheduler/Scheduler.c: 16: void Scheduler_Update(void)
+[v _Scheduler_Update `(v ~T0 @X0 1 ef ]
+"17
+[; ;Scheduler/Scheduler.c: 17: {
 {
 [e :U _Scheduler_Update ]
 [f ]
-"17
-[; ;Scheduler/Scheduler.c: 17:     while(1)
-[e :U 99 ]
-"18
-[; ;Scheduler/Scheduler.c: 18:     {
-{
-"20
-[; ;Scheduler/Scheduler.c: 20:        for(uint8_t i=0 ;i<(3UL);i++)
+"19
+[; ;Scheduler/Scheduler.c: 19:        for(uint8_t i=0 ;i<(3UL);i++)
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `ul -> 3 `ul 101  ]
-[e $U 102  ]
-[e :U 101 ]
-"21
-[; ;Scheduler/Scheduler.c: 21:        {
+[e $ < -> _i `ul -> 3 `ul 98  ]
+[e $U 99  ]
+[e :U 98 ]
+"20
+[; ;Scheduler/Scheduler.c: 20:        {
 {
+"22
+[; ;Scheduler/Scheduler.c: 22:            if((Tick%(Tasks[i].Task_Peroid/(1UL))) ? 0:1)
+[e $ ! != ? != % _Tick / -> . *U + &U _Tasks * -> _i `ux -> -> # *U &U _Tasks `ui `ux 0 `ul -> 1 `ul -> -> -> 0 `i `l `ul : -> 0 `i -> 1 `i -> 0 `i 101  ]
 "23
-[; ;Scheduler/Scheduler.c: 23:            if(Task_Flag[i]==1)
-[e $ ! == -> *U + &U _Task_Flag * -> _i `ux -> -> # *U &U _Task_Flag `ui `ux `i -> 1 `i 104  ]
-"24
-[; ;Scheduler/Scheduler.c: 24:            {
+[; ;Scheduler/Scheduler.c: 23:             {
 {
-"25
-[; ;Scheduler/Scheduler.c: 25:                Tasks[i].Task();
+"24
+[; ;Scheduler/Scheduler.c: 24:               Tasks[i].Task();
 [e ( *U . *U + &U _Tasks * -> _i `ux -> -> # *U &U _Tasks `ui `ux 1 ..  ]
-"26
-[; ;Scheduler/Scheduler.c: 26:            }
+"25
+[; ;Scheduler/Scheduler.c: 25:             }
 }
-[e :U 104 ]
-"28
-[; ;Scheduler/Scheduler.c: 28:        }
+[e :U 101 ]
+"27
+[; ;Scheduler/Scheduler.c: 27:        }
 }
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `ul -> 3 `ul 101  ]
-[e :U 102 ]
+[e $ < -> _i `ul -> 3 `ul 98  ]
+[e :U 99 ]
 }
 "30
-[; ;Scheduler/Scheduler.c: 30:     }
-}
-[e :U 98 ]
-[e $U 99  ]
-[e :U 100 ]
-"31
-[; ;Scheduler/Scheduler.c: 31: }
+[; ;Scheduler/Scheduler.c: 30: }
 [e :UE 97 ]
-}
-"33
-[; ;Scheduler/Scheduler.c: 33: void Scheduler_Active(uint32_t System_Tick)
-[v _Scheduler_Active `(v ~T0 @X0 1 ef1`ul ]
-"34
-[; ;Scheduler/Scheduler.c: 34: {
-{
-[e :U _Scheduler_Active ]
-"33
-[; ;Scheduler/Scheduler.c: 33: void Scheduler_Active(uint32_t System_Tick)
-[v _System_Tick `ul ~T0 @X0 1 r1 ]
-"34
-[; ;Scheduler/Scheduler.c: 34: {
-[f ]
-"35
-[; ;Scheduler/Scheduler.c: 35:     for(uint8_t i=0 ;i<(3UL);i++)
-{
-[v _i `uc ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `ul -> 3 `ul 106  ]
-[e $U 107  ]
-[e :U 106 ]
-"36
-[; ;Scheduler/Scheduler.c: 36:     {
-{
-"37
-[; ;Scheduler/Scheduler.c: 37:         if((System_Tick%(Tasks[i].Task_Peroid/(20UL))) ? 0:1)
-[e $ ! != ? != % _System_Tick / -> . *U + &U _Tasks * -> _i `ux -> -> # *U &U _Tasks `ui `ux 0 `ul -> 20 `ul -> -> -> 0 `i `l `ul : -> 0 `i -> 1 `i -> 0 `i 109  ]
-"38
-[; ;Scheduler/Scheduler.c: 38:         {
-{
-"39
-[; ;Scheduler/Scheduler.c: 39:             Task_Flag[i]=1;
-[e = *U + &U _Task_Flag * -> _i `ux -> -> # *U &U _Task_Flag `ui `ux -> -> 1 `i `uc ]
-"40
-[; ;Scheduler/Scheduler.c: 40:         }
-}
-[e $U 110  ]
-"41
-[; ;Scheduler/Scheduler.c: 41:         else
-[e :U 109 ]
-"42
-[; ;Scheduler/Scheduler.c: 42:         {
-{
-"43
-[; ;Scheduler/Scheduler.c: 43:           Task_Flag[i]=0;
-[e = *U + &U _Task_Flag * -> _i `ux -> -> # *U &U _Task_Flag `ui `ux -> -> 0 `i `uc ]
-"44
-[; ;Scheduler/Scheduler.c: 44:         }
-}
-[e :U 110 ]
-"46
-[; ;Scheduler/Scheduler.c: 46:     }
-}
-[e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `ul -> 3 `ul 106  ]
-[e :U 107 ]
-}
-"47
-[; ;Scheduler/Scheduler.c: 47: }
-[e :UE 105 ]
 }

@@ -1885,6 +1885,7 @@ typedef uint16_t uintptr_t;
 void Timer_Init(void);
 void Timer_Start(void);
 void Timer0_CB(void);
+extern uint32_t Tick;
 # 16 "Interrupt/Interrupt_Cfg.h" 2
 
 # 1 "Interrupt/../Buttons/Buttons.h" 1

@@ -15,12 +15,12 @@ extern "C" {
 #include"Task.h" 
 #include"string.h"
     
-#define Tick_Peroid   (20UL)    
+#define Tick_Peroid   (1UL)    
 #define NumberOfTasks (3UL)   
 
-#define Task1_Peroid  (20UL) 
+#define Task1_Peroid  (5UL) 
 #define Task2_Peroid  (100UL)
-#define Task3_Peroid  (1000UL)
+#define Task3_Peroid  (500UL)
     
     
 typedef void(*Task_t)(void);  

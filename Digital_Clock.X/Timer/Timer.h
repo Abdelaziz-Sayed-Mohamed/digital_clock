@@ -16,7 +16,7 @@ extern "C" {
 void Timer_Init(void);
 void Timer_Start(void);
 void Timer0_CB(void);
-
+extern uint32_t Tick;
 #ifdef	__cplusplus
 }
 #endif

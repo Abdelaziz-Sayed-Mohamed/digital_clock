@@ -1,18 +1,22 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "22 ./Display/Display.h
 [; ;./Display/Display.h: 22: Display_t Display;
-[c E983 0 1 .. ]
-[n E983 Display_T Minutes Hours  ]
+[c E982 0 1 .. ]
+[n E982 Display_T Minutes Hours  ]
 "23 ./ModeManger/ModeManager.h
 [; ;./ModeManger/ModeManager.h: 23: MODE_T MODE;
-[c E994 0 1 2 .. ]
-[n E994 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+[c E993 0 1 2 .. ]
+[n E993 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
 "17 ./Clock/Clock.h
 [; ;./Clock/Clock.h: 17: {
 [s S96 `uc 1 `uc 1 `uc 1 ]
 [n S96 Clock_T Second Minutes Hours ]
+"22 ./Interrupt/../Buttons/Buttons.h
+[; ;./Interrupt/../Buttons/Buttons.h: 22: {
+[s S97 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S97 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
 [p mainexit ]
-"28 ./gpio/gpio.h
+"28 ./Interrupt/../Buttons/../gpio/gpio.h
 [v _GPIO_Init `(v ~T0 @X0 0 ef ]
 "24 ./Display/Display.h
 [; ;./Display/Display.h: 24: void Display_Init(void);
@@ -23,19 +27,17 @@ Version 4.0 HI-TECH Software Intermediate Code
 "25 ./ModeManger/ModeManager.h
 [; ;./ModeManger/ModeManager.h: 25: void ModeManager_Init(void);
 [v _ModeManager_Init `(v ~T0 @X0 0 ef ]
-"16 ./Timer/Timer.h
-[; ;./Timer/Timer.h: 16: void Timer_Init(void);
+"29 ./Interrupt/../Buttons/Buttons.h
+[; ;./Interrupt/../Buttons/Buttons.h: 29: void Buttons_Init(void);
+[v _Buttons_Init `(v ~T0 @X0 0 ef ]
+"16 ./Interrupt/../Timer/Timer.h
 [v _Timer_Init `(v ~T0 @X0 0 ef ]
-"21 ./Scheduler/Scheduler.h
-[; ;./Scheduler/Scheduler.h: 21: void Scheduler_Init(void) ;
-[v _Scheduler_Init `(v ~T0 @X0 0 ef ]
-"17 ./Timer/Timer.h
-[; ;./Timer/Timer.h: 17: void Timer_Start(void);
-[v _Timer_Start `(v ~T0 @X0 0 ef ]
 "20 ./Scheduler/Scheduler.h
-[; ;./Scheduler/Scheduler.h: 20: void Scheduler_Update(void) ;
-[v _Scheduler_Update `(v ~T0 @X0 0 ef ]
-"21 ./Clock/../config.h
+[; ;./Scheduler/Scheduler.h: 20: void Scheduler_Init(void) ;
+[v _Scheduler_Init `(v ~T0 @X0 0 ef ]
+"17 ./Interrupt/../Timer/Timer.h
+[v _Timer_Start `(v ~T0 @X0 0 ef ]
+"21 ./Interrupt/../Buttons/../config.h
 [p x FOSC = HS ]
 "22
 [p x WDTE = OFF ]
@@ -233,48 +235,57 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; <" EECON2 equ 018Dh ;# ">
 "22 ./Display/Display.h
 [; ;./Display/Display.h: 22: Display_t Display;
-[v _Display `E983 ~T0 @X0 1 e ]
+[v _Display `E982 ~T0 @X0 1 e ]
 "23 ./ModeManger/ModeManager.h
 [; ;./ModeManger/ModeManager.h: 23: MODE_T MODE;
-[v _MODE `E994 ~T0 @X0 1 e ]
+[v _MODE `E993 ~T0 @X0 1 e ]
 "22 ./Clock/Clock.h
 [; ;./Clock/Clock.h: 22: Clock_t Clock;
 [v _Clock `S96 ~T0 @X0 1 e ]
+"27 ./Interrupt/../Buttons/Buttons.h
+[; ;./Interrupt/../Buttons/Buttons.h: 27: ButtonsFlag_t ButtonsFlag;
+[v _ButtonsFlag `S97 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"16 main.c
-[; ;main.c: 16: void main(void) {
+"18 main.c
+[; ;main.c: 18: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"17
-[; ;main.c: 17:     GPIO_Init();
-[e ( _GPIO_Init ..  ]
-"18
-[; ;main.c: 18:     Display_Init();
-[e ( _Display_Init ..  ]
 "19
-[; ;main.c: 19:     Clock_Init();
-[e ( _Clock_Init ..  ]
+[; ;main.c: 19:     GPIO_Init();
+[e ( _GPIO_Init ..  ]
 "20
-[; ;main.c: 20:     ModeManager_Init();
-[e ( _ModeManager_Init ..  ]
+[; ;main.c: 20:     Display_Init();
+[e ( _Display_Init ..  ]
 "21
-[; ;main.c: 21:     Timer_Init();
-[e ( _Timer_Init ..  ]
+[; ;main.c: 21:     Clock_Init();
+[e ( _Clock_Init ..  ]
 "22
-[; ;main.c: 22:     Scheduler_Init();
-[e ( _Scheduler_Init ..  ]
+[; ;main.c: 22:     ModeManager_Init();
+[e ( _ModeManager_Init ..  ]
 "23
-[; ;main.c: 23:     Timer_Start();
-[e ( _Timer_Start ..  ]
+[; ;main.c: 23:     Buttons_Init();
+[e ( _Buttons_Init ..  ]
 "24
-[; ;main.c: 24:     Scheduler_Update();
-[e ( _Scheduler_Update ..  ]
+[; ;main.c: 24:     Timer_Init();
+[e ( _Timer_Init ..  ]
+"25
+[; ;main.c: 25:     Scheduler_Init();
+[e ( _Scheduler_Init ..  ]
 "26
-[; ;main.c: 26:     return;
-[e $UE 97  ]
+[; ;main.c: 26:     Timer_Start();
+[e ( _Timer_Start ..  ]
 "27
-[; ;main.c: 27: }
-[e :UE 97 ]
+[; ;main.c: 27:     while(1);
+[e :U 101 ]
+[e :U 100 ]
+[e $U 101  ]
+[e :U 102 ]
+"29
+[; ;main.c: 29:     return;
+[e $UE 99  ]
+"30
+[; ;main.c: 30: }
+[e :UE 99 ]
 }

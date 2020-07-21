@@ -13,6 +13,7 @@
 
 
 
+char value = 0;
 
 # 1 "Interrupt/Interrupt.h" 1
 # 15 "Interrupt/Interrupt.h"
@@ -1886,6 +1887,7 @@ typedef uint16_t uintptr_t;
 void Timer_Init(void);
 void Timer_Start(void);
 void Timer0_CB(void);
+extern uint32_t Tick;
 # 16 "Interrupt/Interrupt_Cfg.h" 2
 
 # 1 "Interrupt/../Buttons/Buttons.h" 1
@@ -1934,17 +1936,21 @@ typedef struct Interrupt_CbStruct_T
 
 extern const Interrupt_CbStruct_t Interrupt_CbStruct ;
 # 15 "Interrupt/Interrupt.h" 2
+
+
+    extern char value;
 # 8 "Interrupt/Interrupt.c" 2
 
 
 void __attribute__((picinterrupt(("")))) ISR(void)
 {
-    if(INTCONbits.T0IF==1)
+    if(INTCONbits.TMR0IF==1)
     {
-      TMR0=100;
-      INTCONbits.T0IF=0;
 
+      TMR0 = 100;
+      TMR0IF=0;
       Interrupt_CbStruct.Timer_CB();
+
     }
     else if(INTCONbits.INTF==1)
     {

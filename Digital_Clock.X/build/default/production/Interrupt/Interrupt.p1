@@ -23,15 +23,24 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
-[v F895 `(v ~T0 @X0 0 tf ]
+"2881
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2881: extern volatile __bit TMR0IF __attribute__((address(0x5A)));
+[v _TMR0IF `Vb ~T0 @X0 0 e@90 ]
 [v F897 `(v ~T0 @X0 0 tf ]
+[v F899 `(v ~T0 @X0 0 tf ]
 "24 Interrupt/Interrupt_Cfg.h
 [; ;Interrupt/Interrupt_Cfg.h: 24: {
-[s S96 `*F895 1 `*F897 1 ]
+[s S96 `*F897 1 `*F899 1 ]
 [n S96 Interrupt_CbStruct_T Timer_CB EXTI_CB ]
 "30
 [; ;Interrupt/Interrupt_Cfg.h: 30: extern const Interrupt_CbStruct_t Interrupt_CbStruct ;
 [v _Interrupt_CbStruct `CS96 ~T0 @X0 0 e ]
+"7 Interrupt/Interrupt.c
+[; ;Interrupt/Interrupt.c: 7: char value = 0;
+[v _value `uc ~T0 @X0 1 e ]
+[i _value
+-> -> 0 `i `uc
+]
 "21 Interrupt/../Buttons/../gpio/../config.h
 [p x FOSC = HS ]
 "22
@@ -241,43 +250,43 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _ISR ]
 [f ]
 "12
-[; ;Interrupt/Interrupt.c: 12:     if(INTCONbits.T0IF==1)
-[e $ ! == -> . . _INTCONbits 1 1 `i -> 1 `i 98  ]
+[; ;Interrupt/Interrupt.c: 12:     if(INTCONbits.TMR0IF==1)
+[e $ ! == -> . . _INTCONbits 0 2 `i -> 1 `i 98  ]
 "13
 [; ;Interrupt/Interrupt.c: 13:     {
 {
-"14
-[; ;Interrupt/Interrupt.c: 14:       TMR0=100;
-[e = _TMR0 -> -> 100 `i `uc ]
 "15
-[; ;Interrupt/Interrupt.c: 15:       INTCONbits.T0IF=0;
-[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
+[; ;Interrupt/Interrupt.c: 15:       TMR0 = 100;
+[e = _TMR0 -> -> 100 `i `uc ]
+"16
+[; ;Interrupt/Interrupt.c: 16:       TMR0IF=0;
+[e = _TMR0IF -> -> 0 `i `b ]
 "17
 [; ;Interrupt/Interrupt.c: 17:       Interrupt_CbStruct.Timer_CB();
 [e ( *U . _Interrupt_CbStruct 0 ..  ]
-"18
-[; ;Interrupt/Interrupt.c: 18:     }
+"19
+[; ;Interrupt/Interrupt.c: 19:     }
 }
 [e $U 99  ]
-"19
-[; ;Interrupt/Interrupt.c: 19:     else if(INTCONbits.INTF==1)
+"20
+[; ;Interrupt/Interrupt.c: 20:     else if(INTCONbits.INTF==1)
 [e :U 98 ]
 [e $ ! == -> . . _INTCONbits 0 1 `i -> 1 `i 100  ]
-"20
-[; ;Interrupt/Interrupt.c: 20:     {
-{
 "21
-[; ;Interrupt/Interrupt.c: 21:       INTCONbits.INTF=0;
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+[; ;Interrupt/Interrupt.c: 21:     {
+{
 "22
-[; ;Interrupt/Interrupt.c: 22:       Interrupt_CbStruct.EXTI_CB();
+[; ;Interrupt/Interrupt.c: 22:       INTCONbits.INTF=0;
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+"23
+[; ;Interrupt/Interrupt.c: 23:       Interrupt_CbStruct.EXTI_CB();
 [e ( *U . _Interrupt_CbStruct 1 ..  ]
-"24
-[; ;Interrupt/Interrupt.c: 24:     }
+"25
+[; ;Interrupt/Interrupt.c: 25:     }
 }
 [e :U 100 ]
 [e :U 99 ]
-"26
-[; ;Interrupt/Interrupt.c: 26: }
+"27
+[; ;Interrupt/Interrupt.c: 27: }
 [e :UE 97 ]
 }

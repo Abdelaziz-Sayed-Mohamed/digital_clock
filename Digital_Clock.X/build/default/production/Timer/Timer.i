@@ -1882,7 +1882,63 @@ typedef uint16_t uintptr_t;
 void Timer_Init(void);
 void Timer_Start(void);
 void Timer0_CB(void);
+extern uint32_t Tick;
 # 7 "Timer/Timer.c" 2
+
+# 1 "Timer/../Interrupt/Interrupt.h" 1
+# 15 "Timer/../Interrupt/Interrupt.h"
+# 1 "Timer/../Interrupt/Interrupt_Cfg.h" 1
+# 17 "Timer/../Interrupt/Interrupt_Cfg.h"
+# 1 "Timer/../Interrupt/../Buttons/Buttons.h" 1
+# 14 "Timer/../Interrupt/../Buttons/Buttons.h"
+# 1 "Timer/../Interrupt/../Buttons/Buttons_Cfg.h" 1
+# 15 "Timer/../Interrupt/../Buttons/Buttons_Cfg.h"
+# 1 "Timer/../Interrupt/../Buttons/../gpio/gpio.h" 1
+# 15 "Timer/../Interrupt/../Buttons/../gpio/gpio.h"
+# 1 "Timer/../Interrupt/../Buttons/../gpio/gpio_Cfg.h" 1
+# 15 "Timer/../Interrupt/../Buttons/../gpio/gpio.h" 2
+# 28 "Timer/../Interrupt/../Buttons/../gpio/gpio.h"
+void GPIO_Init(void);
+# 15 "Timer/../Interrupt/../Buttons/Buttons_Cfg.h" 2
+# 14 "Timer/../Interrupt/../Buttons/Buttons.h" 2
+
+
+
+
+
+
+
+typedef struct ButtonsFlag_T
+{
+   uint8_t UpButton_Flag :1;
+   uint8_t DownButton_Flag :1;
+   uint8_t SettingButton_Flag :1;
+}ButtonsFlag_t;
+ButtonsFlag_t ButtonsFlag;
+
+void Buttons_Init(void);
+void Buttons_Update(void);
+void EXTI_SettingButton_CB(void);
+# 17 "Timer/../Interrupt/Interrupt_Cfg.h" 2
+
+
+
+
+typedef void(*Interrupt_CB_t)(void);
+
+typedef struct Interrupt_CbStruct_T
+{
+ Interrupt_CB_t Timer_CB;
+ Interrupt_CB_t EXTI_CB;
+
+}Interrupt_CbStruct_t ;
+
+extern const Interrupt_CbStruct_t Interrupt_CbStruct ;
+# 15 "Timer/../Interrupt/Interrupt.h" 2
+
+
+    extern char value;
+# 8 "Timer/Timer.c" 2
 
 # 1 "Timer/../Scheduler/Scheduler.h" 1
 # 14 "Timer/../Scheduler/Scheduler.h"
@@ -1963,10 +2019,9 @@ extern const Tasks_t Tasks[(3UL)];
 
 
 
-void Scheduler_Active(uint32_t System_Tick) ;
 void Scheduler_Update(void) ;
 void Scheduler_Init(void) ;
-# 8 "Timer/Timer.c" 2
+# 9 "Timer/Timer.c" 2
 
 
 
@@ -1977,25 +2032,28 @@ void Timer_Init(void)
     OPTION_REGbits.T0CS=0;
     OPTION_REGbits.PSA=0;
 
-    OPTION_REGbits.PS0=1;
-    OPTION_REGbits.PS1=1;
+    OPTION_REGbits.PS0=0;
+    OPTION_REGbits.PS1=0;
     OPTION_REGbits.PS2=1;
 
+    TMR0=100;
+    INTCONbits.GIE=1;
     INTCONbits.PEIE=1;
 
-    INTCONbits.GIE=1;
-    TMR0=100;
-    INTCONbits.T0IF=0;
+
+
 
 }
 
 
 void Timer_Start(void)
 {
-     INTCONbits.T0IE=1;
+    INTCONbits.TMR0IE=1;
 }
 
 void Timer0_CB(void)
-{ Tick++;
-    Scheduler_Active(Tick);
+{
+   Tick++;
+
+   Scheduler_Update();
 }

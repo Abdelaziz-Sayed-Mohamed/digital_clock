@@ -1,4 +1,8 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"22 Timer/../Interrupt/../Buttons/Buttons.h
+[; ;Timer/../Interrupt/../Buttons/Buttons.h: 22: {
+[s S95 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S95 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
 "1261 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 1261:     struct {
 [s S51 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -14,6 +18,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1275
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 1275: extern volatile OPTION_REGbits_t OPTION_REGbits __attribute__((address(0x081)));
 [v _OPTION_REGbits `VS50 ~T0 @X0 0 e@129 ]
+"59
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
+[v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
 "460
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 460:     struct {
 [s S18 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
@@ -29,12 +36,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "477
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 477: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
 [v _INTCONbits `VS17 ~T0 @X0 0 e@11 ]
-"59
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
-[v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
 "19 Timer/../Scheduler/Scheduler.h
-[; ;Timer/../Scheduler/Scheduler.h: 19: void Scheduler_Active(uint32_t System_Tick) ;
-[v _Scheduler_Active `(v ~T0 @X0 0 ef1`ul ]
+[; ;Timer/../Scheduler/Scheduler.h: 19: void Scheduler_Update(void) ;
+[v _Scheduler_Update `(v ~T0 @X0 0 ef ]
 "21 Timer/../Scheduler/../config.h
 [p x FOSC = HS ]
 "22
@@ -231,79 +235,81 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"12 Timer/Timer.c
-[; ;Timer/Timer.c: 12: uint32_t Tick=0;
+"27 Timer/../Interrupt/../Buttons/Buttons.h
+[; ;Timer/../Interrupt/../Buttons/Buttons.h: 27: ButtonsFlag_t ButtonsFlag;
+[v _ButtonsFlag `S95 ~T0 @X0 1 e ]
+"13 Timer/Timer.c
+[; ;Timer/Timer.c: 13: uint32_t Tick=0;
 [v _Tick `ul ~T0 @X0 1 e ]
 [i _Tick
 -> -> -> 0 `i `l `ul
 ]
-"13
-[; ;Timer/Timer.c: 13: void Timer_Init(void)
-[v _Timer_Init `(v ~T0 @X0 1 ef ]
 "14
-[; ;Timer/Timer.c: 14: {
+[; ;Timer/Timer.c: 14: void Timer_Init(void)
+[v _Timer_Init `(v ~T0 @X0 1 ef ]
+"15
+[; ;Timer/Timer.c: 15: {
 {
 [e :U _Timer_Init ]
 [f ]
-"15
-[; ;Timer/Timer.c: 15:     OPTION_REGbits.T0CS=0;
-[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
 "16
-[; ;Timer/Timer.c: 16:     OPTION_REGbits.PSA=0;
+[; ;Timer/Timer.c: 16:     OPTION_REGbits.T0CS=0;
+[e = . . _OPTION_REGbits 0 3 -> -> 0 `i `uc ]
+"17
+[; ;Timer/Timer.c: 17:     OPTION_REGbits.PSA=0;
 [e = . . _OPTION_REGbits 0 1 -> -> 0 `i `uc ]
-"18
-[; ;Timer/Timer.c: 18:     OPTION_REGbits.PS0=1;
-[e = . . _OPTION_REGbits 1 0 -> -> 1 `i `uc ]
 "19
-[; ;Timer/Timer.c: 19:     OPTION_REGbits.PS1=1;
-[e = . . _OPTION_REGbits 1 1 -> -> 1 `i `uc ]
+[; ;Timer/Timer.c: 19:     OPTION_REGbits.PS0=0;
+[e = . . _OPTION_REGbits 1 0 -> -> 0 `i `uc ]
 "20
-[; ;Timer/Timer.c: 20:     OPTION_REGbits.PS2=1;
+[; ;Timer/Timer.c: 20:     OPTION_REGbits.PS1=0;
+[e = . . _OPTION_REGbits 1 1 -> -> 0 `i `uc ]
+"21
+[; ;Timer/Timer.c: 21:     OPTION_REGbits.PS2=1;
 [e = . . _OPTION_REGbits 1 2 -> -> 1 `i `uc ]
-"22
-[; ;Timer/Timer.c: 22:     INTCONbits.PEIE=1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"23
+[; ;Timer/Timer.c: 23:     TMR0=100;
+[e = _TMR0 -> -> 100 `i `uc ]
 "24
 [; ;Timer/Timer.c: 24:     INTCONbits.GIE=1;
 [e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "25
-[; ;Timer/Timer.c: 25:     TMR0=100;
-[e = _TMR0 -> -> 100 `i `uc ]
-"26
-[; ;Timer/Timer.c: 26:     INTCONbits.T0IF=0;
-[e = . . _INTCONbits 1 1 -> -> 0 `i `uc ]
-"28
-[; ;Timer/Timer.c: 28: }
-[e :UE 96 ]
+[; ;Timer/Timer.c: 25:     INTCONbits.PEIE=1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"30
+[; ;Timer/Timer.c: 30: }
+[e :UE 98 ]
 }
-"31
-[; ;Timer/Timer.c: 31: void Timer_Start(void)
+"33
+[; ;Timer/Timer.c: 33: void Timer_Start(void)
 [v _Timer_Start `(v ~T0 @X0 1 ef ]
-"32
-[; ;Timer/Timer.c: 32: {
+"34
+[; ;Timer/Timer.c: 34: {
 {
 [e :U _Timer_Start ]
 [f ]
-"33
-[; ;Timer/Timer.c: 33:      INTCONbits.T0IE=1;
-[e = . . _INTCONbits 1 3 -> -> 1 `i `uc ]
-"34
-[; ;Timer/Timer.c: 34: }
-[e :UE 97 ]
-}
+"35
+[; ;Timer/Timer.c: 35:     INTCONbits.TMR0IE=1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
 "36
-[; ;Timer/Timer.c: 36: void Timer0_CB(void)
+[; ;Timer/Timer.c: 36: }
+[e :UE 99 ]
+}
+"38
+[; ;Timer/Timer.c: 38: void Timer0_CB(void)
 [v _Timer0_CB `(v ~T0 @X0 1 ef ]
-"37
-[; ;Timer/Timer.c: 37: { Tick++;
+"39
+[; ;Timer/Timer.c: 39: {
 {
 [e :U _Timer0_CB ]
 [f ]
+"40
+[; ;Timer/Timer.c: 40:    Tick++;
 [e ++ _Tick -> -> -> 1 `i `l `ul ]
-"38
-[; ;Timer/Timer.c: 38:     Scheduler_Active(Tick);
-[e ( _Scheduler_Active (1 _Tick ]
-"39
-[; ;Timer/Timer.c: 39: }
-[e :UE 98 ]
+"42
+[; ;Timer/Timer.c: 42:    Scheduler_Update();
+[e ( _Scheduler_Update ..  ]
+"43
+[; ;Timer/Timer.c: 43: }
+[e :UE 100 ]
 }

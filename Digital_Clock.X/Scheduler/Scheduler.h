@@ -16,7 +16,6 @@ extern "C" {
 #define Active_Task(System_Tick,TaskPeroid)  (System_Tick%(TaskPeroid/Tick_Peroid)) ? 0:1  
 
     
-void Scheduler_Active(uint32_t System_Tick) ;
 void Scheduler_Update(void) ;
 void Scheduler_Init(void) ;
 

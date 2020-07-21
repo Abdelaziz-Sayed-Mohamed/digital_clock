@@ -3,11 +3,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Interrupt/../Buttons/Buttons.h: 22: {
 [s S95 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S95 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
-[v F895 `(v ~T0 @X0 0 tf ]
-[v F897 `(v ~T0 @X0 0 tf ]
+[v F896 `(v ~T0 @X0 0 tf ]
+[v F898 `(v ~T0 @X0 0 tf ]
 "24 Interrupt/Interrupt_Cfg.h
 [; ;Interrupt/Interrupt_Cfg.h: 24: {
-[s S96 `*F895 1 `*F897 1 ]
+[s S96 `*F896 1 `*F898 1 ]
 [n S96 Interrupt_CbStruct_T Timer_CB EXTI_CB ]
 "18 Interrupt/../Timer/Timer.h
 [; ;Interrupt/../Timer/Timer.h: 18: void Timer0_CB(void);

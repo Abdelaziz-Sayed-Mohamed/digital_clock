@@ -45,8 +45,13 @@ extern "C" {
 #define _SSD_PORT_                  PORTD
 #define _SSD_PORT_DIRECTION_        TRISD
     
-    
+#define _LED4_PORT_                 PORTB
+#define _LED4_DIRECTION_            TRISB     
+#define _LED4_PIN_                  4     
 
+#define _LED3_PORT_                 PORTB
+#define _LED3_DIRECTION_            TRISB     
+#define _LED3_PIN_                  3       
 
 
 #ifdef	__cplusplus

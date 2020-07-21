@@ -1949,18 +1949,49 @@ void Clock_Hour_Setting(void);
 void Clock_Minutes_Setting(void);
 # 12 "Scheduler/Task.c" 2
 
+# 1 "Scheduler/../Buttons/Buttons.h" 1
+# 14 "Scheduler/../Buttons/Buttons.h"
+# 1 "Scheduler/../Buttons/Buttons_Cfg.h" 1
+# 14 "Scheduler/../Buttons/Buttons.h" 2
+
+
+
+
+
+
+
+typedef struct ButtonsFlag_T
+{
+   uint8_t UpButton_Flag :1;
+   uint8_t DownButton_Flag :1;
+   uint8_t SettingButton_Flag :1;
+}ButtonsFlag_t;
+ButtonsFlag_t ButtonsFlag;
+
+void Buttons_Init(void);
+void Buttons_Update(void);
+void EXTI_SettingButton_CB(void);
+# 13 "Scheduler/Task.c" 2
+
+
+
 
 void Scheduler_Task1(void)
 {
- Display_Update();
+
+  Display_Update();
+  (PORTB^=(1<<4));
 }
 
 void Scheduler_Task2(void)
 {
+
+  Buttons_Update();
   ModeManager_Update();
 }
 
 void Scheduler_Task3(void)
 {
+  (PORTB^=(1<<3));
   Clock_Update();
 }

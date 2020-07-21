@@ -26,7 +26,10 @@ Digit1=Clock.Hours/10;
 Digit2=Clock.Hours%10;
 Digit3=Clock.Minutes/10;
 Digit4=Clock.Minutes%10;
-
+RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
+RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
+RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);
+RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
 }
 
 void Display_Update(void)

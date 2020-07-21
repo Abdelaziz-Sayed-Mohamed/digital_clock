@@ -8,4 +8,6 @@ Scheduler/../Display/../gpio/gpio.h  \
 Scheduler/../Display/../gpio/gpio_Cfg.h  \
 Scheduler/../ModeManger/ModeManager.h  \
 Scheduler/../ModeManger/ModeManager_Cfg.h  \
-Scheduler/../Clock/Clock.h 
+Scheduler/../Clock/Clock.h  \
+Scheduler/../Buttons/Buttons.h  \
+Scheduler/../Buttons/Buttons_Cfg.h 

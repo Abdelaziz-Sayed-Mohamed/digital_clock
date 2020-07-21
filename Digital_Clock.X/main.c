@@ -13,17 +13,18 @@
 #include"Clock/Clock.h"
 #include"gpio/gpio.h"
 
-#define _XTAL_FREQ 8000000
+#include"Interrupt/Interrupt.h"
 
 void main(void) {
     GPIO_Init();
     Display_Init();
     Clock_Init();
     ModeManager_Init();
+    Buttons_Init();
     Timer_Init();
     Scheduler_Init();
     Timer_Start();
-    Scheduler_Update();
+    while(1);
     
     return;
 }
