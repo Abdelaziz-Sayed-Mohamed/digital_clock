@@ -13,6 +13,8 @@
 #include"Clock/Clock.h"
 #include"gpio/gpio.h"
 
+#define _XTAL_FREQ 8000000
+
 void main(void) {
     GPIO_Init();
     Display_Init();

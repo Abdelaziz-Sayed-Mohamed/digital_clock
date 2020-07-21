@@ -9,10 +9,10 @@
 
 void __interrupt() ISR(void)
 {
-    if(INTCONbits.T0IF==1)
+    if(INTCONbits.TMR0IF==1)
     {    
       TMR0=100;
-      INTCONbits.T0IF=0;
+      INTCONbits.TMR0IF=0;
       
       Interrupt_CbStruct.Timer_CB();
     }

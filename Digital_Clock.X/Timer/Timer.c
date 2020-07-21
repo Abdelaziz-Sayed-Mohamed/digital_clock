@@ -19,18 +19,20 @@ void Timer_Init(void)
     OPTION_REGbits.PS1=1;
     OPTION_REGbits.PS2=1;
     
+    TMR0=100;
+    INTCONbits.TMR0IF=0;
+    
     INTCONbits.PEIE=1;
    
     INTCONbits.GIE=1;
-    TMR0=100;
-    INTCONbits.T0IF=0;
+   
     
 }
 
 
 void Timer_Start(void) 
 {
-     INTCONbits.T0IE=1;
+     INTCONbits.TMR0IE=1;
 }
 
 void Timer0_CB(void) 

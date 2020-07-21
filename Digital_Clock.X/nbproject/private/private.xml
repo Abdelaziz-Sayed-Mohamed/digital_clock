@@ -3,20 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/study/Repos/Digital_Clock.X/Interrupt/Interrupt.c</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/Interrupt/Interrupt_Cfg.c</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/Clock/Clock.h</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/ModeManger/ModeManager.h</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/Display/Display.c</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/ModeManger/ModeManager.c</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/Buttons/Buttons_Cfg.h</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/Buttons/Buttons.h</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/Clock/Clock.c</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/Buttons/Buttons.c</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/gpio/gpio.h</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/gpio/gpio.c</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/gpio/gpio_Cfg.h</file>
-            <file>file:/E:/study/Repos/Digital_Clock.X/config.h</file>
+            <file>file:/E:/study/Repos/Digital_Clock/Digital_Clock.X/Scheduler/Scheduler.h</file>
+            <file>file:/E:/study/Repos/Digital_Clock/Digital_Clock.X/main.c</file>
+            <file>file:/E:/study/Repos/Digital_Clock/Digital_Clock.X/Scheduler/Scheduler.c</file>
+            <file>file:/E:/study/Repos/Digital_Clock/Digital_Clock.X/Scheduler/Scheduler_Cfg.c</file>
+            <file>file:/E:/study/Repos/Digital_Clock/Digital_Clock.X/Scheduler/Task.c</file>
+            <file>file:/E:/study/Repos/Digital_Clock/Digital_Clock.X/Timer/Timer.c</file>
         </group>
     </open-files>
 </project-private>
