@@ -7,19 +7,22 @@
 
 #include"Task.h"
 #include"../config.h"
-uint8_t c=0;
+#include"../Display/Display.h"
+#include"../ModeManger/ModeManager.h"
+#include"../Clock/Clock.h"
+
 void Scheduler_Task1(void)   //20 ms
 {
-    c++;
+ Display_Update();
 }
 
 void Scheduler_Task2(void)  //100 ms
 {
-    c++;
+  ModeManager_Update();
 }
 
-void Scheduler_Task3(void)  //500 ms
+void Scheduler_Task3(void)  //1000 ms
 {
-    c++;
+  Clock_Update();
 }
 

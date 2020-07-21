@@ -8,9 +8,16 @@
 #include "config.h"
 #include"Timer/Timer.h"
 #include"Scheduler/Scheduler.h"
+#include"Display/Display.h"
+#include"ModeManger/ModeManager.h"
+#include"Clock/Clock.h"
+#include"gpio/gpio.h"
 
 void main(void) {
-    
+    GPIO_Init();
+    Display_Init();
+    Clock_Init();
+    ModeManager_Init();
     Timer_Init();
     Scheduler_Init();
     Timer_Start();

@@ -12,8 +12,9 @@
 extern "C" {
 #endif
 
-
-
+#include"../config.h"
+#include"../gpio/gpio.h"
+    
 
 #ifdef	__cplusplus
 }

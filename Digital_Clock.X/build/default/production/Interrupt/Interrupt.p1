@@ -23,11 +23,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "59
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 59: extern volatile unsigned char TMR0 __attribute__((address(0x001)));
 [v _TMR0 `Vuc ~T0 @X0 0 e@1 ]
-[v F894 `(v ~T0 @X0 0 tf ]
-[v F896 `(v ~T0 @X0 0 tf ]
+[v F895 `(v ~T0 @X0 0 tf ]
+[v F897 `(v ~T0 @X0 0 tf ]
 "24 Interrupt/Interrupt_Cfg.h
 [; ;Interrupt/Interrupt_Cfg.h: 24: {
-[s S96 `*F894 1 `*F896 1 ]
+[s S96 `*F895 1 `*F897 1 ]
 [n S96 Interrupt_CbStruct_T Timer_CB EXTI_CB ]
 "30
 [; ;Interrupt/Interrupt_Cfg.h: 30: extern const Interrupt_CbStruct_t Interrupt_CbStruct ;
@@ -277,7 +277,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e :U 100 ]
 [e :U 99 ]
-"29
-[; ;Interrupt/Interrupt.c: 29: }
+"26
+[; ;Interrupt/Interrupt.c: 26: }
 [e :UE 97 ]
 }

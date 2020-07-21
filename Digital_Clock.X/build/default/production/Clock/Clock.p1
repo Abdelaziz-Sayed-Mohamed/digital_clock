@@ -9,16 +9,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S96 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
 "23 Clock/../ModeManger/ModeManager.h
 [; ;Clock/../ModeManger/ModeManager.h: 23: MODE_T MODE;
-[c E896 0 1 2 .. ]
-[n E896 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
-"25 Clock/Clock.h
-[; ;Clock/Clock.h: 25: void Clock_Normal(void);
+[c E899 0 1 2 .. ]
+[n E899 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+"26 Clock/Clock.h
+[; ;Clock/Clock.h: 26: void Clock_Normal(void);
 [v _Clock_Normal `(v ~T0 @X0 0 ef ]
-"26
-[; ;Clock/Clock.h: 26: void Clock_Hour_Setting(void);
-[v _Clock_Hour_Setting `(v ~T0 @X0 0 ef ]
 "27
-[; ;Clock/Clock.h: 27: void Clock_Minutes_Setting(void);
+[; ;Clock/Clock.h: 27: void Clock_Hour_Setting(void);
+[v _Clock_Hour_Setting `(v ~T0 @X0 0 ef ]
+"28
+[; ;Clock/Clock.h: 28: void Clock_Minutes_Setting(void);
 [v _Clock_Minutes_Setting `(v ~T0 @X0 0 ef ]
 "21 Clock/../Buttons/../gpio/../config.h
 [p x FOSC = HS ]
@@ -224,7 +224,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ButtonsFlag `S96 ~T0 @X0 1 e ]
 "23 Clock/../ModeManger/ModeManager.h
 [; ;Clock/../ModeManger/ModeManager.h: 23: MODE_T MODE;
-[v _MODE `E896 ~T0 @X0 1 e ]
+[v _MODE `E899 ~T0 @X0 1 e ]
 "13 Clock/Clock.c
 [; ;Clock/Clock.c: 13: void Clock_Init(void)
 [v _Clock_Init `(v ~T0 @X0 1 ef ]
@@ -292,9 +292,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 }
 [e $U 99  ]
 [e :U 100 ]
-[e [\ -> _MODE `ui , $ -> . `E896 0 `ui 101
- , $ -> . `E896 1 `ui 102
- , $ -> . `E896 2 `ui 103
+[e [\ -> _MODE `ui , $ -> . `E899 0 `ui 101
+ , $ -> . `E899 1 `ui 102
+ , $ -> . `E899 2 `ui 103
  99 ]
 [e :U 99 ]
 "38

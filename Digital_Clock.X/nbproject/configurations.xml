@@ -20,6 +20,8 @@
       <itemPath>Scheduler/Task.h</itemPath>
       <itemPath>Buttons/Buttons_Cfg.h</itemPath>
       <itemPath>Clock/Clock.h</itemPath>
+      <itemPath>SSD/SSD.h</itemPath>
+      <itemPath>SSD/SSD_Cfg.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -43,6 +45,7 @@
       <itemPath>Interrupt/Interrupt_Cfg.c</itemPath>
       <itemPath>Scheduler/Task.c</itemPath>
       <itemPath>Clock/Clock.c</itemPath>
+      <itemPath>SSD/SSD.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -50,6 +53,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>SSD</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

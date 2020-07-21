@@ -1896,6 +1896,8 @@ void Timer0_CB(void);
 # 15 "Interrupt/../Buttons/../gpio/gpio.h"
 # 1 "Interrupt/../Buttons/../gpio/gpio_Cfg.h" 1
 # 15 "Interrupt/../Buttons/../gpio/gpio.h" 2
+# 28 "Interrupt/../Buttons/../gpio/gpio.h"
+void GPIO_Init(void);
 # 15 "Interrupt/../Buttons/Buttons_Cfg.h" 2
 # 14 "Interrupt/../Buttons/Buttons.h" 2
 
@@ -1950,8 +1952,5 @@ void __attribute__((picinterrupt(("")))) ISR(void)
       Interrupt_CbStruct.EXTI_CB();
 
     }
-
-
-
 
 }

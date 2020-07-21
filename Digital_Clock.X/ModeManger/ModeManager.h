@@ -22,7 +22,8 @@ typedef enum MODE_T
 
 MODE_T MODE;
 
-
+void ModeManager_Init(void);
+void ModeManager_Update(void);
 #ifdef	__cplusplus
 }
 #endif

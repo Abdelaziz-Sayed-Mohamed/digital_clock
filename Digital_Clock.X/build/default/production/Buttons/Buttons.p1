@@ -5,8 +5,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S95 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
 "23 Buttons/../ModeManger/ModeManager.h
 [; ;Buttons/../ModeManger/ModeManager.h: 23: MODE_T MODE;
-[c E887 0 1 2 .. ]
-[n E887 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+[c E888 0 1 2 .. ]
+[n E888 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
 "16 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\include\c90\string.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.20\pic\include\c90\string.h: 16: extern void * memset(void *, int, size_t);
 [v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
@@ -229,7 +229,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ButtonsFlag `S95 ~T0 @X0 1 e ]
 "23 Buttons/../ModeManger/ModeManager.h
 [; ;Buttons/../ModeManger/ModeManager.h: 23: MODE_T MODE;
-[v _MODE `E887 ~T0 @X0 1 e ]
+[v _MODE `E888 ~T0 @X0 1 e ]
 "12 Buttons/Buttons.c
 [; ;Buttons/Buttons.c: 12: uint8_t Debounce_UpButton[3];
 [v _Debounce_UpButton `uc ~T0 @X0 -> 3 `i e ]
@@ -270,19 +270,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [f ]
 "26
 [; ;Buttons/Buttons.c: 26:     static uint8_t Debounce_Counter=0;
-[v F982 `uc ~T0 @X0 1 s Debounce_Counter ]
-[i F982
+[v F985 `uc ~T0 @X0 1 s Debounce_Counter ]
+[i F985
 -> -> 0 `i `uc
 ]
 "27
 [; ;Buttons/Buttons.c: 27:     Debounce_UpButton[Debounce_Counter]=(PORTB&(1<<1));
-[e = *U + &U _Debounce_UpButton * -> F982 `ux -> -> # *U &U _Debounce_UpButton `ui `ux -> & -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
+[e = *U + &U _Debounce_UpButton * -> F985 `ux -> -> # *U &U _Debounce_UpButton `ui `ux -> & -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 "28
 [; ;Buttons/Buttons.c: 28:     Debounce_DownButton[Debounce_Counter]=(PORTB&(1<<0));
-[e = *U + &U _Debounce_DownButton * -> F982 `ux -> -> # *U &U _Debounce_DownButton `ui `ux -> & -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
+[e = *U + &U _Debounce_DownButton * -> F985 `ux -> -> # *U &U _Debounce_DownButton `ui `ux -> & -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 "30
 [; ;Buttons/Buttons.c: 30:     Debounce_Counter=(Debounce_Counter+1)%3;
-[e = F982 -> % + -> F982 `i -> 1 `i -> 3 `i `uc ]
+[e = F985 -> % + -> F985 `i -> 1 `i -> 3 `i `uc ]
 "31
 [; ;Buttons/Buttons.c: 31:     if(Debounce_UpButton[0]==0 &&Debounce_UpButton[1]==0 &&Debounce_UpButton[2]==0 )
 [e $ ! && && == -> *U + &U _Debounce_UpButton * -> -> -> 0 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i == -> *U + &U _Debounce_UpButton * -> -> -> 1 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i == -> *U + &U _Debounce_UpButton * -> -> -> 2 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i 98  ]

@@ -21,7 +21,8 @@ typedef struct Clock_T
 }Clock_t;
 Clock_t Clock;
 
-
+void Clock_Init(void);
+void Clock_Update(void);
 void Clock_Normal(void);
 void Clock_Hour_Setting(void);
 void Clock_Minutes_Setting(void);

@@ -28,6 +28,9 @@ typedef enum MODE_T
 }MODE_T;
 
 MODE_T MODE;
+
+void ModeManager_Init(void);
+void ModeManager_Update(void);
 # 8 "ModeManger/ModeManager.c" 2
 
 # 1 "ModeManger/../Buttons/Buttons.h" 1
@@ -1901,6 +1904,8 @@ typedef uint16_t uintptr_t;
 # 15 "ModeManger/../Buttons/../gpio/gpio.h"
 # 1 "ModeManger/../Buttons/../gpio/gpio_Cfg.h" 1
 # 15 "ModeManger/../Buttons/../gpio/gpio.h" 2
+# 28 "ModeManger/../Buttons/../gpio/gpio.h"
+void GPIO_Init(void);
 # 15 "ModeManger/../Buttons/Buttons_Cfg.h" 2
 # 14 "ModeManger/../Buttons/Buttons.h" 2
 

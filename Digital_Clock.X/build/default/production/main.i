@@ -1968,9 +1968,78 @@ void Scheduler_Update(void) ;
 void Scheduler_Init(void) ;
 # 10 "main.c" 2
 
+# 1 "./Display/Display.h" 1
+# 15 "./Display/Display.h"
+# 1 "./Display/Display_Cfg.h" 1
+# 16 "./Display/Display_Cfg.h"
+# 1 "./Display/../gpio/gpio.h" 1
+# 15 "./Display/../gpio/gpio.h"
+# 1 "./Display/../gpio/gpio_Cfg.h" 1
+# 15 "./Display/../gpio/gpio.h" 2
+# 28 "./Display/../gpio/gpio.h"
+void GPIO_Init(void);
+# 16 "./Display/Display_Cfg.h" 2
+# 15 "./Display/Display.h" 2
+
+
+typedef enum Display_T
+{
+     Minutes=0,
+     Hours=1
+}Display_t;
+Display_t Display;
+
+void Display_Init(void);
+void Display_Update(void);
+void Display_Normal(void);
+void Display_Hour_Setting(void);
+void Display_Minutes_Setting(void);
+void Display_Blink(void);
+# 11 "main.c" 2
+
+# 1 "./ModeManger/ModeManager.h" 1
+# 14 "./ModeManger/ModeManager.h"
+# 1 "./ModeManger/ModeManager_Cfg.h" 1
+# 14 "./ModeManger/ModeManager.h" 2
+
+
+typedef enum MODE_T
+{
+    Normal_Mode=0,
+    Hour_Mode=1,
+    Minutes_Mode=2
+}MODE_T;
+
+MODE_T MODE;
+
+void ModeManager_Init(void);
+void ModeManager_Update(void);
+# 12 "main.c" 2
+
+# 1 "./Clock/Clock.h" 1
+# 16 "./Clock/Clock.h"
+typedef struct Clock_T
+{
+    uint8_t Second;
+    uint8_t Minutes;
+    uint8_t Hours;
+}Clock_t;
+Clock_t Clock;
+
+void Clock_Init(void);
+void Clock_Update(void);
+void Clock_Normal(void);
+void Clock_Hour_Setting(void);
+void Clock_Minutes_Setting(void);
+# 13 "main.c" 2
+
+
 
 void main(void) {
-
+    GPIO_Init();
+    Display_Init();
+    Clock_Init();
+    ModeManager_Init();
     Timer_Init();
     Scheduler_Init();
     Timer_Start();

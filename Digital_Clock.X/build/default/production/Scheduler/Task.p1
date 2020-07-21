@@ -1,5 +1,26 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"21 Scheduler/../config.h
+"22 Scheduler/../Display/Display.h
+[; ;Scheduler/../Display/Display.h: 22: Display_t Display;
+[c E882 0 1 .. ]
+[n E882 Display_T Minutes Hours  ]
+"23 Scheduler/../ModeManger/ModeManager.h
+[; ;Scheduler/../ModeManger/ModeManager.h: 23: MODE_T MODE;
+[c E893 0 1 2 .. ]
+[n E893 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+"17 Scheduler/../Clock/Clock.h
+[; ;Scheduler/../Clock/Clock.h: 17: {
+[s S95 `uc 1 `uc 1 `uc 1 ]
+[n S95 Clock_T Second Minutes Hours ]
+"25 Scheduler/../Display/Display.h
+[; ;Scheduler/../Display/Display.h: 25: void Display_Update(void);
+[v _Display_Update `(v ~T0 @X0 0 ef ]
+"26 Scheduler/../ModeManger/ModeManager.h
+[; ;Scheduler/../ModeManger/ModeManager.h: 26: void ModeManager_Update(void);
+[v _ModeManager_Update `(v ~T0 @X0 0 ef ]
+"25 Scheduler/../Clock/Clock.h
+[; ;Scheduler/../Clock/Clock.h: 25: void Clock_Update(void);
+[v _Clock_Update `(v ~T0 @X0 0 ef ]
+"21 Scheduler/../Clock/../config.h
 [p x FOSC = HS ]
 "22
 [p x WDTE = OFF ]
@@ -195,54 +216,57 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"10 Scheduler/Task.c
-[; ;Scheduler/Task.c: 10: uint8_t c=0;
-[v _c `uc ~T0 @X0 1 e ]
-[i _c
--> -> 0 `i `uc
-]
-"11
-[; ;Scheduler/Task.c: 11: void Scheduler_Task1(void)
+"22 Scheduler/../Display/Display.h
+[; ;Scheduler/../Display/Display.h: 22: Display_t Display;
+[v _Display `E882 ~T0 @X0 1 e ]
+"23 Scheduler/../ModeManger/ModeManager.h
+[; ;Scheduler/../ModeManger/ModeManager.h: 23: MODE_T MODE;
+[v _MODE `E893 ~T0 @X0 1 e ]
+"22 Scheduler/../Clock/Clock.h
+[; ;Scheduler/../Clock/Clock.h: 22: Clock_t Clock;
+[v _Clock `S95 ~T0 @X0 1 e ]
+"14 Scheduler/Task.c
+[; ;Scheduler/Task.c: 14: void Scheduler_Task1(void)
 [v _Scheduler_Task1 `(v ~T0 @X0 1 ef ]
-"12
-[; ;Scheduler/Task.c: 12: {
+"15
+[; ;Scheduler/Task.c: 15: {
 {
 [e :U _Scheduler_Task1 ]
 [f ]
-"13
-[; ;Scheduler/Task.c: 13:     c++;
-[e ++ _c -> -> 1 `i `uc ]
-"14
-[; ;Scheduler/Task.c: 14: }
-[e :UE 95 ]
-}
 "16
-[; ;Scheduler/Task.c: 16: void Scheduler_Task2(void)
-[v _Scheduler_Task2 `(v ~T0 @X0 1 ef ]
+[; ;Scheduler/Task.c: 16:  Display_Update();
+[e ( _Display_Update ..  ]
 "17
-[; ;Scheduler/Task.c: 17: {
+[; ;Scheduler/Task.c: 17: }
+[e :UE 96 ]
+}
+"19
+[; ;Scheduler/Task.c: 19: void Scheduler_Task2(void)
+[v _Scheduler_Task2 `(v ~T0 @X0 1 ef ]
+"20
+[; ;Scheduler/Task.c: 20: {
 {
 [e :U _Scheduler_Task2 ]
 [f ]
-"18
-[; ;Scheduler/Task.c: 18:     c++;
-[e ++ _c -> -> 1 `i `uc ]
-"19
-[; ;Scheduler/Task.c: 19: }
-[e :UE 96 ]
-}
 "21
-[; ;Scheduler/Task.c: 21: void Scheduler_Task3(void)
-[v _Scheduler_Task3 `(v ~T0 @X0 1 ef ]
+[; ;Scheduler/Task.c: 21:   ModeManager_Update();
+[e ( _ModeManager_Update ..  ]
 "22
-[; ;Scheduler/Task.c: 22: {
+[; ;Scheduler/Task.c: 22: }
+[e :UE 97 ]
+}
+"24
+[; ;Scheduler/Task.c: 24: void Scheduler_Task3(void)
+[v _Scheduler_Task3 `(v ~T0 @X0 1 ef ]
+"25
+[; ;Scheduler/Task.c: 25: {
 {
 [e :U _Scheduler_Task3 ]
 [f ]
-"23
-[; ;Scheduler/Task.c: 23:     c++;
-[e ++ _c -> -> 1 `i `uc ]
-"24
-[; ;Scheduler/Task.c: 24: }
-[e :UE 97 ]
+"26
+[; ;Scheduler/Task.c: 26:   Clock_Update();
+[e ( _Clock_Update ..  ]
+"27
+[; ;Scheduler/Task.c: 27: }
+[e :UE 98 ]
 }

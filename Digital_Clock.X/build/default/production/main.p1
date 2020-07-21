@@ -1,5 +1,28 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"22 ./Display/Display.h
+[; ;./Display/Display.h: 22: Display_t Display;
+[c E983 0 1 .. ]
+[n E983 Display_T Minutes Hours  ]
+"23 ./ModeManger/ModeManager.h
+[; ;./ModeManger/ModeManager.h: 23: MODE_T MODE;
+[c E994 0 1 2 .. ]
+[n E994 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+"17 ./Clock/Clock.h
+[; ;./Clock/Clock.h: 17: {
+[s S96 `uc 1 `uc 1 `uc 1 ]
+[n S96 Clock_T Second Minutes Hours ]
 [p mainexit ]
+"28 ./gpio/gpio.h
+[v _GPIO_Init `(v ~T0 @X0 0 ef ]
+"24 ./Display/Display.h
+[; ;./Display/Display.h: 24: void Display_Init(void);
+[v _Display_Init `(v ~T0 @X0 0 ef ]
+"24 ./Clock/Clock.h
+[; ;./Clock/Clock.h: 24: void Clock_Init(void);
+[v _Clock_Init `(v ~T0 @X0 0 ef ]
+"25 ./ModeManger/ModeManager.h
+[; ;./ModeManger/ModeManager.h: 25: void ModeManager_Init(void);
+[v _ModeManager_Init `(v ~T0 @X0 0 ef ]
 "16 ./Timer/Timer.h
 [; ;./Timer/Timer.h: 16: void Timer_Init(void);
 [v _Timer_Init `(v ~T0 @X0 0 ef ]
@@ -12,7 +35,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20 ./Scheduler/Scheduler.h
 [; ;./Scheduler/Scheduler.h: 20: void Scheduler_Update(void) ;
 [v _Scheduler_Update `(v ~T0 @X0 0 ef ]
-"21 ./Scheduler/../config.h
+"21 ./Clock/../config.h
 [p x FOSC = HS ]
 "22
 [p x WDTE = OFF ]
@@ -208,29 +231,50 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
+"22 ./Display/Display.h
+[; ;./Display/Display.h: 22: Display_t Display;
+[v _Display `E983 ~T0 @X0 1 e ]
+"23 ./ModeManger/ModeManager.h
+[; ;./ModeManger/ModeManager.h: 23: MODE_T MODE;
+[v _MODE `E994 ~T0 @X0 1 e ]
+"22 ./Clock/Clock.h
+[; ;./Clock/Clock.h: 22: Clock_t Clock;
+[v _Clock `S96 ~T0 @X0 1 e ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"12 main.c
-[; ;main.c: 12: void main(void) {
+"16 main.c
+[; ;main.c: 16: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"14
-[; ;main.c: 14:     Timer_Init();
-[e ( _Timer_Init ..  ]
-"15
-[; ;main.c: 15:     Scheduler_Init();
-[e ( _Scheduler_Init ..  ]
-"16
-[; ;main.c: 16:     Timer_Start();
-[e ( _Timer_Start ..  ]
 "17
-[; ;main.c: 17:     Scheduler_Update();
-[e ( _Scheduler_Update ..  ]
+[; ;main.c: 17:     GPIO_Init();
+[e ( _GPIO_Init ..  ]
+"18
+[; ;main.c: 18:     Display_Init();
+[e ( _Display_Init ..  ]
 "19
-[; ;main.c: 19:     return;
-[e $UE 96  ]
+[; ;main.c: 19:     Clock_Init();
+[e ( _Clock_Init ..  ]
 "20
-[; ;main.c: 20: }
-[e :UE 96 ]
+[; ;main.c: 20:     ModeManager_Init();
+[e ( _ModeManager_Init ..  ]
+"21
+[; ;main.c: 21:     Timer_Init();
+[e ( _Timer_Init ..  ]
+"22
+[; ;main.c: 22:     Scheduler_Init();
+[e ( _Scheduler_Init ..  ]
+"23
+[; ;main.c: 23:     Timer_Start();
+[e ( _Timer_Start ..  ]
+"24
+[; ;main.c: 24:     Scheduler_Update();
+[e ( _Scheduler_Update ..  ]
+"26
+[; ;main.c: 26:     return;
+[e $UE 97  ]
+"27
+[; ;main.c: 27: }
+[e :UE 97 ]
 }

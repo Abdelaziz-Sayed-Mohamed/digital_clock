@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c Scheduler/Scheduler.c Timer/Timer.c Buttons/Buttons.c gpio/gpio.c gpio/gpio_Cfg.c Display/Display.c Display/Display_Cfg.c Scheduler/Scheduler_Cfg.c ModeManager_Cfg.c ModeManger/ModeManager.c Interrupt/Interrupt.c Interrupt/Interrupt_Cfg.c Scheduler/Task.c Clock/Clock.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c Scheduler/Scheduler.c Timer/Timer.c Buttons/Buttons.c gpio/gpio.c gpio/gpio_Cfg.c Display/Display.c Display/Display_Cfg.c Scheduler/Scheduler_Cfg.c ModeManager_Cfg.c ModeManger/ModeManager.c Interrupt/Interrupt.c Interrupt/Interrupt_Cfg.c Scheduler/Task.c Clock/Clock.c SSD/SSD.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/Scheduler/Scheduler.p1 ${OBJECTDIR}/Timer/Timer.p1 ${OBJECTDIR}/Buttons/Buttons.p1 ${OBJECTDIR}/gpio/gpio.p1 ${OBJECTDIR}/gpio/gpio_Cfg.p1 ${OBJECTDIR}/Display/Display.p1 ${OBJECTDIR}/Display/Display_Cfg.p1 ${OBJECTDIR}/Scheduler/Scheduler_Cfg.p1 ${OBJECTDIR}/ModeManager_Cfg.p1 ${OBJECTDIR}/ModeManger/ModeManager.p1 ${OBJECTDIR}/Interrupt/Interrupt.p1 ${OBJECTDIR}/Interrupt/Interrupt_Cfg.p1 ${OBJECTDIR}/Scheduler/Task.p1 ${OBJECTDIR}/Clock/Clock.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/Scheduler/Scheduler.p1.d ${OBJECTDIR}/Timer/Timer.p1.d ${OBJECTDIR}/Buttons/Buttons.p1.d ${OBJECTDIR}/gpio/gpio.p1.d ${OBJECTDIR}/gpio/gpio_Cfg.p1.d ${OBJECTDIR}/Display/Display.p1.d ${OBJECTDIR}/Display/Display_Cfg.p1.d ${OBJECTDIR}/Scheduler/Scheduler_Cfg.p1.d ${OBJECTDIR}/ModeManager_Cfg.p1.d ${OBJECTDIR}/ModeManger/ModeManager.p1.d ${OBJECTDIR}/Interrupt/Interrupt.p1.d ${OBJECTDIR}/Interrupt/Interrupt_Cfg.p1.d ${OBJECTDIR}/Scheduler/Task.p1.d ${OBJECTDIR}/Clock/Clock.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.p1 ${OBJECTDIR}/Scheduler/Scheduler.p1 ${OBJECTDIR}/Timer/Timer.p1 ${OBJECTDIR}/Buttons/Buttons.p1 ${OBJECTDIR}/gpio/gpio.p1 ${OBJECTDIR}/gpio/gpio_Cfg.p1 ${OBJECTDIR}/Display/Display.p1 ${OBJECTDIR}/Display/Display_Cfg.p1 ${OBJECTDIR}/Scheduler/Scheduler_Cfg.p1 ${OBJECTDIR}/ModeManager_Cfg.p1 ${OBJECTDIR}/ModeManger/ModeManager.p1 ${OBJECTDIR}/Interrupt/Interrupt.p1 ${OBJECTDIR}/Interrupt/Interrupt_Cfg.p1 ${OBJECTDIR}/Scheduler/Task.p1 ${OBJECTDIR}/Clock/Clock.p1 ${OBJECTDIR}/SSD/SSD.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.p1.d ${OBJECTDIR}/Scheduler/Scheduler.p1.d ${OBJECTDIR}/Timer/Timer.p1.d ${OBJECTDIR}/Buttons/Buttons.p1.d ${OBJECTDIR}/gpio/gpio.p1.d ${OBJECTDIR}/gpio/gpio_Cfg.p1.d ${OBJECTDIR}/Display/Display.p1.d ${OBJECTDIR}/Display/Display_Cfg.p1.d ${OBJECTDIR}/Scheduler/Scheduler_Cfg.p1.d ${OBJECTDIR}/ModeManager_Cfg.p1.d ${OBJECTDIR}/ModeManger/ModeManager.p1.d ${OBJECTDIR}/Interrupt/Interrupt.p1.d ${OBJECTDIR}/Interrupt/Interrupt_Cfg.p1.d ${OBJECTDIR}/Scheduler/Task.p1.d ${OBJECTDIR}/Clock/Clock.p1.d ${OBJECTDIR}/SSD/SSD.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/Scheduler/Scheduler.p1 ${OBJECTDIR}/Timer/Timer.p1 ${OBJECTDIR}/Buttons/Buttons.p1 ${OBJECTDIR}/gpio/gpio.p1 ${OBJECTDIR}/gpio/gpio_Cfg.p1 ${OBJECTDIR}/Display/Display.p1 ${OBJECTDIR}/Display/Display_Cfg.p1 ${OBJECTDIR}/Scheduler/Scheduler_Cfg.p1 ${OBJECTDIR}/ModeManager_Cfg.p1 ${OBJECTDIR}/ModeManger/ModeManager.p1 ${OBJECTDIR}/Interrupt/Interrupt.p1 ${OBJECTDIR}/Interrupt/Interrupt_Cfg.p1 ${OBJECTDIR}/Scheduler/Task.p1 ${OBJECTDIR}/Clock/Clock.p1
+OBJECTFILES=${OBJECTDIR}/main.p1 ${OBJECTDIR}/Scheduler/Scheduler.p1 ${OBJECTDIR}/Timer/Timer.p1 ${OBJECTDIR}/Buttons/Buttons.p1 ${OBJECTDIR}/gpio/gpio.p1 ${OBJECTDIR}/gpio/gpio_Cfg.p1 ${OBJECTDIR}/Display/Display.p1 ${OBJECTDIR}/Display/Display_Cfg.p1 ${OBJECTDIR}/Scheduler/Scheduler_Cfg.p1 ${OBJECTDIR}/ModeManager_Cfg.p1 ${OBJECTDIR}/ModeManger/ModeManager.p1 ${OBJECTDIR}/Interrupt/Interrupt.p1 ${OBJECTDIR}/Interrupt/Interrupt_Cfg.p1 ${OBJECTDIR}/Scheduler/Task.p1 ${OBJECTDIR}/Clock/Clock.p1 ${OBJECTDIR}/SSD/SSD.p1
 
 # Source Files
-SOURCEFILES=main.c Scheduler/Scheduler.c Timer/Timer.c Buttons/Buttons.c gpio/gpio.c gpio/gpio_Cfg.c Display/Display.c Display/Display_Cfg.c Scheduler/Scheduler_Cfg.c ModeManager_Cfg.c ModeManger/ModeManager.c Interrupt/Interrupt.c Interrupt/Interrupt_Cfg.c Scheduler/Task.c Clock/Clock.c
+SOURCEFILES=main.c Scheduler/Scheduler.c Timer/Timer.c Buttons/Buttons.c gpio/gpio.c gpio/gpio_Cfg.c Display/Display.c Display/Display_Cfg.c Scheduler/Scheduler_Cfg.c ModeManager_Cfg.c ModeManger/ModeManager.c Interrupt/Interrupt.c Interrupt/Interrupt_Cfg.c Scheduler/Task.c Clock/Clock.c SSD/SSD.c
 
 
 
@@ -214,6 +214,14 @@ ${OBJECTDIR}/Clock/Clock.p1: Clock/Clock.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/Clock/Clock.d ${OBJECTDIR}/Clock/Clock.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Clock/Clock.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/SSD/SSD.p1: SSD/SSD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/SSD" 
+	@${RM} ${OBJECTDIR}/SSD/SSD.p1.d 
+	@${RM} ${OBJECTDIR}/SSD/SSD.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/SSD/SSD.p1 SSD/SSD.c 
+	@-${MV} ${OBJECTDIR}/SSD/SSD.d ${OBJECTDIR}/SSD/SSD.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/SSD/SSD.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/main.p1: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -334,6 +342,14 @@ ${OBJECTDIR}/Clock/Clock.p1: Clock/Clock.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/Clock/Clock.p1 Clock/Clock.c 
 	@-${MV} ${OBJECTDIR}/Clock/Clock.d ${OBJECTDIR}/Clock/Clock.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/Clock/Clock.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/SSD/SSD.p1: SSD/SSD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/SSD" 
+	@${RM} ${OBJECTDIR}/SSD/SSD.p1.d 
+	@${RM} ${OBJECTDIR}/SSD/SSD.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/SSD/SSD.p1 SSD/SSD.c 
+	@-${MV} ${OBJECTDIR}/SSD/SSD.d ${OBJECTDIR}/SSD/SSD.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/SSD/SSD.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

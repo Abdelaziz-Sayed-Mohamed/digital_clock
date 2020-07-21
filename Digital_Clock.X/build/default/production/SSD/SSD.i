@@ -1,4 +1,4 @@
-# 1 "Buttons/Buttons.c"
+# 1 "SSD/SSD.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,19 +6,20 @@
 # 1 "<built-in>" 2
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Buttons/Buttons.c" 2
+# 1 "SSD/SSD.c" 2
 
 
 
 
 
 
-# 1 "Buttons/Buttons.h" 1
-# 14 "Buttons/Buttons.h"
-# 1 "Buttons/Buttons_Cfg.h" 1
-# 14 "Buttons/Buttons_Cfg.h"
-# 1 "Buttons/../config.h" 1
-# 21 "Buttons/../config.h"
+
+# 1 "SSD/SSD.h" 1
+# 14 "SSD/SSD.h"
+# 1 "SSD/SSD_Cfg.h" 1
+# 14 "SSD/SSD_Cfg.h"
+# 1 "SSD/../config.h" 1
+# 21 "SSD/../config.h"
 #pragma config FOSC = HS
 #pragma config WDTE = OFF
 #pragma config PWRTE = OFF
@@ -1741,7 +1742,7 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 28 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\xc.h" 2 3
-# 33 "Buttons/../config.h" 2
+# 33 "SSD/../config.h" 2
 
 
 # 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
@@ -1877,41 +1878,38 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 35 "Buttons/../config.h" 2
-# 14 "Buttons/Buttons_Cfg.h" 2
+# 35 "SSD/../config.h" 2
+# 14 "SSD/SSD_Cfg.h" 2
 
-# 1 "Buttons/../gpio/gpio.h" 1
-# 15 "Buttons/../gpio/gpio.h"
-# 1 "Buttons/../gpio/gpio_Cfg.h" 1
-# 15 "Buttons/../gpio/gpio.h" 2
-# 28 "Buttons/../gpio/gpio.h"
+# 1 "SSD/../gpio/gpio.h" 1
+# 15 "SSD/../gpio/gpio.h"
+# 1 "SSD/../gpio/gpio_Cfg.h" 1
+# 15 "SSD/../gpio/gpio.h" 2
+# 28 "SSD/../gpio/gpio.h"
 void GPIO_Init(void);
-# 15 "Buttons/Buttons_Cfg.h" 2
-# 14 "Buttons/Buttons.h" 2
-
-
-
-
-
-
-
-typedef struct ButtonsFlag_T
+# 15 "SSD/SSD_Cfg.h" 2
+# 14 "SSD/SSD.h" 2
+# 31 "SSD/SSD.h"
+typedef enum DigitSelector_T
 {
-   uint8_t UpButton_Flag :1;
-   uint8_t DownButton_Flag :1;
-   uint8_t SettingButton_Flag :1;
-}ButtonsFlag_t;
-ButtonsFlag_t ButtonsFlag;
+    Digit_1_=0,
+    Digit_2_=1,
+    Digit_3_=2,
+    Digit_4_=3
 
-void Buttons_Init(void);
-void Buttons_Update(void);
-void EXTI_SettingButton_CB(void);
-# 7 "Buttons/Buttons.c" 2
+}DigitSelector_t;
 
-# 1 "Buttons/../ModeManger/ModeManager.h" 1
-# 14 "Buttons/../ModeManger/ModeManager.h"
-# 1 "Buttons/../ModeManger/ModeManager_Cfg.h" 1
-# 14 "Buttons/../ModeManger/ModeManager.h" 2
+DigitSelector_t DigitSelector;
+
+
+void SSD_DigitSelector(void);
+void SSD_Display(uint8_t Number);
+# 8 "SSD/SSD.c" 2
+
+# 1 "SSD/../ModeManger/ModeManager.h" 1
+# 14 "SSD/../ModeManger/ModeManager.h"
+# 1 "SSD/../ModeManger/ModeManager_Cfg.h" 1
+# 14 "SSD/../ModeManger/ModeManager.h" 2
 
 
 typedef enum MODE_T
@@ -1925,97 +1923,95 @@ MODE_T MODE;
 
 void ModeManager_Init(void);
 void ModeManager_Update(void);
-# 8 "Buttons/Buttons.c" 2
-
-# 1 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\string.h" 1 3
+# 9 "SSD/SSD.c" 2
 
 
-
-
-
-# 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__size_t.h" 1 3
-
-
-
-typedef unsigned size_t;
-# 6 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\string.h" 2 3
-
-# 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\__null.h" 1 3
-# 7 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\string.h" 2 3
-
-
-
-
-
-
-
-extern void * memcpy(void *, const void *, size_t);
-extern void * memmove(void *, const void *, size_t);
-extern void * memset(void *, int, size_t);
-# 36 "C:\\Program Files (x86)\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\string.h" 3
-extern char * strcat(char *, const char *);
-extern char * strcpy(char *, const char *);
-extern char * strncat(char *, const char *, size_t);
-extern char * strncpy(char *, const char *, size_t);
-extern char * strdup(const char *);
-extern char * strtok(char *, const char *);
-
-
-extern int memcmp(const void *, const void *, size_t);
-extern int strcmp(const char *, const char *);
-extern int stricmp(const char *, const char *);
-extern int strncmp(const char *, const char *, size_t);
-extern int strnicmp(const char *, const char *, size_t);
-extern void * memchr(const void *, int, size_t);
-extern size_t strcspn(const char *, const char *);
-extern char * strpbrk(const char *, const char *);
-extern size_t strspn(const char *, const char *);
-extern char * strstr(const char *, const char *);
-extern char * stristr(const char *, const char *);
-extern char * strerror(int);
-extern size_t strlen(const char *);
-extern char * strchr(const char *, int);
-extern char * strichr(const char *, int);
-extern char * strrchr(const char *, int);
-extern char * strrichr(const char *, int);
-# 9 "Buttons/Buttons.c" 2
-
-
-
-uint8_t Debounce_UpButton[3];
-uint8_t Debounce_DownButton[3];
-
-void Buttons_Init(void)
+void SSD_DigitSelector(void)
 {
-    memset(Debounce_UpButton,1,sizeof(Debounce_UpButton));
-    memset(Debounce_DownButton,1,sizeof(Debounce_DownButton));
-    INTCONbits.INTF=0;
-    INTCONbits.INTE=1;
-}
-
-
-void Buttons_Update(void)
-{
-    static uint8_t Debounce_Counter=0;
-    Debounce_UpButton[Debounce_Counter]=(PORTB&(1<<1));
-    Debounce_DownButton[Debounce_Counter]=(PORTB&(1<<0));
-
-    Debounce_Counter=(Debounce_Counter+1)%3;
-    if(Debounce_UpButton[0]==0 &&Debounce_UpButton[1]==0 &&Debounce_UpButton[2]==0 )
+    if(MODE==Normal_Mode)
     {
-        ButtonsFlag.UpButton_Flag=1;
-        Debounce_UpButton[0]=1 ;Debounce_UpButton[1]=1 ;Debounce_UpButton[2]=1 ;
-    }
 
-    if(Debounce_DownButton[0]==0 &&Debounce_DownButton[1]==0 &&Debounce_DownButton[2]==0 )
-    {
-        ButtonsFlag.DownButton_Flag=1;
-        Debounce_DownButton[0]=1 ;Debounce_DownButton[1]=1 ;Debounce_DownButton[2]=1 ;
+      switch(DigitSelector)
+      {
+          case Digit_1_:
+                      (PORTA|=(1<<2));
+                      (PORTA&=~(1<<3));
+                      (PORTA&=~(1<<4));
+                      (PORTA&=~(1<<5));
+
+            case Digit_2_:
+                      (PORTA|=(1<<3));
+                      (PORTA&=~(1<<2));
+                      (PORTA&=~(1<<4));
+                      (PORTA&=~(1<<5));
+
+            case Digit_3_:
+                      (PORTA|=(1<<4));
+                      (PORTA&=~(1<<2));
+                      (PORTA&=~(1<<4));
+                      (PORTA&=~(1<<5));
+
+            case Digit_4_:
+                      (PORTA|=(1<<5));
+                      (PORTA&=~(1<<2));
+                      (PORTA&=~(1<<3));
+                      (PORTA&=~(1<<4));
+
+      }
+      DigitSelector=(DigitSelector+1)%4;
+
+
     }
 
 }
 
-void EXTI_SettingButton_CB(void)
+
+void SSD_Display(uint8_t Number)
 {
-    ButtonsFlag.SettingButton_Flag=1;
+
+   switch(Number)
+    {
+     case 0:
+        PORTD=0b00111111;
+        break;
+
+     case 1:
+        PORTD=0b00000110;
+        break;
+
+     case 2:
+        PORTD=0b01011011;
+        break;
+
+     case 3:
+        PORTD=0b01001111;
+        break;
+
+     case 4:
+        PORTD=0b01100110;
+        break;
+
+     case 5:
+        PORTD=0b01101101;
+        break;
+
+     case 6:
+        PORTD=0b01111101;
+        break;
+
+     case 7:
+        PORTD=0b00000111;
+        break;
+
+     case 8:
+        PORTD=0b01111111;
+        break;
+
+     case 9:
+        PORTD=0b01101111;
+        break;
+
+    }
+
+
 }

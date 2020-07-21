@@ -1889,7 +1889,8 @@ typedef struct Clock_T
 }Clock_t;
 Clock_t Clock;
 
-
+void Clock_Init(void);
+void Clock_Update(void);
 void Clock_Normal(void);
 void Clock_Hour_Setting(void);
 void Clock_Minutes_Setting(void);
@@ -1903,6 +1904,8 @@ void Clock_Minutes_Setting(void);
 # 15 "Clock/../Buttons/../gpio/gpio.h"
 # 1 "Clock/../Buttons/../gpio/gpio_Cfg.h" 1
 # 15 "Clock/../Buttons/../gpio/gpio.h" 2
+# 28 "Clock/../Buttons/../gpio/gpio.h"
+void GPIO_Init(void);
 # 15 "Clock/../Buttons/Buttons_Cfg.h" 2
 # 14 "Clock/../Buttons/Buttons.h" 2
 
@@ -1939,6 +1942,9 @@ typedef enum MODE_T
 }MODE_T;
 
 MODE_T MODE;
+
+void ModeManager_Init(void);
+void ModeManager_Update(void);
 # 11 "Clock/Clock.c" 2
 
 

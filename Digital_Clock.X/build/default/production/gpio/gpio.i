@@ -1880,6 +1880,8 @@ typedef uint16_t uintptr_t;
 # 35 "gpio/../config.h" 2
 # 14 "gpio/gpio_Cfg.h" 2
 # 15 "gpio/gpio.h" 2
+# 28 "gpio/gpio.h"
+void GPIO_Init(void);
 # 7 "gpio/gpio.c" 2
 
 
