@@ -244,88 +244,88 @@ Version 4.0 HI-TECH Software Intermediate Code
 "15
 [; ;Display/Display.c: 15: uint8_t Enable_Hours;
 [v _Enable_Hours `uc ~T0 @X0 1 e ]
-"18
-[; ;Display/Display.c: 18: void Display_Init(void)
+"20
+[; ;Display/Display.c: 20: void Display_Init(void)
 [v _Display_Init `(v ~T0 @X0 1 ef ]
-"19
-[; ;Display/Display.c: 19: {
+"21
+[; ;Display/Display.c: 21: {
 {
 [e :U _Display_Init ]
 [f ]
-"20
-[; ;Display/Display.c: 20:     Enable_Minutes=1;
-[e = _Enable_Minutes -> -> 1 `i `uc ]
-"21
-[; ;Display/Display.c: 21:     Enable_Hours=1;
-[e = _Enable_Hours -> -> 1 `i `uc ]
 "22
-[; ;Display/Display.c: 22:     (PORTA&=~(1<<2));
-[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
+[; ;Display/Display.c: 22:     Enable_Minutes=1;
+[e = _Enable_Minutes -> -> 1 `i `uc ]
 "23
-[; ;Display/Display.c: 23:     (PORTA&=~(1<<3));
-[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
-"24
-[; ;Display/Display.c: 24:     (PORTA&=~(1<<4));
-[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+[; ;Display/Display.c: 23:     Enable_Hours=1;
+[e = _Enable_Hours -> -> 1 `i `uc ]
 "25
-[; ;Display/Display.c: 25:     (PORTA&=~(1<<5));
-[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+[; ;Display/Display.c: 25:     (PORTA&=~(1<<2));
+[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
 "26
-[; ;Display/Display.c: 26:     (PORTD&=~(1<<7));
-[e =& _PORTD -> ~ << -> 1 `i -> 7 `i `Vuc ]
+[; ;Display/Display.c: 26:     (PORTA&=~(1<<3));
+[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
 "27
-[; ;Display/Display.c: 27: }
+[; ;Display/Display.c: 27:     (PORTA&=~(1<<4));
+[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+"28
+[; ;Display/Display.c: 28:     (PORTA&=~(1<<5));
+[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"29
+[; ;Display/Display.c: 29:     (PORTD&=~(1<<7));
+[e =& _PORTD -> ~ << -> 1 `i -> 7 `i `Vuc ]
+"30
+[; ;Display/Display.c: 30: }
 [e :UE 96 ]
 }
-"29
-[; ;Display/Display.c: 29: void Display_Update(void)
+"32
+[; ;Display/Display.c: 32: void Display_Update(void)
 [v _Display_Update `(v ~T0 @X0 1 ef ]
-"30
-[; ;Display/Display.c: 30: {
+"33
+[; ;Display/Display.c: 33: {
 {
 [e :U _Display_Update ]
 [f ]
-"31
-[; ;Display/Display.c: 31:    switch(MODE)
-[e $U 99  ]
-"32
-[; ;Display/Display.c: 32:     {
-{
-"33
-[; ;Display/Display.c: 33:         case Normal_Mode:
-[e :U 100 ]
 "34
-[; ;Display/Display.c: 34:                               Display_Normal();
-[e ( _Display_Normal ..  ]
+[; ;Display/Display.c: 34:    switch(MODE)
+[e $U 99  ]
 "35
-[; ;Display/Display.c: 35:                               break;
-[e $U 98  ]
+[; ;Display/Display.c: 35:     {
+{
+"36
+[; ;Display/Display.c: 36:         case Normal_Mode:
+[e :U 100 ]
 "37
-[; ;Display/Display.c: 37:         case Hours_Mode:
-[e :U 101 ]
+[; ;Display/Display.c: 37:                               Display_Normal();
+[e ( _Display_Normal ..  ]
 "38
-[; ;Display/Display.c: 38:                               Display_Blink(500,Hours_Mode);
-[e ( _Display_Blink (2 , -> -> 500 `i `ui . `E879 1 ]
-"39
-[; ;Display/Display.c: 39:                               Enable_Minutes=1;
-[e = _Enable_Minutes -> -> 1 `i `uc ]
+[; ;Display/Display.c: 38:                               break;
+[e $U 98  ]
+"40
+[; ;Display/Display.c: 40:         case Hours_Mode:
+[e :U 101 ]
 "41
-[; ;Display/Display.c: 41:                               break;
-[e $U 98  ]
-"43
-[; ;Display/Display.c: 43:         case Minutes_Mode:
-[e :U 102 ]
+[; ;Display/Display.c: 41:                               Display_Blink(500,Hours_Mode);
+[e ( _Display_Blink (2 , -> -> 500 `i `ui . `E879 1 ]
+"42
+[; ;Display/Display.c: 42:                               Enable_Minutes=1;
+[e = _Enable_Minutes -> -> 1 `i `uc ]
 "44
-[; ;Display/Display.c: 44:                               Display_Blink(500,Minutes_Mode);
-[e ( _Display_Blink (2 , -> -> 500 `i `ui . `E879 2 ]
-"45
-[; ;Display/Display.c: 45:                               Enable_Hours=1;
-[e = _Enable_Hours -> -> 1 `i `uc ]
-"46
-[; ;Display/Display.c: 46:                               break;
+[; ;Display/Display.c: 44:                               break;
 [e $U 98  ]
+"46
+[; ;Display/Display.c: 46:         case Minutes_Mode:
+[e :U 102 ]
 "47
-[; ;Display/Display.c: 47:     }
+[; ;Display/Display.c: 47:                               Display_Blink(500,Minutes_Mode);
+[e ( _Display_Blink (2 , -> -> 500 `i `ui . `E879 2 ]
+"48
+[; ;Display/Display.c: 48:                               Enable_Hours=1;
+[e = _Enable_Hours -> -> 1 `i `uc ]
+"49
+[; ;Display/Display.c: 49:                               break;
+[e $U 98  ]
+"50
+[; ;Display/Display.c: 50:     }
 }
 [e $U 98  ]
 [e :U 99 ]
@@ -334,156 +334,156 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E879 2 `ui 102
  98 ]
 [e :U 98 ]
-"48
-[; ;Display/Display.c: 48:     SSD_DigitSelector();
+"51
+[; ;Display/Display.c: 51:     SSD_DigitSelector();
 [e ( _SSD_DigitSelector ..  ]
-"49
-[; ;Display/Display.c: 49: }
+"52
+[; ;Display/Display.c: 52: }
 [e :UE 97 ]
 }
-"56
-[; ;Display/Display.c: 56: void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_)
+"59
+[; ;Display/Display.c: 59: void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_)
 [v _Display_Blink `(v ~T0 @X0 1 ef2`ui`E879 ]
-"57
-[; ;Display/Display.c: 57: {
+"60
+[; ;Display/Display.c: 60: {
 {
 [e :U _Display_Blink ]
-"56
-[; ;Display/Display.c: 56: void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_)
+"59
+[; ;Display/Display.c: 59: void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_)
 [v _Times_Ms `ui ~T0 @X0 1 r1 ]
 [v __MODE_ `E879 ~T0 @X0 1 r2 ]
-"57
-[; ;Display/Display.c: 57: {
+"60
+[; ;Display/Display.c: 60: {
 [f ]
-"58
-[; ;Display/Display.c: 58:     static uint16_t Counter=0;
-[v F930 `ui ~T0 @X0 1 s Counter ]
-[i F930
+"61
+[; ;Display/Display.c: 61:     static uint16_t Counter=0;
+[v F934 `ui ~T0 @X0 1 s Counter ]
+[i F934
 -> -> 0 `i `ui
 ]
-"60
-[; ;Display/Display.c: 60:         if(Counter*1==Times_Ms)
-[e $ ! == * F930 -> -> 1 `i `ui _Times_Ms 104  ]
-"61
-[; ;Display/Display.c: 61:         {
-{
-"62
-[; ;Display/Display.c: 62:             if(_MODE_==Minutes_Mode)
-[e $ ! == -> __MODE_ `ui -> . `E879 2 `ui 105  ]
 "63
-[; ;Display/Display.c: 63:             {
-{
+[; ;Display/Display.c: 63:         if(Counter*1==Times_Ms)
+[e $ ! == * F934 -> -> 1 `i `ui _Times_Ms 104  ]
 "64
-[; ;Display/Display.c: 64:                 if(Enable_Minutes==1)
-[e $ ! == -> _Enable_Minutes `i -> 1 `i 106  ]
-"65
-[; ;Display/Display.c: 65:                 {
+[; ;Display/Display.c: 64:         {
 {
+"65
+[; ;Display/Display.c: 65:             if(_MODE_==Minutes_Mode)
+[e $ ! == -> __MODE_ `ui -> . `E879 2 `ui 105  ]
 "66
-[; ;Display/Display.c: 66:                    Enable_Minutes=0;
-[e = _Enable_Minutes -> -> 0 `i `uc ]
+[; ;Display/Display.c: 66:             {
+{
 "67
-[; ;Display/Display.c: 67:                    (PORTA&=~(1<<4)) ;
-[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+[; ;Display/Display.c: 67:                 if(Enable_Minutes==1)
+[e $ ! == -> _Enable_Minutes `i -> 1 `i 106  ]
 "68
-[; ;Display/Display.c: 68:                     (PORTA&=~(1<<5)) ;
-[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+[; ;Display/Display.c: 68:                 {
+{
 "69
-[; ;Display/Display.c: 69:                 }
+[; ;Display/Display.c: 69:                    Enable_Minutes=0;
+[e = _Enable_Minutes -> -> 0 `i `uc ]
+"70
+[; ;Display/Display.c: 70:                    (PORTA&=~(1<<4)) ;
+[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+"71
+[; ;Display/Display.c: 71:                     (PORTA&=~(1<<5)) ;
+[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"72
+[; ;Display/Display.c: 72:                 }
 }
 [e $U 107  ]
-"70
-[; ;Display/Display.c: 70:                 else if(Enable_Minutes==0)
+"73
+[; ;Display/Display.c: 73:                 else if(Enable_Minutes==0)
 [e :U 106 ]
 [e $ ! == -> _Enable_Minutes `i -> 0 `i 108  ]
-"71
-[; ;Display/Display.c: 71:                 {
+"74
+[; ;Display/Display.c: 74:                 {
 {
-"72
-[; ;Display/Display.c: 72:                    Enable_Minutes=1;
+"75
+[; ;Display/Display.c: 75:                    Enable_Minutes=1;
 [e = _Enable_Minutes -> -> 1 `i `uc ]
-"73
-[; ;Display/Display.c: 73:                 }
+"76
+[; ;Display/Display.c: 76:                 }
 }
 [e :U 108 ]
 [e :U 107 ]
-"75
-[; ;Display/Display.c: 75:             }
+"78
+[; ;Display/Display.c: 78:             }
 }
 [e :U 105 ]
-"76
-[; ;Display/Display.c: 76:             if(_MODE_==Hours_Mode)
-[e $ ! == -> __MODE_ `ui -> . `E879 1 `ui 109  ]
-"77
-[; ;Display/Display.c: 77:             {
-{
-"78
-[; ;Display/Display.c: 78:                 if(Enable_Hours==1)
-[e $ ! == -> _Enable_Hours `i -> 1 `i 110  ]
 "79
-[; ;Display/Display.c: 79:                 {
-{
+[; ;Display/Display.c: 79:             if(_MODE_==Hours_Mode)
+[e $ ! == -> __MODE_ `ui -> . `E879 1 `ui 109  ]
 "80
-[; ;Display/Display.c: 80:                    Enable_Hours=0;
-[e = _Enable_Hours -> -> 0 `i `uc ]
+[; ;Display/Display.c: 80:             {
+{
 "81
-[; ;Display/Display.c: 81:                    (PORTA&=~(1<<2)) ;
-[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
+[; ;Display/Display.c: 81:                 if(Enable_Hours==1)
+[e $ ! == -> _Enable_Hours `i -> 1 `i 110  ]
 "82
-[; ;Display/Display.c: 82:                     (PORTA&=~(1<<3)) ;
-[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
+[; ;Display/Display.c: 82:                 {
+{
 "83
-[; ;Display/Display.c: 83:                 }
+[; ;Display/Display.c: 83:                    Enable_Hours=0;
+[e = _Enable_Hours -> -> 0 `i `uc ]
+"84
+[; ;Display/Display.c: 84:                    (PORTA&=~(1<<2)) ;
+[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
+"85
+[; ;Display/Display.c: 85:                     (PORTA&=~(1<<3)) ;
+[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
+"86
+[; ;Display/Display.c: 86:                 }
 }
 [e $U 111  ]
-"84
-[; ;Display/Display.c: 84:                 else if(Enable_Hours==0)
+"87
+[; ;Display/Display.c: 87:                 else if(Enable_Hours==0)
 [e :U 110 ]
 [e $ ! == -> _Enable_Hours `i -> 0 `i 112  ]
-"85
-[; ;Display/Display.c: 85:                 {
+"88
+[; ;Display/Display.c: 88:                 {
 {
-"86
-[; ;Display/Display.c: 86:                    Enable_Hours=1;
+"89
+[; ;Display/Display.c: 89:                    Enable_Hours=1;
 [e = _Enable_Hours -> -> 1 `i `uc ]
-"87
-[; ;Display/Display.c: 87:                 }
+"90
+[; ;Display/Display.c: 90:                 }
 }
 [e :U 112 ]
 [e :U 111 ]
-"89
-[; ;Display/Display.c: 89:             }
+"92
+[; ;Display/Display.c: 92:             }
 }
 [e :U 109 ]
-"91
-[; ;Display/Display.c: 91:             Counter=1;
-[e = F930 -> -> 1 `i `ui ]
-"92
-[; ;Display/Display.c: 92:         }
+"94
+[; ;Display/Display.c: 94:             Counter=1;
+[e = F934 -> -> 1 `i `ui ]
+"95
+[; ;Display/Display.c: 95:         }
 }
 [e :U 104 ]
-"93
-[; ;Display/Display.c: 93:         Counter++;
-[e ++ F930 -> -> 1 `i `ui ]
-"95
-[; ;Display/Display.c: 95: }
+"96
+[; ;Display/Display.c: 96:         Counter++;
+[e ++ F934 -> -> 1 `i `ui ]
+"98
+[; ;Display/Display.c: 98: }
 [e :UE 103 ]
 }
-"97
-[; ;Display/Display.c: 97: void Display_Normal(void)
+"100
+[; ;Display/Display.c: 100: void Display_Normal(void)
 [v _Display_Normal `(v ~T0 @X0 1 ef ]
-"98
-[; ;Display/Display.c: 98: {
+"101
+[; ;Display/Display.c: 101: {
 {
 [e :U _Display_Normal ]
 [f ]
-"99
-[; ;Display/Display.c: 99:   Enable_Minutes=1;
+"102
+[; ;Display/Display.c: 102:   Enable_Minutes=1;
 [e = _Enable_Minutes -> -> 1 `i `uc ]
-"100
-[; ;Display/Display.c: 100:   Enable_Hours=1;
+"103
+[; ;Display/Display.c: 103:   Enable_Hours=1;
 [e = _Enable_Hours -> -> 1 `i `uc ]
-"101
-[; ;Display/Display.c: 101: }
+"104
+[; ;Display/Display.c: 104: }
 [e :UE 113 ]
 }

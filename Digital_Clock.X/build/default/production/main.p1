@@ -20,8 +20,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 "32 ./Display/Display.h
 [; ;./Display/Display.h: 32: void Display_Init(void);
 [v _Display_Init `(v ~T0 @X0 0 ef ]
-"24 ./Clock/Clock.h
-[; ;./Clock/Clock.h: 24: void Clock_Init(void);
+"29 ./Clock/Clock.h
+[; ;./Clock/Clock.h: 29: void Clock_Init(void);
 [v _Clock_Init `(v ~T0 @X0 0 ef ]
 "25 ./ModeManger/ModeManager.h
 [v _ModeManager_Init `(v ~T0 @X0 0 ef ]

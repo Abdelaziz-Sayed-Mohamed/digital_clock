@@ -20,7 +20,7 @@ extern "C" {
 
 #define Task1_Peroid  (1UL) 
 #define Task2_Peroid  (20UL)
-#define Task3_Peroid  (1000UL)
+#define Task3_Peroid  (100UL)
     
     
 typedef void(*Task_t)(void);  

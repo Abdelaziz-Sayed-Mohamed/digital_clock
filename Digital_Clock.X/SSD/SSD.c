@@ -11,11 +11,6 @@
 #include"../Display/Display.h"
 
 
-uint8_t Digit1=0;
-uint8_t Digit2=0;
-uint8_t Digit3=0;
-uint8_t Digit4=0;
-
 
 
 
@@ -24,13 +19,6 @@ uint8_t Digit4=0;
 
 void SSD_DigitSelector(void)
 {
-  
- Digit1=Clock.Hours/10;
- Digit2=Clock.Hours%10;
- Digit3=Clock.Minutes/10;
- Digit4=Clock.Minutes%10;
-   
-   
       
       switch(DigitSelector)
       {

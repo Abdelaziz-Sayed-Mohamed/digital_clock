@@ -298,9 +298,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36
 [; ;Buttons/Buttons.c: 36:         ButtonsFlag.UpButton_Flag=1;
 [e = . _ButtonsFlag 0 -> -> 1 `i `uc ]
-"37
-[; ;Buttons/Buttons.c: 37:          (PORTB^=(1<<3));
-[e =^ _PORTB -> << -> 1 `i -> 3 `i `Vuc ]
 "38
 [; ;Buttons/Buttons.c: 38:         Debounce_UpButton[0]=1 ;Debounce_UpButton[1]=1 ;Debounce_UpButton[2]=1 ;
 [e = *U + &U _Debounce_UpButton * -> -> -> 0 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux -> -> 1 `i `uc ]
@@ -319,9 +316,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "43
 [; ;Buttons/Buttons.c: 43:         ButtonsFlag.DownButton_Flag=1;
 [e = . _ButtonsFlag 1 -> -> 1 `i `uc ]
-"44
-[; ;Buttons/Buttons.c: 44:          (PORTB^=(1<<3));
-[e =^ _PORTB -> << -> 1 `i -> 3 `i `Vuc ]
 "45
 [; ;Buttons/Buttons.c: 45:         Debounce_DownButton[0]=1 ;Debounce_DownButton[1]=1 ;Debounce_DownButton[2]=1 ;
 [e = *U + &U _Debounce_DownButton * -> -> -> 0 `i `ui `ux -> -> # *U &U _Debounce_DownButton `ui `ux -> -> 1 `i `uc ]

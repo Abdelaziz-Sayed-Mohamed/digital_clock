@@ -34,14 +34,14 @@ void Buttons_Update(void)
     if(Debounce_UpButton[0]==Pressed &&Debounce_UpButton[1]==Pressed &&Debounce_UpButton[2]==Pressed )
     {
         ButtonsFlag.UpButton_Flag=1;
-         TOGGLE_PIN(_LED3_PORT_,_LED3_PIN_);
+         
         Debounce_UpButton[0]=NotPressed ;Debounce_UpButton[1]=NotPressed ;Debounce_UpButton[2]=NotPressed ; 
     }
     
     if(Debounce_DownButton[0]==Pressed &&Debounce_DownButton[1]==Pressed &&Debounce_DownButton[2]==Pressed )
     {
         ButtonsFlag.DownButton_Flag=1;
-         TOGGLE_PIN(_LED3_PORT_,_LED3_PIN_);
+         
         Debounce_DownButton[0]=NotPressed ;Debounce_DownButton[1]=NotPressed ;Debounce_DownButton[2]=NotPressed ; 
     }   
     

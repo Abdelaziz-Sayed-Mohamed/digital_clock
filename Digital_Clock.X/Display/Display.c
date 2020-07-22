@@ -15,10 +15,13 @@ uint8_t Enable_Minutes;
 uint8_t Enable_Hours; 
 
 
+ 
+
 void Display_Init(void)
 {
     Enable_Minutes=ON;
     Enable_Hours=ON;
+
     RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
     RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
     RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);

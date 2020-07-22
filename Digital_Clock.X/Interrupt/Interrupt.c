@@ -12,7 +12,7 @@ void __interrupt() ISR(void)
     if(INTCONbits.TMR0IF)
     {   
       
-      TMR0 = 100;                   
+      TMR0 = 101;                   
       TMR0IF=0;       // Clear timer interrupt flag
       Interrupt_CbStruct.Timer_CB(); 
       

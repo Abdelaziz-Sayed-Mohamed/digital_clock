@@ -2007,14 +2007,14 @@ void Buttons_Update(void)
     if(Debounce_UpButton[0]==0 &&Debounce_UpButton[1]==0 &&Debounce_UpButton[2]==0 )
     {
         ButtonsFlag.UpButton_Flag=1;
-         (PORTB^=(1<<3));
+
         Debounce_UpButton[0]=1 ;Debounce_UpButton[1]=1 ;Debounce_UpButton[2]=1 ;
     }
 
     if(Debounce_DownButton[0]==0 &&Debounce_DownButton[1]==0 &&Debounce_DownButton[2]==0 )
     {
         ButtonsFlag.DownButton_Flag=1;
-         (PORTB^=(1<<3));
+
         Debounce_DownButton[0]=1 ;Debounce_DownButton[1]=1 ;Debounce_DownButton[2]=1 ;
     }
 

@@ -5,10 +5,20 @@
  * Created on July 21, 2020, 1:09 AM
  */
 
+   
 
 #include"Clock.h"
 #include"../Buttons/Buttons.h"
 #include"../ModeManger/ModeManager.h"
+#include"../config.h"
+
+
+
+uint8_t Digit1;
+uint8_t Digit2;
+uint8_t Digit3;
+uint8_t Digit4;
+
 
 void Clock_Init(void)
 {    
@@ -33,22 +43,23 @@ void Clock_Update(void)
         case Minutes_Mode:
                               Clock_Minutes_Setting();
                               break;                         
-    }        
+    }
+    Digit1=Clock.Minutes/10; Digit2=Clock.Minutes%10;  Digit3=Clock.Second/10;  Digit4=Clock.Second%10;
  
 }
 
-#define Task_Peroid  1000
+#define Task_Peroid  100
 void Clock_Normal(void)
 {
     static uint8_t counter=0;
     counter++;
     if(counter*Task_Peroid==1000)
     {
-      
-      counter=0;
+       Clock.Second++;
+       counter=0;
     }    
     
-     Clock.Second++;   
+       
     if(Clock.Second==60)
     {
       Clock.Minutes++;

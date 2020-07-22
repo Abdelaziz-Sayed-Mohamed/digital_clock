@@ -1943,7 +1943,7 @@ void __attribute__((picinterrupt(("")))) ISR(void)
     if(INTCONbits.TMR0IF)
     {
 
-      TMR0 = 100;
+      TMR0 = 101;
       TMR0IF=0;
       Interrupt_CbStruct.Timer_CB();
 

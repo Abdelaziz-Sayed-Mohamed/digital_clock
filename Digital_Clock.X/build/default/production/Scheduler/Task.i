@@ -1950,6 +1950,11 @@ typedef struct Clock_T
 }Clock_t;
 Clock_t Clock;
 
+
+extern uint8_t Digit1;
+extern uint8_t Digit2;
+extern uint8_t Digit3;
+extern uint8_t Digit4;
 void Clock_Init(void);
 void Clock_Update(void);
 void Clock_Normal(void);
@@ -1993,7 +1998,7 @@ void Scheduler_Task1(void)
 
 void Scheduler_Task2(void)
 {
-
+  (PORTB^=(1<<3));
   Buttons_Update();
   ModeManager_Update();
 
@@ -2001,6 +2006,7 @@ void Scheduler_Task2(void)
 
 void Scheduler_Task3(void)
 {
+
     Clock_Update();
 
 }

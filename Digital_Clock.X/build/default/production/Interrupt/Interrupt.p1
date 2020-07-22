@@ -250,8 +250,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Interrupt/Interrupt.c: 13:     {
 {
 "15
-[; ;Interrupt/Interrupt.c: 15:       TMR0 = 100;
-[e = _TMR0 -> -> 100 `i `uc ]
+[; ;Interrupt/Interrupt.c: 15:       TMR0 = 101;
+[e = _TMR0 -> -> 101 `i `uc ]
 "16
 [; ;Interrupt/Interrupt.c: 16:       TMR0IF=0;
 [e = _TMR0IF -> -> 0 `i `b ]

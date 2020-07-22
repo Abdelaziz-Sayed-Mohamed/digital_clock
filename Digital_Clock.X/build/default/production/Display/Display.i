@@ -1964,6 +1964,11 @@ typedef struct Clock_T
 }Clock_t;
 Clock_t Clock;
 
+
+extern uint8_t Digit1;
+extern uint8_t Digit2;
+extern uint8_t Digit3;
+extern uint8_t Digit4;
 void Clock_Init(void);
 void Clock_Update(void);
 void Clock_Normal(void);
@@ -1977,10 +1982,13 @@ uint8_t Enable_Minutes;
 uint8_t Enable_Hours;
 
 
+
+
 void Display_Init(void)
 {
     Enable_Minutes=1;
     Enable_Hours=1;
+
     (PORTA&=~(1<<2));
     (PORTA&=~(1<<3));
     (PORTA&=~(1<<4));

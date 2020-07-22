@@ -1935,6 +1935,11 @@ typedef struct Clock_T
 }Clock_t;
 Clock_t Clock;
 
+
+extern uint8_t Digit1;
+extern uint8_t Digit2;
+extern uint8_t Digit3;
+extern uint8_t Digit4;
 void Clock_Init(void);
 void Clock_Update(void);
 void Clock_Normal(void);
@@ -1970,29 +1975,9 @@ void Display_Hour_Setting(void);
 void Display_Minutes_Setting(void);
 void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_) ;
 # 11 "SSD/SSD.c" 2
-
-
-
-uint8_t Digit1=0;
-uint8_t Digit2=0;
-uint8_t Digit3=0;
-uint8_t Digit4=0;
-
-
-
-
-
-
-
+# 20 "SSD/SSD.c"
 void SSD_DigitSelector(void)
 {
-
- Digit1=Clock.Hours/10;
- Digit2=Clock.Hours%10;
- Digit3=Clock.Minutes/10;
- Digit4=Clock.Minutes%10;
-
-
 
       switch(DigitSelector)
       {

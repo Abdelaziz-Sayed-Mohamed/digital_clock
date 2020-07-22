@@ -1965,7 +1965,7 @@ const Tasks_t Tasks[(3UL)]={
                                       },
 
                                       {
-                                       .Task_Peroid=(1000UL),
+                                       .Task_Peroid=(100UL),
                                        .Task=Scheduler_Task3
                                       }
                                  };

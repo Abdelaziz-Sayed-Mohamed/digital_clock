@@ -56,7 +56,7 @@ Minutes 0
 Hours 1
 ]
 "23 E:\study\Repos\Digital_Clock\Digital_Clock.X/ModeManger/ModeManager.h
-[e E899 MODE_T `uc
+[e E903 MODE_T `uc
 Normal_Mode 0
 Hours_Mode 1
 Minutes_Mode 2
@@ -75,7 +75,7 @@ Hours_Mode 1
 Minutes_Mode 2
 ]
 "26 E:\study\Repos\Digital_Clock\Digital_Clock.X/Display/Display.h
-[e E908 Display_T `uc
+[e E912 Display_T `uc
 Minutes 0
 Hours 1
 ]
@@ -105,23 +105,23 @@ Hours 1
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"13 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
+"23 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
 [v _Clock_Init Clock_Init `(v  1 e 1 0 ]
-"21
+"31
 [v _Clock_Update Clock_Update `(v  1 e 1 0 ]
-"41
+"52
 [v _Clock_Normal Clock_Normal `(v  1 e 1 0 ]
-"71
+"82
 [v _Clock_Hour_Setting Clock_Hour_Setting `(v  1 e 1 0 ]
-"102
+"113
 [v _Clock_Minutes_Setting Clock_Minutes_Setting `(v  1 e 1 0 ]
-"18 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
+"20 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
 [v _Display_Init Display_Init `(v  1 e 1 0 ]
-"29
+"32
 [v _Display_Update Display_Update `(v  1 e 1 0 ]
-"56
+"59
 [v _Display_Blink Display_Blink `(v  1 e 1 0 ]
-"97
+"100
 [v _Display_Normal Display_Normal `(v  1 e 1 0 ]
 "9 E:\study\Repos\Digital_Clock\Digital_Clock.X\gpio/gpio.c
 [v _GPIO_Init GPIO_Init `(v  1 e 1 0 ]
@@ -143,9 +143,9 @@ Hours 1
 [v _Scheduler_Task2 Scheduler_Task2 `(v  1 e 1 0 ]
 "32
 [v _Scheduler_Task3 Scheduler_Task3 `(v  1 e 1 0 ]
-"25 E:\study\Repos\Digital_Clock\Digital_Clock.X\SSD/SSD.c
+"20 E:\study\Repos\Digital_Clock\Digital_Clock.X\SSD/SSD.c
 [v _SSD_DigitSelector SSD_DigitSelector `(v  1 e 1 0 ]
-"90
+"78
 [v _SSD_Display SSD_Display `(v  1 e 1 0 ]
 "14 E:\study\Repos\Digital_Clock\Digital_Clock.X\Timer/Timer.c
 [v _Timer_Init Timer_Init `(v  1 e 1 0 ]
@@ -212,6 +212,14 @@ Hours 1
 ]
 "27 E:\study\Repos\Digital_Clock\Digital_Clock.X/Buttons/Buttons.h
 [v _ButtonsFlag ButtonsFlag `S33  1 e 1 0 ]
+"17 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
+[v _Digit1 Digit1 `uc  1 e 1 0 ]
+"18
+[v _Digit2 Digit2 `uc  1 e 1 0 ]
+"19
+[v _Digit3 Digit3 `uc  1 e 1 0 ]
+"20
+[v _Digit4 Digit4 `uc  1 e 1 0 ]
 "14 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
 [v _Enable_Minutes Enable_Minutes `uc  1 e 1 0 ]
 "15
@@ -229,14 +237,6 @@ Hours 1
 [v _Clock Clock `S29  1 e 3 0 ]
 "23 E:\study\Repos\Digital_Clock\Digital_Clock.X/ModeManger/ModeManager.h
 [v _MODE MODE `E982  1 e 1 0 ]
-"14 E:\study\Repos\Digital_Clock\Digital_Clock.X\SSD/SSD.c
-[v _Digit1 Digit1 `uc  1 e 1 0 ]
-"15
-[v _Digit2 Digit2 `uc  1 e 1 0 ]
-"16
-[v _Digit3 Digit3 `uc  1 e 1 0 ]
-"17
-[v _Digit4 Digit4 `uc  1 e 1 0 ]
 "40 E:\study\Repos\Digital_Clock\Digital_Clock.X\SSD/SSD.h
 [v _DigitSelector DigitSelector `E902  1 e 1 0 ]
 "13 E:\study\Repos\Digital_Clock\Digital_Clock.X\Timer/Timer.c
@@ -271,15 +271,15 @@ Hours 1
 {
 "22
 } 0
-"18 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
+"20 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
 [v _Display_Init Display_Init `(v  1 e 1 0 ]
 {
-"27
+"30
 } 0
-"13 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
+"23 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
 [v _Clock_Init Clock_Init `(v  1 e 1 0 ]
 {
-"19
+"29
 } 0
 "16 E:\study\Repos\Digital_Clock\Digital_Clock.X\Buttons/Buttons.c
 [v _Buttons_Init Buttons_Init `(v  1 e 1 0 ]
@@ -291,13 +291,13 @@ Hours 1
 {
 [v memset@p1 p1 `*.4v  1 a 1 wreg ]
 "15
-[v memset@p p `*.4uc  1 a 1 15 ]
+[v memset@p p `*.4uc  1 a 1 17 ]
 "8
 [v memset@p1 p1 `*.4v  1 a 1 wreg ]
-[v memset@c c `i  1 p 2 11 ]
-[v memset@n n `ui  1 p 2 13 ]
+[v memset@c c `i  1 p 2 13 ]
+[v memset@n n `ui  1 p 2 15 ]
 "18
-[v memset@p1 p1 `*.4v  1 a 1 16 ]
+[v memset@p1 p1 `*.4v  1 a 1 18 ]
 "22
 } 0
 "10 E:\study\Repos\Digital_Clock\Digital_Clock.X\Interrupt/Interrupt.c
@@ -314,14 +314,14 @@ Hours 1
 [v _Scheduler_Update Scheduler_Update `(v  1 e 1 0 ]
 {
 "19
-[v Scheduler_Update@i i `uc  1 a 1 6 ]
+[v Scheduler_Update@i i `uc  1 a 1 8 ]
 "30
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\llmod.c
 [v ___llmod __llmod `(ul  1 e 4 0 ]
 {
 "10
-[v ___llmod@counter counter `uc  1 a 1 12 ]
+[v ___llmod@counter counter `uc  1 a 1 1 ]
 "5
 [v ___llmod@divisor divisor `ul  1 p 4 3 ]
 [v ___llmod@dividend dividend `ul  1 p 4 7 ]
@@ -353,72 +353,12 @@ Hours 1
 "32
 [v _Scheduler_Task3 Scheduler_Task3 `(v  1 e 1 0 ]
 {
-"36
+"37
 } 0
-"21 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
+"31 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
 [v _Clock_Update Clock_Update `(v  1 e 1 0 ]
 {
-"38
-} 0
-"41
-[v _Clock_Normal Clock_Normal `(v  1 e 1 0 ]
-{
-"43
-[v Clock_Normal@counter counter `uc  1 s 1 counter ]
-"68
-} 0
-"15 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 4 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
-"53
-} 0
-"102 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
-[v _Clock_Minutes_Setting Clock_Minutes_Setting `(v  1 e 1 0 ]
-{
-"132
-} 0
-"71
-[v _Clock_Hour_Setting Clock_Hour_Setting `(v  1 e 1 0 ]
-{
-"100
-} 0
-"17 E:\study\Repos\Digital_Clock\Digital_Clock.X\ModeManger/ModeManager.c
-[v _ModeManager_Update ModeManager_Update `(v  1 e 1 0 ]
-{
-"40
-} 0
-"27 E:\study\Repos\Digital_Clock\Digital_Clock.X\Buttons/Buttons.c
-[v _Buttons_Update Buttons_Update `(v  1 e 1 0 ]
-{
-"29
-[v Buttons_Update@Debounce_Counter Debounce_Counter `uc  1 s 1 Debounce_Counter ]
-"48
-} 0
-"29 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
-[v _Display_Update Display_Update `(v  1 e 1 0 ]
-{
 "49
-} 0
-"25 E:\study\Repos\Digital_Clock\Digital_Clock.X\SSD/SSD.c
-[v _SSD_DigitSelector SSD_DigitSelector `(v  1 e 1 0 ]
-{
-"87
-} 0
-"5 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\awmod.c
-[v ___awmod __awmod `(i  1 e 2 0 ]
-{
-"10
-[v ___awmod@sign sign `uc  1 a 1 5 ]
-[v ___awmod@counter counter `uc  1 a 1 4 ]
-"5
-[v ___awmod@divisor divisor `i  1 p 2 0 ]
-[v ___awmod@dividend dividend `i  1 p 2 2 ]
-"34
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -433,27 +373,87 @@ Hours 1
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"90 E:\study\Repos\Digital_Clock\Digital_Clock.X\SSD/SSD.c
+"52 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
+[v _Clock_Normal Clock_Normal `(v  1 e 1 0 ]
+{
+"54
+[v Clock_Normal@counter counter `uc  1 s 1 counter ]
+"79
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"113 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
+[v _Clock_Minutes_Setting Clock_Minutes_Setting `(v  1 e 1 0 ]
+{
+"143
+} 0
+"82
+[v _Clock_Hour_Setting Clock_Hour_Setting `(v  1 e 1 0 ]
+{
+"111
+} 0
+"17 E:\study\Repos\Digital_Clock\Digital_Clock.X\ModeManger/ModeManager.c
+[v _ModeManager_Update ModeManager_Update `(v  1 e 1 0 ]
+{
+"40
+} 0
+"27 E:\study\Repos\Digital_Clock\Digital_Clock.X\Buttons/Buttons.c
+[v _Buttons_Update Buttons_Update `(v  1 e 1 0 ]
+{
+"29
+[v Buttons_Update@Debounce_Counter Debounce_Counter `uc  1 s 1 Debounce_Counter ]
+"48
+} 0
+"5 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
+"32 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
+[v _Display_Update Display_Update `(v  1 e 1 0 ]
+{
+"52
+} 0
+"20 E:\study\Repos\Digital_Clock\Digital_Clock.X\SSD/SSD.c
+[v _SSD_DigitSelector SSD_DigitSelector `(v  1 e 1 0 ]
+{
+"75
+} 0
+"78
 [v _SSD_Display SSD_Display `(v  1 e 1 0 ]
 {
 [v SSD_Display@Number Number `uc  1 a 1 wreg ]
 [v SSD_Display@Number Number `uc  1 a 1 wreg ]
 [v SSD_Display@Number Number `uc  1 a 1 2 ]
-"138
+"126
 } 0
-"97 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
+"100 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
 [v _Display_Normal Display_Normal `(v  1 e 1 0 ]
 {
-"101
+"104
 } 0
-"56
+"59
 [v _Display_Blink Display_Blink `(v  1 e 1 0 ]
 {
 [v Display_Blink@Times_Ms Times_Ms `ui  1 p 2 0 ]
 [v Display_Blink@_MODE_ _MODE_ `E879  1 p 1 2 ]
-"58
+"61
 [v Display_Blink@Counter Counter `ui  1 s 2 Counter ]
-"95
+"98
 } 0
 "50 E:\study\Repos\Digital_Clock\Digital_Clock.X\Buttons/Buttons.c
 [v _EXTI_SettingButton_CB EXTI_SettingButton_CB `(v  1 e 1 0 ]

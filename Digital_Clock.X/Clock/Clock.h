@@ -21,6 +21,11 @@ typedef struct Clock_T
 }Clock_t;
 Clock_t Clock;
 
+
+extern uint8_t Digit1;
+extern uint8_t Digit2;
+extern uint8_t Digit3;
+extern uint8_t Digit4;
 void Clock_Init(void);
 void Clock_Update(void);
 void Clock_Normal(void);

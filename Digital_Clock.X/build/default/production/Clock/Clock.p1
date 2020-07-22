@@ -9,16 +9,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [n S96 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
 "23 Clock/../ModeManger/ModeManager.h
 [; ;Clock/../ModeManger/ModeManager.h: 23: MODE_t MODE;
-[c E899 0 1 2 .. ]
-[n E899 MODE_T Normal_Mode Hours_Mode Minutes_Mode  ]
-"26 Clock/Clock.h
-[; ;Clock/Clock.h: 26: void Clock_Normal(void);
+[c E903 0 1 2 .. ]
+[n E903 MODE_T Normal_Mode Hours_Mode Minutes_Mode  ]
+"31 Clock/Clock.h
+[; ;Clock/Clock.h: 31: void Clock_Normal(void);
 [v _Clock_Normal `(v ~T0 @X0 0 ef ]
-"27
-[; ;Clock/Clock.h: 27: void Clock_Hour_Setting(void);
+"32
+[; ;Clock/Clock.h: 32: void Clock_Hour_Setting(void);
 [v _Clock_Hour_Setting `(v ~T0 @X0 0 ef ]
-"28
-[; ;Clock/Clock.h: 28: void Clock_Minutes_Setting(void);
+"33
+[; ;Clock/Clock.h: 33: void Clock_Minutes_Setting(void);
 [v _Clock_Minutes_Setting `(v ~T0 @X0 0 ef ]
 "21 Clock/../Buttons/../gpio/../config.h
 [p x FOSC = HS ]
@@ -224,352 +224,370 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _ButtonsFlag `S96 ~T0 @X0 1 e ]
 "23 Clock/../ModeManger/ModeManager.h
 [; ;Clock/../ModeManger/ModeManager.h: 23: MODE_t MODE;
-[v _MODE `E899 ~T0 @X0 1 e ]
-"13 Clock/Clock.c
-[; ;Clock/Clock.c: 13: void Clock_Init(void)
+[v _MODE `E903 ~T0 @X0 1 e ]
+"17 Clock/Clock.c
+[; ;Clock/Clock.c: 17: uint8_t Digit1;
+[v _Digit1 `uc ~T0 @X0 1 e ]
+"18
+[; ;Clock/Clock.c: 18: uint8_t Digit2;
+[v _Digit2 `uc ~T0 @X0 1 e ]
+"19
+[; ;Clock/Clock.c: 19: uint8_t Digit3;
+[v _Digit3 `uc ~T0 @X0 1 e ]
+"20
+[; ;Clock/Clock.c: 20: uint8_t Digit4;
+[v _Digit4 `uc ~T0 @X0 1 e ]
+"23
+[; ;Clock/Clock.c: 23: void Clock_Init(void)
 [v _Clock_Init `(v ~T0 @X0 1 ef ]
-"14
-[; ;Clock/Clock.c: 14: {
+"24
+[; ;Clock/Clock.c: 24: {
 {
 [e :U _Clock_Init ]
 [f ]
-"15
-[; ;Clock/Clock.c: 15:     Clock.Second=0;
+"25
+[; ;Clock/Clock.c: 25:     Clock.Second=0;
 [e = . _Clock 0 -> -> 0 `i `uc ]
-"16
-[; ;Clock/Clock.c: 16:     Clock.Minutes=0;
+"26
+[; ;Clock/Clock.c: 26:     Clock.Minutes=0;
 [e = . _Clock 1 -> -> 0 `i `uc ]
-"17
-[; ;Clock/Clock.c: 17:     Clock.Hours=0;
+"27
+[; ;Clock/Clock.c: 27:     Clock.Hours=0;
 [e = . _Clock 2 -> -> 0 `i `uc ]
-"19
-[; ;Clock/Clock.c: 19: }
+"29
+[; ;Clock/Clock.c: 29: }
 [e :UE 97 ]
 }
-"21
-[; ;Clock/Clock.c: 21: void Clock_Update(void)
+"31
+[; ;Clock/Clock.c: 31: void Clock_Update(void)
 [v _Clock_Update `(v ~T0 @X0 1 ef ]
-"22
-[; ;Clock/Clock.c: 22: {
+"32
+[; ;Clock/Clock.c: 32: {
 {
 [e :U _Clock_Update ]
 [f ]
-"23
-[; ;Clock/Clock.c: 23:     switch(MODE)
-[e $U 100  ]
-"24
-[; ;Clock/Clock.c: 24:     {
-{
-"25
-[; ;Clock/Clock.c: 25:         case Normal_Mode:
-[e :U 101 ]
-"26
-[; ;Clock/Clock.c: 26:                               Clock_Normal();
-[e ( _Clock_Normal ..  ]
-"27
-[; ;Clock/Clock.c: 27:                               break;
-[e $U 99  ]
-"29
-[; ;Clock/Clock.c: 29:         case Hours_Mode:
-[e :U 102 ]
-"30
-[; ;Clock/Clock.c: 30:                               Clock_Hour_Setting();
-[e ( _Clock_Hour_Setting ..  ]
-"31
-[; ;Clock/Clock.c: 31:                               break;
-[e $U 99  ]
 "33
-[; ;Clock/Clock.c: 33:         case Minutes_Mode:
-[e :U 103 ]
+[; ;Clock/Clock.c: 33:     switch(MODE)
+[e $U 100  ]
 "34
-[; ;Clock/Clock.c: 34:                               Clock_Minutes_Setting();
-[e ( _Clock_Minutes_Setting ..  ]
+[; ;Clock/Clock.c: 34:     {
+{
 "35
-[; ;Clock/Clock.c: 35:                               break;
-[e $U 99  ]
+[; ;Clock/Clock.c: 35:         case Normal_Mode:
+[e :U 101 ]
 "36
-[; ;Clock/Clock.c: 36:     }
+[; ;Clock/Clock.c: 36:                               Clock_Normal();
+[e ( _Clock_Normal ..  ]
+"37
+[; ;Clock/Clock.c: 37:                               break;
+[e $U 99  ]
+"39
+[; ;Clock/Clock.c: 39:         case Hours_Mode:
+[e :U 102 ]
+"40
+[; ;Clock/Clock.c: 40:                               Clock_Hour_Setting();
+[e ( _Clock_Hour_Setting ..  ]
+"41
+[; ;Clock/Clock.c: 41:                               break;
+[e $U 99  ]
+"43
+[; ;Clock/Clock.c: 43:         case Minutes_Mode:
+[e :U 103 ]
+"44
+[; ;Clock/Clock.c: 44:                               Clock_Minutes_Setting();
+[e ( _Clock_Minutes_Setting ..  ]
+"45
+[; ;Clock/Clock.c: 45:                               break;
+[e $U 99  ]
+"46
+[; ;Clock/Clock.c: 46:     }
 }
 [e $U 99  ]
 [e :U 100 ]
-[e [\ -> _MODE `ui , $ -> . `E899 0 `ui 101
- , $ -> . `E899 1 `ui 102
- , $ -> . `E899 2 `ui 103
+[e [\ -> _MODE `ui , $ -> . `E903 0 `ui 101
+ , $ -> . `E903 1 `ui 102
+ , $ -> . `E903 2 `ui 103
  99 ]
 [e :U 99 ]
-"38
-[; ;Clock/Clock.c: 38: }
+"47
+[; ;Clock/Clock.c: 47:     Digit1=Clock.Minutes/10; Digit2=Clock.Minutes%10; Digit3=Clock.Second/10; Digit4=Clock.Second%10;
+[e = _Digit1 -> / -> . _Clock 1 `i -> 10 `i `uc ]
+[e = _Digit2 -> % -> . _Clock 1 `i -> 10 `i `uc ]
+[e = _Digit3 -> / -> . _Clock 0 `i -> 10 `i `uc ]
+[e = _Digit4 -> % -> . _Clock 0 `i -> 10 `i `uc ]
+"49
+[; ;Clock/Clock.c: 49: }
 [e :UE 98 ]
 }
-"41
-[; ;Clock/Clock.c: 41: void Clock_Normal(void)
+"52
+[; ;Clock/Clock.c: 52: void Clock_Normal(void)
 [v _Clock_Normal `(v ~T0 @X0 1 ef ]
-"42
-[; ;Clock/Clock.c: 42: {
+"53
+[; ;Clock/Clock.c: 53: {
 {
 [e :U _Clock_Normal ]
 [f ]
-"43
-[; ;Clock/Clock.c: 43:     static uint8_t counter=0;
-[v F910 `uc ~T0 @X0 1 s counter ]
-[i F910
+"54
+[; ;Clock/Clock.c: 54:     static uint8_t counter=0;
+[v F918 `uc ~T0 @X0 1 s counter ]
+[i F918
 -> -> 0 `i `uc
 ]
-"44
-[; ;Clock/Clock.c: 44:     counter++;
-[e ++ F910 -> -> 1 `i `uc ]
-"45
-[; ;Clock/Clock.c: 45:     if(counter*1000==1000)
-[e $ ! == * -> F910 `i -> 1000 `i -> 1000 `i 105  ]
-"46
-[; ;Clock/Clock.c: 46:     {
+"55
+[; ;Clock/Clock.c: 55:     counter++;
+[e ++ F918 -> -> 1 `i `uc ]
+"56
+[; ;Clock/Clock.c: 56:     if(counter*100==1000)
+[e $ ! == * -> F918 `i -> 100 `i -> 1000 `i 105  ]
+"57
+[; ;Clock/Clock.c: 57:     {
 {
-"48
-[; ;Clock/Clock.c: 48:       counter=0;
-[e = F910 -> -> 0 `i `uc ]
-"49
-[; ;Clock/Clock.c: 49:     }
+"58
+[; ;Clock/Clock.c: 58:        Clock.Second++;
+[e ++ . _Clock 0 -> -> 1 `i `uc ]
+"59
+[; ;Clock/Clock.c: 59:      counter=0;
+[e = F918 -> -> 0 `i `uc ]
+"60
+[; ;Clock/Clock.c: 60:     }
 }
 [e :U 105 ]
-"51
-[; ;Clock/Clock.c: 51:      Clock.Second++;
-[e ++ . _Clock 0 -> -> 1 `i `uc ]
-"52
-[; ;Clock/Clock.c: 52:     if(Clock.Second==60)
-[e $ ! == -> . _Clock 0 `i -> 60 `i 106  ]
-"53
-[; ;Clock/Clock.c: 53:     {
-{
-"54
-[; ;Clock/Clock.c: 54:       Clock.Minutes++;
-[e ++ . _Clock 1 -> -> 1 `i `uc ]
-"55
-[; ;Clock/Clock.c: 55:       Clock.Second=0;
-[e = . _Clock 0 -> -> 0 `i `uc ]
-"56
-[; ;Clock/Clock.c: 56:     }
-}
-[e :U 106 ]
-"58
-[; ;Clock/Clock.c: 58:     if(Clock.Minutes==60)
-[e $ ! == -> . _Clock 1 `i -> 60 `i 107  ]
-"59
-[; ;Clock/Clock.c: 59:     {
-{
-"60
-[; ;Clock/Clock.c: 60:       Clock.Hours++;
-[e ++ . _Clock 2 -> -> 1 `i `uc ]
-"61
-[; ;Clock/Clock.c: 61:       Clock.Minutes=0;
-[e = . _Clock 1 -> -> 0 `i `uc ]
-"62
-[; ;Clock/Clock.c: 62:     }
-}
-[e :U 107 ]
 "63
-[; ;Clock/Clock.c: 63:     if(Clock.Hours==24)
-[e $ ! == -> . _Clock 2 `i -> 24 `i 108  ]
+[; ;Clock/Clock.c: 63:     if(Clock.Second==60)
+[e $ ! == -> . _Clock 0 `i -> 60 `i 106  ]
 "64
 [; ;Clock/Clock.c: 64:     {
 {
 "65
-[; ;Clock/Clock.c: 65:       Clock.Hours=0;
-[e = . _Clock 2 -> -> 0 `i `uc ]
+[; ;Clock/Clock.c: 65:       Clock.Minutes++;
+[e ++ . _Clock 1 -> -> 1 `i `uc ]
 "66
-[; ;Clock/Clock.c: 66:     }
+[; ;Clock/Clock.c: 66:       Clock.Second=0;
+[e = . _Clock 0 -> -> 0 `i `uc ]
+"67
+[; ;Clock/Clock.c: 67:     }
+}
+[e :U 106 ]
+"69
+[; ;Clock/Clock.c: 69:     if(Clock.Minutes==60)
+[e $ ! == -> . _Clock 1 `i -> 60 `i 107  ]
+"70
+[; ;Clock/Clock.c: 70:     {
+{
+"71
+[; ;Clock/Clock.c: 71:       Clock.Hours++;
+[e ++ . _Clock 2 -> -> 1 `i `uc ]
+"72
+[; ;Clock/Clock.c: 72:       Clock.Minutes=0;
+[e = . _Clock 1 -> -> 0 `i `uc ]
+"73
+[; ;Clock/Clock.c: 73:     }
+}
+[e :U 107 ]
+"74
+[; ;Clock/Clock.c: 74:     if(Clock.Hours==24)
+[e $ ! == -> . _Clock 2 `i -> 24 `i 108  ]
+"75
+[; ;Clock/Clock.c: 75:     {
+{
+"76
+[; ;Clock/Clock.c: 76:       Clock.Hours=0;
+[e = . _Clock 2 -> -> 0 `i `uc ]
+"77
+[; ;Clock/Clock.c: 77:     }
 }
 [e :U 108 ]
-"68
-[; ;Clock/Clock.c: 68: }
+"79
+[; ;Clock/Clock.c: 79: }
 [e :UE 104 ]
 }
-"71
-[; ;Clock/Clock.c: 71: void Clock_Hour_Setting(void)
+"82
+[; ;Clock/Clock.c: 82: void Clock_Hour_Setting(void)
 [v _Clock_Hour_Setting `(v ~T0 @X0 1 ef ]
-"72
-[; ;Clock/Clock.c: 72: {
+"83
+[; ;Clock/Clock.c: 83: {
 {
 [e :U _Clock_Hour_Setting ]
 [f ]
-"73
-[; ;Clock/Clock.c: 73:     if(ButtonsFlag.UpButton_Flag&&!ButtonsFlag.DownButton_Flag)
+"84
+[; ;Clock/Clock.c: 84:     if(ButtonsFlag.UpButton_Flag&&!ButtonsFlag.DownButton_Flag)
 [e $ ! && != -> . _ButtonsFlag 0 `i -> 0 `i ! != -> . _ButtonsFlag 1 `i -> 0 `i 110  ]
-"74
-[; ;Clock/Clock.c: 74:     {
+"85
+[; ;Clock/Clock.c: 85:     {
 {
-"75
-[; ;Clock/Clock.c: 75:         if(Clock.Hours==23)
+"86
+[; ;Clock/Clock.c: 86:         if(Clock.Hours==23)
 [e $ ! == -> . _Clock 2 `i -> 23 `i 111  ]
-"76
-[; ;Clock/Clock.c: 76:         {
+"87
+[; ;Clock/Clock.c: 87:         {
 {
-"77
-[; ;Clock/Clock.c: 77:             Clock.Hours=0;
+"88
+[; ;Clock/Clock.c: 88:             Clock.Hours=0;
 [e = . _Clock 2 -> -> 0 `i `uc ]
-"78
-[; ;Clock/Clock.c: 78:         }
+"89
+[; ;Clock/Clock.c: 89:         }
 }
 [e $U 112  ]
-"79
-[; ;Clock/Clock.c: 79:         else
+"90
+[; ;Clock/Clock.c: 90:         else
 [e :U 111 ]
-"80
-[; ;Clock/Clock.c: 80:         {
+"91
+[; ;Clock/Clock.c: 91:         {
 {
-"81
-[; ;Clock/Clock.c: 81:             Clock.Hours++;
+"92
+[; ;Clock/Clock.c: 92:             Clock.Hours++;
 [e ++ . _Clock 2 -> -> 1 `i `uc ]
-"82
-[; ;Clock/Clock.c: 82:         }
+"93
+[; ;Clock/Clock.c: 93:         }
 }
 [e :U 112 ]
-"83
-[; ;Clock/Clock.c: 83:         ButtonsFlag.UpButton_Flag=0;
+"94
+[; ;Clock/Clock.c: 94:         ButtonsFlag.UpButton_Flag=0;
 [e = . _ButtonsFlag 0 -> -> 0 `i `uc ]
-"84
-[; ;Clock/Clock.c: 84:     }
+"95
+[; ;Clock/Clock.c: 95:     }
 }
 [e $U 113  ]
-"85
-[; ;Clock/Clock.c: 85:     else if(ButtonsFlag.DownButton_Flag&&!ButtonsFlag.UpButton_Flag)
+"96
+[; ;Clock/Clock.c: 96:     else if(ButtonsFlag.DownButton_Flag&&!ButtonsFlag.UpButton_Flag)
 [e :U 110 ]
 [e $ ! && != -> . _ButtonsFlag 1 `i -> 0 `i ! != -> . _ButtonsFlag 0 `i -> 0 `i 114  ]
-"86
-[; ;Clock/Clock.c: 86:     {
+"97
+[; ;Clock/Clock.c: 97:     {
 {
-"87
-[; ;Clock/Clock.c: 87:          if(Clock.Hours==0)
+"98
+[; ;Clock/Clock.c: 98:          if(Clock.Hours==0)
 [e $ ! == -> . _Clock 2 `i -> 0 `i 115  ]
-"88
-[; ;Clock/Clock.c: 88:         {
+"99
+[; ;Clock/Clock.c: 99:         {
 {
-"89
-[; ;Clock/Clock.c: 89:             Clock.Hours=23;
+"100
+[; ;Clock/Clock.c: 100:             Clock.Hours=23;
 [e = . _Clock 2 -> -> 23 `i `uc ]
-"90
-[; ;Clock/Clock.c: 90:         }
+"101
+[; ;Clock/Clock.c: 101:         }
 }
 [e $U 116  ]
-"91
-[; ;Clock/Clock.c: 91:         else
+"102
+[; ;Clock/Clock.c: 102:         else
 [e :U 115 ]
-"92
-[; ;Clock/Clock.c: 92:         {
+"103
+[; ;Clock/Clock.c: 103:         {
 {
-"93
-[; ;Clock/Clock.c: 93:          Clock.Hours--;
+"104
+[; ;Clock/Clock.c: 104:          Clock.Hours--;
 [e -- . _Clock 2 -> -> 1 `i `uc ]
-"94
-[; ;Clock/Clock.c: 94:         }
+"105
+[; ;Clock/Clock.c: 105:         }
 }
 [e :U 116 ]
-"95
-[; ;Clock/Clock.c: 95:         ButtonsFlag.DownButton_Flag=0;
+"106
+[; ;Clock/Clock.c: 106:         ButtonsFlag.DownButton_Flag=0;
 [e = . _ButtonsFlag 1 -> -> 0 `i `uc ]
-"97
-[; ;Clock/Clock.c: 97:     }
+"108
+[; ;Clock/Clock.c: 108:     }
 }
 [e :U 114 ]
 [e :U 113 ]
-"100
-[; ;Clock/Clock.c: 100: }
+"111
+[; ;Clock/Clock.c: 111: }
 [e :UE 109 ]
 }
-"102
-[; ;Clock/Clock.c: 102: void Clock_Minutes_Setting(void)
+"113
+[; ;Clock/Clock.c: 113: void Clock_Minutes_Setting(void)
 [v _Clock_Minutes_Setting `(v ~T0 @X0 1 ef ]
-"103
-[; ;Clock/Clock.c: 103: {
+"114
+[; ;Clock/Clock.c: 114: {
 {
 [e :U _Clock_Minutes_Setting ]
 [f ]
-"104
-[; ;Clock/Clock.c: 104:   if(ButtonsFlag.UpButton_Flag&&!ButtonsFlag.DownButton_Flag)
-[e $ ! && != -> . _ButtonsFlag 0 `i -> 0 `i ! != -> . _ButtonsFlag 1 `i -> 0 `i 118  ]
-"105
-[; ;Clock/Clock.c: 105:     {
-{
-"106
-[; ;Clock/Clock.c: 106:         if(Clock.Minutes==59)
-[e $ ! == -> . _Clock 1 `i -> 59 `i 119  ]
-"107
-[; ;Clock/Clock.c: 107:         {
-{
-"108
-[; ;Clock/Clock.c: 108:             Clock.Hours++;
-[e ++ . _Clock 2 -> -> 1 `i `uc ]
-"109
-[; ;Clock/Clock.c: 109:             Clock.Minutes=0;
-[e = . _Clock 1 -> -> 0 `i `uc ]
-"110
-[; ;Clock/Clock.c: 110:         }
-}
-[e $U 120  ]
-"111
-[; ;Clock/Clock.c: 111:         else
-[e :U 119 ]
-"112
-[; ;Clock/Clock.c: 112:         {
-{
-"113
-[; ;Clock/Clock.c: 113:             Clock.Minutes++;
-[e ++ . _Clock 1 -> -> 1 `i `uc ]
-"114
-[; ;Clock/Clock.c: 114:         }
-}
-[e :U 120 ]
 "115
-[; ;Clock/Clock.c: 115:         ButtonsFlag.UpButton_Flag=0;
-[e = . _ButtonsFlag 0 -> -> 0 `i `uc ]
+[; ;Clock/Clock.c: 115:   if(ButtonsFlag.UpButton_Flag&&!ButtonsFlag.DownButton_Flag)
+[e $ ! && != -> . _ButtonsFlag 0 `i -> 0 `i ! != -> . _ButtonsFlag 1 `i -> 0 `i 118  ]
 "116
-[; ;Clock/Clock.c: 116:     }
-}
-[e $U 121  ]
+[; ;Clock/Clock.c: 116:     {
+{
 "117
-[; ;Clock/Clock.c: 117:     else if(ButtonsFlag.DownButton_Flag&&!ButtonsFlag.UpButton_Flag)
-[e :U 118 ]
-[e $ ! && != -> . _ButtonsFlag 1 `i -> 0 `i ! != -> . _ButtonsFlag 0 `i -> 0 `i 122  ]
+[; ;Clock/Clock.c: 117:         if(Clock.Minutes==59)
+[e $ ! == -> . _Clock 1 `i -> 59 `i 119  ]
 "118
-[; ;Clock/Clock.c: 118:     {
+[; ;Clock/Clock.c: 118:         {
 {
 "119
-[; ;Clock/Clock.c: 119:         if(Clock.Minutes==0)
-[e $ ! == -> . _Clock 1 `i -> 0 `i 123  ]
+[; ;Clock/Clock.c: 119:             Clock.Hours++;
+[e ++ . _Clock 2 -> -> 1 `i `uc ]
 "120
-[; ;Clock/Clock.c: 120:         {
-{
+[; ;Clock/Clock.c: 120:             Clock.Minutes=0;
+[e = . _Clock 1 -> -> 0 `i `uc ]
 "121
-[; ;Clock/Clock.c: 121:             Clock.Hours--;
-[e -- . _Clock 2 -> -> 1 `i `uc ]
+[; ;Clock/Clock.c: 121:         }
+}
+[e $U 120  ]
 "122
-[; ;Clock/Clock.c: 122:             Clock.Minutes=59;
-[e = . _Clock 1 -> -> 59 `i `uc ]
+[; ;Clock/Clock.c: 122:         else
+[e :U 119 ]
 "123
-[; ;Clock/Clock.c: 123:         }
+[; ;Clock/Clock.c: 123:         {
+{
+"124
+[; ;Clock/Clock.c: 124:             Clock.Minutes++;
+[e ++ . _Clock 1 -> -> 1 `i `uc ]
+"125
+[; ;Clock/Clock.c: 125:         }
+}
+[e :U 120 ]
+"126
+[; ;Clock/Clock.c: 126:         ButtonsFlag.UpButton_Flag=0;
+[e = . _ButtonsFlag 0 -> -> 0 `i `uc ]
+"127
+[; ;Clock/Clock.c: 127:     }
+}
+[e $U 121  ]
+"128
+[; ;Clock/Clock.c: 128:     else if(ButtonsFlag.DownButton_Flag&&!ButtonsFlag.UpButton_Flag)
+[e :U 118 ]
+[e $ ! && != -> . _ButtonsFlag 1 `i -> 0 `i ! != -> . _ButtonsFlag 0 `i -> 0 `i 122  ]
+"129
+[; ;Clock/Clock.c: 129:     {
+{
+"130
+[; ;Clock/Clock.c: 130:         if(Clock.Minutes==0)
+[e $ ! == -> . _Clock 1 `i -> 0 `i 123  ]
+"131
+[; ;Clock/Clock.c: 131:         {
+{
+"132
+[; ;Clock/Clock.c: 132:             Clock.Hours--;
+[e -- . _Clock 2 -> -> 1 `i `uc ]
+"133
+[; ;Clock/Clock.c: 133:             Clock.Minutes=59;
+[e = . _Clock 1 -> -> 59 `i `uc ]
+"134
+[; ;Clock/Clock.c: 134:         }
 }
 [e $U 124  ]
-"124
-[; ;Clock/Clock.c: 124:         else
+"135
+[; ;Clock/Clock.c: 135:         else
 [e :U 123 ]
-"125
-[; ;Clock/Clock.c: 125:         {
+"136
+[; ;Clock/Clock.c: 136:         {
 {
-"126
-[; ;Clock/Clock.c: 126:             Clock.Minutes--;
+"137
+[; ;Clock/Clock.c: 137:             Clock.Minutes--;
 [e -- . _Clock 1 -> -> 1 `i `uc ]
-"127
-[; ;Clock/Clock.c: 127:         }
+"138
+[; ;Clock/Clock.c: 138:         }
 }
 [e :U 124 ]
-"128
-[; ;Clock/Clock.c: 128:         ButtonsFlag.DownButton_Flag=0;
+"139
+[; ;Clock/Clock.c: 139:         ButtonsFlag.DownButton_Flag=0;
 [e = . _ButtonsFlag 1 -> -> 0 `i `uc ]
-"129
-[; ;Clock/Clock.c: 129:     }
+"140
+[; ;Clock/Clock.c: 140:     }
 }
 [e :U 122 ]
 [e :U 121 ]
-"132
-[; ;Clock/Clock.c: 132: }
+"143
+[; ;Clock/Clock.c: 143: }
 [e :UE 117 ]
 }

@@ -7,14 +7,7 @@
 # 1 "C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "Clock/Clock.c" 2
-
-
-
-
-
-
-
-
+# 10 "Clock/Clock.c"
 # 1 "Clock/Clock.h" 1
 # 14 "Clock/Clock.h"
 # 1 "Clock/../config.h" 1
@@ -1889,12 +1882,17 @@ typedef struct Clock_T
 }Clock_t;
 Clock_t Clock;
 
+
+extern uint8_t Digit1;
+extern uint8_t Digit2;
+extern uint8_t Digit3;
+extern uint8_t Digit4;
 void Clock_Init(void);
 void Clock_Update(void);
 void Clock_Normal(void);
 void Clock_Hour_Setting(void);
 void Clock_Minutes_Setting(void);
-# 9 "Clock/Clock.c" 2
+# 10 "Clock/Clock.c" 2
 
 # 1 "Clock/../Buttons/Buttons.h" 1
 # 14 "Clock/../Buttons/Buttons.h"
@@ -1926,7 +1924,7 @@ ButtonsFlag_t ButtonsFlag;
 void Buttons_Init(void);
 void Buttons_Update(void);
 void EXTI_SettingButton_CB(void);
-# 10 "Clock/Clock.c" 2
+# 11 "Clock/Clock.c" 2
 
 # 1 "Clock/../ModeManger/ModeManager.h" 1
 # 14 "Clock/../ModeManger/ModeManager.h"
@@ -1945,7 +1943,16 @@ MODE_t MODE;
 
 void ModeManager_Init(void);
 void ModeManager_Update(void);
-# 11 "Clock/Clock.c" 2
+# 12 "Clock/Clock.c" 2
+
+
+
+
+
+uint8_t Digit1;
+uint8_t Digit2;
+uint8_t Digit3;
+uint8_t Digit4;
 
 
 void Clock_Init(void)
@@ -1972,6 +1979,7 @@ void Clock_Update(void)
                               Clock_Minutes_Setting();
                               break;
     }
+    Digit1=Clock.Minutes/10; Digit2=Clock.Minutes%10; Digit3=Clock.Second/10; Digit4=Clock.Second%10;
 
 }
 
@@ -1980,13 +1988,13 @@ void Clock_Normal(void)
 {
     static uint8_t counter=0;
     counter++;
-    if(counter*1000==1000)
+    if(counter*100==1000)
     {
-
-      counter=0;
+       Clock.Second++;
+     counter=0;
     }
 
-     Clock.Second++;
+
     if(Clock.Second==60)
     {
       Clock.Minutes++;
