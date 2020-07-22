@@ -1,36 +1,33 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"22 Display/Display.h
-[; ;Display/Display.h: 22: Display_t Display;
-[c E879 0 1 .. ]
-[n E879 Display_T Minutes Hours  ]
+"23 Display/../ModeManger/ModeManager.h
+[; ;Display/../ModeManger/ModeManager.h: 23: MODE_t MODE;
+[c E879 0 1 2 .. ]
+[n E879 MODE_T Normal_Mode Hours_Mode Minutes_Mode  ]
+"26 Display/Display.h
+[; ;Display/Display.h: 26: Display_t Display;
+[c E887 0 1 .. ]
+[n E887 Display_T Minutes Hours  ]
 "40 Display/../SSD/SSD.h
 [; ;Display/../SSD/SSD.h: 40: DigitSelector_t DigitSelector;
-[c E890 0 1 2 3 .. ]
-[n E890 DigitSelector_T Digit_1_ Digit_2_ Digit_3_ Digit_4_  ]
+[c E902 0 1 2 3 .. ]
+[n E902 DigitSelector_T Digit_1_ Digit_2_ Digit_3_ Digit_4_  ]
 "17 Display/../Clock/Clock.h
 [; ;Display/../Clock/Clock.h: 17: {
 [s S95 `uc 1 `uc 1 `uc 1 ]
 [n S95 Clock_T Second Minutes Hours ]
-"23 Display/../ModeManger/ModeManager.h
-[; ;Display/../ModeManger/ModeManager.h: 23: MODE_T MODE;
-[c E911 0 1 2 .. ]
-[n E911 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
 "166 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
-"26 Display/Display.h
-[; ;Display/Display.h: 26: void Display_Normal(void);
+"340
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 340: extern volatile unsigned char PORTD __attribute__((address(0x008)));
+[v _PORTD `Vuc ~T0 @X0 0 e@8 ]
+"34 Display/Display.h
+[; ;Display/Display.h: 34: void Display_Normal(void);
 [v _Display_Normal `(v ~T0 @X0 0 ef ]
-"27
-[; ;Display/Display.h: 27: void Display_Hour_Setting(void);
-[v _Display_Hour_Setting `(v ~T0 @X0 0 ef ]
-"28
-[; ;Display/Display.h: 28: void Display_Minutes_Setting(void);
-[v _Display_Minutes_Setting `(v ~T0 @X0 0 ef ]
-"44 Display/../SSD/SSD.h
-[; ;Display/../SSD/SSD.h: 44: void SSD_Display(uint8_t Number);
-[v _SSD_Display `(v ~T0 @X0 0 ef1`uc ]
-"43
+"37
+[; ;Display/Display.h: 37: void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_) ;
+[v _Display_Blink `(v ~T0 @X0 0 ef2`ui`E879 ]
+"43 Display/../SSD/SSD.h
 [; ;Display/../SSD/SSD.h: 43: void SSD_DigitSelector(void);
 [v _SSD_DigitSelector `(v ~T0 @X0 0 ef ]
 "21 Display/../Clock/../config.h
@@ -229,210 +226,264 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"22 Display/Display.h
-[; ;Display/Display.h: 22: Display_t Display;
-[v _Display `E879 ~T0 @X0 1 e ]
+"23 Display/../ModeManger/ModeManager.h
+[; ;Display/../ModeManger/ModeManager.h: 23: MODE_t MODE;
+[v _MODE `E879 ~T0 @X0 1 e ]
+"26 Display/Display.h
+[; ;Display/Display.h: 26: Display_t Display;
+[v _Display `E887 ~T0 @X0 1 e ]
 "40 Display/../SSD/SSD.h
 [; ;Display/../SSD/SSD.h: 40: DigitSelector_t DigitSelector;
-[v _DigitSelector `E890 ~T0 @X0 1 e ]
+[v _DigitSelector `E902 ~T0 @X0 1 e ]
 "22 Display/../Clock/Clock.h
 [; ;Display/../Clock/Clock.h: 22: Clock_t Clock;
 [v _Clock `S95 ~T0 @X0 1 e ]
-"23 Display/../ModeManger/ModeManager.h
-[; ;Display/../ModeManger/ModeManager.h: 23: MODE_T MODE;
-[v _MODE `E911 ~T0 @X0 1 e ]
-"15 Display/Display.c
-[; ;Display/Display.c: 15: static uint8_t Digit1=0;
-[v _Digit1 `uc ~T0 @X0 1 s ]
-[i _Digit1
--> -> 0 `i `uc
-]
-"16
-[; ;Display/Display.c: 16: static uint8_t Digit2=0;
-[v _Digit2 `uc ~T0 @X0 1 s ]
-[i _Digit2
--> -> 0 `i `uc
-]
-"17
-[; ;Display/Display.c: 17: static uint8_t Digit3=0;
-[v _Digit3 `uc ~T0 @X0 1 s ]
-[i _Digit3
--> -> 0 `i `uc
-]
+"14 Display/Display.c
+[; ;Display/Display.c: 14: uint8_t Enable_Minutes;
+[v _Enable_Minutes `uc ~T0 @X0 1 e ]
+"15
+[; ;Display/Display.c: 15: uint8_t Enable_Hours;
+[v _Enable_Hours `uc ~T0 @X0 1 e ]
 "18
-[; ;Display/Display.c: 18: static uint8_t Digit4=0;
-[v _Digit4 `uc ~T0 @X0 1 s ]
-[i _Digit4
--> -> 0 `i `uc
-]
-"23
-[; ;Display/Display.c: 23: void Display_Init(void)
+[; ;Display/Display.c: 18: void Display_Init(void)
 [v _Display_Init `(v ~T0 @X0 1 ef ]
-"24
-[; ;Display/Display.c: 24: {
+"19
+[; ;Display/Display.c: 19: {
 {
 [e :U _Display_Init ]
 [f ]
-"25
-[; ;Display/Display.c: 25: Digit1=Clock.Hours/10;
-[e = _Digit1 -> / -> . _Clock 2 `i -> 10 `i `uc ]
-"26
-[; ;Display/Display.c: 26: Digit2=Clock.Hours%10;
-[e = _Digit2 -> % -> . _Clock 2 `i -> 10 `i `uc ]
-"27
-[; ;Display/Display.c: 27: Digit3=Clock.Minutes/10;
-[e = _Digit3 -> / -> . _Clock 1 `i -> 10 `i `uc ]
-"28
-[; ;Display/Display.c: 28: Digit4=Clock.Minutes%10;
-[e = _Digit4 -> % -> . _Clock 1 `i -> 10 `i `uc ]
-"29
-[; ;Display/Display.c: 29: (PORTA&=~(1<<2));
+"20
+[; ;Display/Display.c: 20:     Enable_Minutes=1;
+[e = _Enable_Minutes -> -> 1 `i `uc ]
+"21
+[; ;Display/Display.c: 21:     Enable_Hours=1;
+[e = _Enable_Hours -> -> 1 `i `uc ]
+"22
+[; ;Display/Display.c: 22:     (PORTA&=~(1<<2));
 [e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
-"30
-[; ;Display/Display.c: 30: (PORTA&=~(1<<3));
+"23
+[; ;Display/Display.c: 23:     (PORTA&=~(1<<3));
 [e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
-"31
-[; ;Display/Display.c: 31: (PORTA&=~(1<<4));
+"24
+[; ;Display/Display.c: 24:     (PORTA&=~(1<<4));
 [e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
-"32
-[; ;Display/Display.c: 32: (PORTA&=~(1<<5));
+"25
+[; ;Display/Display.c: 25:     (PORTA&=~(1<<5));
 [e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
-"33
-[; ;Display/Display.c: 33: }
+"26
+[; ;Display/Display.c: 26:     (PORTD&=~(1<<7));
+[e =& _PORTD -> ~ << -> 1 `i -> 7 `i `Vuc ]
+"27
+[; ;Display/Display.c: 27: }
 [e :UE 96 ]
 }
-"35
-[; ;Display/Display.c: 35: void Display_Update(void)
+"29
+[; ;Display/Display.c: 29: void Display_Update(void)
 [v _Display_Update `(v ~T0 @X0 1 ef ]
-"36
-[; ;Display/Display.c: 36: {
+"30
+[; ;Display/Display.c: 30: {
 {
 [e :U _Display_Update ]
 [f ]
-"37
-[; ;Display/Display.c: 37:    switch(MODE)
+"31
+[; ;Display/Display.c: 31:    switch(MODE)
 [e $U 99  ]
-"38
-[; ;Display/Display.c: 38:     {
+"32
+[; ;Display/Display.c: 32:     {
 {
-"39
-[; ;Display/Display.c: 39:         case Normal_Mode:
+"33
+[; ;Display/Display.c: 33:         case Normal_Mode:
 [e :U 100 ]
-"40
-[; ;Display/Display.c: 40:                               Display_Normal();
+"34
+[; ;Display/Display.c: 34:                               Display_Normal();
 [e ( _Display_Normal ..  ]
+"35
+[; ;Display/Display.c: 35:                               break;
+[e $U 98  ]
+"37
+[; ;Display/Display.c: 37:         case Hours_Mode:
+[e :U 101 ]
+"38
+[; ;Display/Display.c: 38:                               Display_Blink(500,Hours_Mode);
+[e ( _Display_Blink (2 , -> -> 500 `i `ui . `E879 1 ]
+"39
+[; ;Display/Display.c: 39:                               Enable_Minutes=1;
+[e = _Enable_Minutes -> -> 1 `i `uc ]
 "41
 [; ;Display/Display.c: 41:                               break;
 [e $U 98  ]
 "43
-[; ;Display/Display.c: 43:         case Hour_Mode:
-[e :U 101 ]
+[; ;Display/Display.c: 43:         case Minutes_Mode:
+[e :U 102 ]
 "44
-[; ;Display/Display.c: 44:                               Display_Hour_Setting();
-[e ( _Display_Hour_Setting ..  ]
+[; ;Display/Display.c: 44:                               Display_Blink(500,Minutes_Mode);
+[e ( _Display_Blink (2 , -> -> 500 `i `ui . `E879 2 ]
 "45
-[; ;Display/Display.c: 45:                               break;
+[; ;Display/Display.c: 45:                               Enable_Hours=1;
+[e = _Enable_Hours -> -> 1 `i `uc ]
+"46
+[; ;Display/Display.c: 46:                               break;
 [e $U 98  ]
 "47
-[; ;Display/Display.c: 47:         case Minutes_Mode:
-[e :U 102 ]
-"48
-[; ;Display/Display.c: 48:                               Display_Minutes_Setting();
-[e ( _Display_Minutes_Setting ..  ]
-"49
-[; ;Display/Display.c: 49:                               break;
-[e $U 98  ]
-"50
-[; ;Display/Display.c: 50:     }
+[; ;Display/Display.c: 47:     }
 }
 [e $U 98  ]
 [e :U 99 ]
-[e [\ -> _MODE `ui , $ -> . `E911 0 `ui 100
- , $ -> . `E911 1 `ui 101
- , $ -> . `E911 2 `ui 102
+[e [\ -> _MODE `ui , $ -> . `E879 0 `ui 100
+ , $ -> . `E879 1 `ui 101
+ , $ -> . `E879 2 `ui 102
  98 ]
 [e :U 98 ]
-"52
-[; ;Display/Display.c: 52: }
+"48
+[; ;Display/Display.c: 48:     SSD_DigitSelector();
+[e ( _SSD_DigitSelector ..  ]
+"49
+[; ;Display/Display.c: 49: }
 [e :UE 97 ]
 }
+"56
+[; ;Display/Display.c: 56: void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_)
+[v _Display_Blink `(v ~T0 @X0 1 ef2`ui`E879 ]
 "57
-[; ;Display/Display.c: 57: void Display_Normal(void)
-[v _Display_Normal `(v ~T0 @X0 1 ef ]
+[; ;Display/Display.c: 57: {
+{
+[e :U _Display_Blink ]
+"56
+[; ;Display/Display.c: 56: void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_)
+[v _Times_Ms `ui ~T0 @X0 1 r1 ]
+[v __MODE_ `E879 ~T0 @X0 1 r2 ]
+"57
+[; ;Display/Display.c: 57: {
+[f ]
 "58
-[; ;Display/Display.c: 58: {
+[; ;Display/Display.c: 58:     static uint16_t Counter=0;
+[v F930 `ui ~T0 @X0 1 s Counter ]
+[i F930
+-> -> 0 `i `ui
+]
+"60
+[; ;Display/Display.c: 60:         if(Counter*1==Times_Ms)
+[e $ ! == * F930 -> -> 1 `i `ui _Times_Ms 104  ]
+"61
+[; ;Display/Display.c: 61:         {
+{
+"62
+[; ;Display/Display.c: 62:             if(_MODE_==Minutes_Mode)
+[e $ ! == -> __MODE_ `ui -> . `E879 2 `ui 105  ]
+"63
+[; ;Display/Display.c: 63:             {
+{
+"64
+[; ;Display/Display.c: 64:                 if(Enable_Minutes==1)
+[e $ ! == -> _Enable_Minutes `i -> 1 `i 106  ]
+"65
+[; ;Display/Display.c: 65:                 {
+{
+"66
+[; ;Display/Display.c: 66:                    Enable_Minutes=0;
+[e = _Enable_Minutes -> -> 0 `i `uc ]
+"67
+[; ;Display/Display.c: 67:                    (PORTA&=~(1<<4)) ;
+[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+"68
+[; ;Display/Display.c: 68:                     (PORTA&=~(1<<5)) ;
+[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"69
+[; ;Display/Display.c: 69:                 }
+}
+[e $U 107  ]
+"70
+[; ;Display/Display.c: 70:                 else if(Enable_Minutes==0)
+[e :U 106 ]
+[e $ ! == -> _Enable_Minutes `i -> 0 `i 108  ]
+"71
+[; ;Display/Display.c: 71:                 {
+{
+"72
+[; ;Display/Display.c: 72:                    Enable_Minutes=1;
+[e = _Enable_Minutes -> -> 1 `i `uc ]
+"73
+[; ;Display/Display.c: 73:                 }
+}
+[e :U 108 ]
+[e :U 107 ]
+"75
+[; ;Display/Display.c: 75:             }
+}
+[e :U 105 ]
+"76
+[; ;Display/Display.c: 76:             if(_MODE_==Hours_Mode)
+[e $ ! == -> __MODE_ `ui -> . `E879 1 `ui 109  ]
+"77
+[; ;Display/Display.c: 77:             {
+{
+"78
+[; ;Display/Display.c: 78:                 if(Enable_Hours==1)
+[e $ ! == -> _Enable_Hours `i -> 1 `i 110  ]
+"79
+[; ;Display/Display.c: 79:                 {
+{
+"80
+[; ;Display/Display.c: 80:                    Enable_Hours=0;
+[e = _Enable_Hours -> -> 0 `i `uc ]
+"81
+[; ;Display/Display.c: 81:                    (PORTA&=~(1<<2)) ;
+[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
+"82
+[; ;Display/Display.c: 82:                     (PORTA&=~(1<<3)) ;
+[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
+"83
+[; ;Display/Display.c: 83:                 }
+}
+[e $U 111  ]
+"84
+[; ;Display/Display.c: 84:                 else if(Enable_Hours==0)
+[e :U 110 ]
+[e $ ! == -> _Enable_Hours `i -> 0 `i 112  ]
+"85
+[; ;Display/Display.c: 85:                 {
+{
+"86
+[; ;Display/Display.c: 86:                    Enable_Hours=1;
+[e = _Enable_Hours -> -> 1 `i `uc ]
+"87
+[; ;Display/Display.c: 87:                 }
+}
+[e :U 112 ]
+[e :U 111 ]
+"89
+[; ;Display/Display.c: 89:             }
+}
+[e :U 109 ]
+"91
+[; ;Display/Display.c: 91:             Counter=1;
+[e = F930 -> -> 1 `i `ui ]
+"92
+[; ;Display/Display.c: 92:         }
+}
+[e :U 104 ]
+"93
+[; ;Display/Display.c: 93:         Counter++;
+[e ++ F930 -> -> 1 `i `ui ]
+"95
+[; ;Display/Display.c: 95: }
+[e :UE 103 ]
+}
+"97
+[; ;Display/Display.c: 97: void Display_Normal(void)
+[v _Display_Normal `(v ~T0 @X0 1 ef ]
+"98
+[; ;Display/Display.c: 98: {
 {
 [e :U _Display_Normal ]
 [f ]
-"59
-[; ;Display/Display.c: 59:     Display^=1;
-[e =^ _Display -> -> 1 `i `E879 ]
-"61
-[; ;Display/Display.c: 61:     if(Display==Minutes)
-[e $ ! == -> _Display `ui -> . `E879 0 `ui 104  ]
-"62
-[; ;Display/Display.c: 62:     {
-{
-"63
-[; ;Display/Display.c: 63:         SSD_Display(Clock.Minutes);
-[e ( _SSD_Display (1 . _Clock 1 ]
-"64
-[; ;Display/Display.c: 64:     }
-}
-[e $U 105  ]
-"65
-[; ;Display/Display.c: 65:     else
-[e :U 104 ]
-"66
-[; ;Display/Display.c: 66:     {
-{
-"67
-[; ;Display/Display.c: 67:         SSD_Display(Clock.Hours);
-[e ( _SSD_Display (1 . _Clock 2 ]
-"68
-[; ;Display/Display.c: 68:     }
-}
-[e :U 105 ]
-"69
-[; ;Display/Display.c: 69:    SSD_DigitSelector();
-[e ( _SSD_DigitSelector ..  ]
-"70
-[; ;Display/Display.c: 70: }
-[e :UE 103 ]
-}
-"74
-[; ;Display/Display.c: 74: void Display_Hour_Setting(void)
-[v _Display_Hour_Setting `(v ~T0 @X0 1 ef ]
-"75
-[; ;Display/Display.c: 75: {
-{
-[e :U _Display_Hour_Setting ]
-[f ]
-"78
-[; ;Display/Display.c: 78: }
-[e :UE 106 ]
-}
-"81
-[; ;Display/Display.c: 81: void Display_Minutes_Setting(void)
-[v _Display_Minutes_Setting `(v ~T0 @X0 1 ef ]
-"82
-[; ;Display/Display.c: 82: {
-{
-[e :U _Display_Minutes_Setting ]
-[f ]
-"85
-[; ;Display/Display.c: 85: }
-[e :UE 107 ]
-}
-"88
-[; ;Display/Display.c: 88: void Display_Blink(void)
-[v _Display_Blink `(v ~T0 @X0 1 ef ]
-"89
-[; ;Display/Display.c: 89: {
-{
-[e :U _Display_Blink ]
-[f ]
-"92
-[; ;Display/Display.c: 92: }
-[e :UE 108 ]
+"99
+[; ;Display/Display.c: 99:   Enable_Minutes=1;
+[e = _Enable_Minutes -> -> 1 `i `uc ]
+"100
+[; ;Display/Display.c: 100:   Enable_Hours=1;
+[e = _Enable_Hours -> -> 1 `i `uc ]
+"101
+[; ;Display/Display.c: 101: }
+[e :UE 113 ]
 }

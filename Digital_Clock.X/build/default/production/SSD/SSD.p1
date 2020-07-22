@@ -3,17 +3,33 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;SSD/SSD.h: 40: DigitSelector_t DigitSelector;
 [c E879 0 1 2 3 .. ]
 [n E879 DigitSelector_T Digit_1_ Digit_2_ Digit_3_ Digit_4_  ]
-"23 SSD/../ModeManger/ModeManager.h
-[; ;SSD/../ModeManger/ModeManager.h: 23: MODE_T MODE;
+"23 SSD/../Display/../ModeManger/ModeManager.h
 [c E889 0 1 2 .. ]
-[n E889 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+[n E889 MODE_T Normal_Mode Hours_Mode Minutes_Mode  ]
+"17 SSD/../Clock/Clock.h
+[; ;SSD/../Clock/Clock.h: 17: {
+[s S95 `uc 1 `uc 1 `uc 1 ]
+[n S95 Clock_T Second Minutes Hours ]
+"26 SSD/../Display/Display.h
+[; ;SSD/../Display/Display.h: 26: Display_t Display;
+[c E908 0 1 .. ]
+[n E908 Display_T Minutes Hours  ]
+"30
+[; ;SSD/../Display/Display.h: 30: extern uint8_t Enable_Hours;
+[v _Enable_Hours `uc ~T0 @X0 0 e ]
 "166 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 166: extern volatile unsigned char PORTA __attribute__((address(0x005)));
 [v _PORTA `Vuc ~T0 @X0 0 e@5 ]
-"340
+"44 SSD/SSD.h
+[; ;SSD/SSD.h: 44: void SSD_Display(uint8_t Number);
+[v _SSD_Display `(v ~T0 @X0 0 ef1`uc ]
+"340 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 340: extern volatile unsigned char PORTD __attribute__((address(0x008)));
 [v _PORTD `Vuc ~T0 @X0 0 e@8 ]
-"21 SSD/../gpio/../config.h
+"29 SSD/../Display/Display.h
+[; ;SSD/../Display/Display.h: 29: extern uint8_t Enable_Minutes;
+[v _Enable_Minutes `uc ~T0 @X0 0 e ]
+"21 SSD/../Display/../config.h
 [p x FOSC = HS ]
 "22
 [p x WDTE = OFF ]
@@ -212,238 +228,336 @@ Version 4.0 HI-TECH Software Intermediate Code
 "40 SSD/SSD.h
 [; ;SSD/SSD.h: 40: DigitSelector_t DigitSelector;
 [v _DigitSelector `E879 ~T0 @X0 1 e ]
-"23 SSD/../ModeManger/ModeManager.h
-[; ;SSD/../ModeManger/ModeManager.h: 23: MODE_T MODE;
+"23 SSD/../Display/../ModeManger/ModeManager.h
 [v _MODE `E889 ~T0 @X0 1 e ]
-"11 SSD/SSD.c
-[; ;SSD/SSD.c: 11: void SSD_DigitSelector(void)
+"22 SSD/../Clock/Clock.h
+[; ;SSD/../Clock/Clock.h: 22: Clock_t Clock;
+[v _Clock `S95 ~T0 @X0 1 e ]
+"26 SSD/../Display/Display.h
+[; ;SSD/../Display/Display.h: 26: Display_t Display;
+[v _Display `E908 ~T0 @X0 1 e ]
+"14 SSD/SSD.c
+[; ;SSD/SSD.c: 14: uint8_t Digit1=0;
+[v _Digit1 `uc ~T0 @X0 1 e ]
+[i _Digit1
+-> -> 0 `i `uc
+]
+"15
+[; ;SSD/SSD.c: 15: uint8_t Digit2=0;
+[v _Digit2 `uc ~T0 @X0 1 e ]
+[i _Digit2
+-> -> 0 `i `uc
+]
+"16
+[; ;SSD/SSD.c: 16: uint8_t Digit3=0;
+[v _Digit3 `uc ~T0 @X0 1 e ]
+[i _Digit3
+-> -> 0 `i `uc
+]
+"17
+[; ;SSD/SSD.c: 17: uint8_t Digit4=0;
+[v _Digit4 `uc ~T0 @X0 1 e ]
+[i _Digit4
+-> -> 0 `i `uc
+]
+"25
+[; ;SSD/SSD.c: 25: void SSD_DigitSelector(void)
 [v _SSD_DigitSelector `(v ~T0 @X0 1 ef ]
-"12
-[; ;SSD/SSD.c: 12: {
+"26
+[; ;SSD/SSD.c: 26: {
 {
 [e :U _SSD_DigitSelector ]
 [f ]
-"13
-[; ;SSD/SSD.c: 13:     if(MODE==Normal_Mode)
-[e $ ! == -> _MODE `ui -> . `E889 0 `ui 96  ]
-"14
-[; ;SSD/SSD.c: 14:     {
-{
-"16
-[; ;SSD/SSD.c: 16:       switch(DigitSelector)
-[e $U 98  ]
-"17
-[; ;SSD/SSD.c: 17:       {
-{
-"18
-[; ;SSD/SSD.c: 18:           case Digit_1_:
-[e :U 99 ]
-"19
-[; ;SSD/SSD.c: 19:                       (PORTA|=(1<<2));
-[e =| _PORTA -> << -> 1 `i -> 2 `i `Vuc ]
-"20
-[; ;SSD/SSD.c: 20:                       (PORTA&=~(1<<3));
-[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
-"21
-[; ;SSD/SSD.c: 21:                       (PORTA&=~(1<<4));
-[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
-"22
-[; ;SSD/SSD.c: 22:                       (PORTA&=~(1<<5));
-[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
-"24
-[; ;SSD/SSD.c: 24:             case Digit_2_:
-[e :U 100 ]
-"25
-[; ;SSD/SSD.c: 25:                       (PORTA|=(1<<3));
-[e =| _PORTA -> << -> 1 `i -> 3 `i `Vuc ]
-"26
-[; ;SSD/SSD.c: 26:                       (PORTA&=~(1<<2));
-[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
-"27
-[; ;SSD/SSD.c: 27:                       (PORTA&=~(1<<4));
-[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
 "28
-[; ;SSD/SSD.c: 28:                       (PORTA&=~(1<<5));
-[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+[; ;SSD/SSD.c: 28:  Digit1=Clock.Hours/10;
+[e = _Digit1 -> / -> . _Clock 2 `i -> 10 `i `uc ]
+"29
+[; ;SSD/SSD.c: 29:  Digit2=Clock.Hours%10;
+[e = _Digit2 -> % -> . _Clock 2 `i -> 10 `i `uc ]
 "30
-[; ;SSD/SSD.c: 30:             case Digit_3_:
-[e :U 101 ]
+[; ;SSD/SSD.c: 30:  Digit3=Clock.Minutes/10;
+[e = _Digit3 -> / -> . _Clock 1 `i -> 10 `i `uc ]
 "31
-[; ;SSD/SSD.c: 31:                       (PORTA|=(1<<4));
-[e =| _PORTA -> << -> 1 `i -> 4 `i `Vuc ]
-"32
-[; ;SSD/SSD.c: 32:                       (PORTA&=~(1<<2));
-[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
-"33
-[; ;SSD/SSD.c: 33:                       (PORTA&=~(1<<4));
-[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
-"34
-[; ;SSD/SSD.c: 34:                       (PORTA&=~(1<<5));
-[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+[; ;SSD/SSD.c: 31:  Digit4=Clock.Minutes%10;
+[e = _Digit4 -> % -> . _Clock 1 `i -> 10 `i `uc ]
+"35
+[; ;SSD/SSD.c: 35:       switch(DigitSelector)
+[e $U 98  ]
 "36
-[; ;SSD/SSD.c: 36:             case Digit_4_:
-[e :U 102 ]
+[; ;SSD/SSD.c: 36:       {
+{
 "37
-[; ;SSD/SSD.c: 37:                       (PORTA|=(1<<5));
-[e =| _PORTA -> << -> 1 `i -> 5 `i `Vuc ]
+[; ;SSD/SSD.c: 37:             case Digit_1_:
+[e :U 99 ]
 "38
-[; ;SSD/SSD.c: 38:                       (PORTA|=(1<<2));
-[e =| _PORTA -> << -> 1 `i -> 2 `i `Vuc ]
+[; ;SSD/SSD.c: 38:                         if(Enable_Hours==1)
+[e $ ! == -> _Enable_Hours `i -> 1 `i 100  ]
 "39
-[; ;SSD/SSD.c: 39:                       (PORTA&=~(1<<3));
-[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
+[; ;SSD/SSD.c: 39:                         {
+{
 "40
-[; ;SSD/SSD.c: 40:                       (PORTA&=~(1<<4));
-[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+[; ;SSD/SSD.c: 40:                             (PORTA|=(1<<2));
+[e =| _PORTA -> << -> 1 `i -> 2 `i `Vuc ]
+"41
+[; ;SSD/SSD.c: 41:                         }
+}
+[e :U 100 ]
 "42
-[; ;SSD/SSD.c: 42:       }
+[; ;SSD/SSD.c: 42:                         (PORTA&=~(1<<3));
+[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
+"43
+[; ;SSD/SSD.c: 43:                         (PORTA&=~(1<<4));
+[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+"44
+[; ;SSD/SSD.c: 44:                         (PORTA&=~(1<<5));
+[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"45
+[; ;SSD/SSD.c: 45:                         SSD_Display(Digit1);
+[e ( _SSD_Display (1 _Digit1 ]
+"46
+[; ;SSD/SSD.c: 46:                         break;
+[e $U 97  ]
+"48
+[; ;SSD/SSD.c: 48:             case Digit_2_:
+[e :U 101 ]
+"49
+[; ;SSD/SSD.c: 49:                         if(Enable_Hours==1)
+[e $ ! == -> _Enable_Hours `i -> 1 `i 102  ]
+"50
+[; ;SSD/SSD.c: 50:                         {
+{
+"51
+[; ;SSD/SSD.c: 51:                             (PORTA|=(1<<3));
+[e =| _PORTA -> << -> 1 `i -> 3 `i `Vuc ]
+"52
+[; ;SSD/SSD.c: 52:                         }
+}
+[e :U 102 ]
+"53
+[; ;SSD/SSD.c: 53:                         (PORTA&=~(1<<2));
+[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
+"54
+[; ;SSD/SSD.c: 54:                         (PORTA&=~(1<<4));
+[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+"55
+[; ;SSD/SSD.c: 55:                         (PORTA&=~(1<<5));
+[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"57
+[; ;SSD/SSD.c: 57:                         (PORTD|=(1<<7));
+[e =| _PORTD -> << -> 1 `i -> 7 `i `Vuc ]
+"58
+[; ;SSD/SSD.c: 58:                         SSD_Display(Digit2);
+[e ( _SSD_Display (1 _Digit2 ]
+"59
+[; ;SSD/SSD.c: 59:                         break;
+[e $U 97  ]
+"60
+[; ;SSD/SSD.c: 60:             case Digit_3_:
+[e :U 103 ]
+"61
+[; ;SSD/SSD.c: 61:                         if(Enable_Minutes==1)
+[e $ ! == -> _Enable_Minutes `i -> 1 `i 104  ]
+"62
+[; ;SSD/SSD.c: 62:                         {
+{
+"63
+[; ;SSD/SSD.c: 63:                             (PORTA|=(1<<4));
+[e =| _PORTA -> << -> 1 `i -> 4 `i `Vuc ]
+"64
+[; ;SSD/SSD.c: 64:                         }
+}
+[e :U 104 ]
+"65
+[; ;SSD/SSD.c: 65:                         (PORTA&=~(1<<2));
+[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
+"66
+[; ;SSD/SSD.c: 66:                         (PORTA&=~(1<<3));
+[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
+"67
+[; ;SSD/SSD.c: 67:                         (PORTA&=~(1<<5));
+[e =& _PORTA -> ~ << -> 1 `i -> 5 `i `Vuc ]
+"68
+[; ;SSD/SSD.c: 68:                         SSD_Display(Digit3);
+[e ( _SSD_Display (1 _Digit3 ]
+"69
+[; ;SSD/SSD.c: 69:                         break;
+[e $U 97  ]
+"70
+[; ;SSD/SSD.c: 70:             case Digit_4_:
+[e :U 105 ]
+"71
+[; ;SSD/SSD.c: 71:                         if(Enable_Minutes==1)
+[e $ ! == -> _Enable_Minutes `i -> 1 `i 106  ]
+"72
+[; ;SSD/SSD.c: 72:                         {
+{
+"73
+[; ;SSD/SSD.c: 73:                             (PORTA|=(1<<5));
+[e =| _PORTA -> << -> 1 `i -> 5 `i `Vuc ]
+"74
+[; ;SSD/SSD.c: 74:                         }
+}
+[e :U 106 ]
+"75
+[; ;SSD/SSD.c: 75:                         (PORTA&=~(1<<2));
+[e =& _PORTA -> ~ << -> 1 `i -> 2 `i `Vuc ]
+"76
+[; ;SSD/SSD.c: 76:                         (PORTA&=~(1<<3));
+[e =& _PORTA -> ~ << -> 1 `i -> 3 `i `Vuc ]
+"77
+[; ;SSD/SSD.c: 77:                         (PORTA&=~(1<<4));
+[e =& _PORTA -> ~ << -> 1 `i -> 4 `i `Vuc ]
+"78
+[; ;SSD/SSD.c: 78:                         SSD_Display(Digit4);
+[e ( _SSD_Display (1 _Digit4 ]
+"79
+[; ;SSD/SSD.c: 79:                         break;
+[e $U 97  ]
+"80
+[; ;SSD/SSD.c: 80:       }
 }
 [e $U 97  ]
 [e :U 98 ]
 [e [\ -> _DigitSelector `ui , $ -> . `E879 0 `ui 99
- , $ -> . `E879 1 `ui 100
- , $ -> . `E879 2 `ui 101
- , $ -> . `E879 3 `ui 102
+ , $ -> . `E879 1 `ui 101
+ , $ -> . `E879 2 `ui 103
+ , $ -> . `E879 3 `ui 105
  97 ]
 [e :U 97 ]
-"43
-[; ;SSD/SSD.c: 43:       DigitSelector=(DigitSelector+1)%1;
-[e = _DigitSelector -> % + -> _DigitSelector `ui -> -> 1 `i `ui -> -> 1 `i `ui `E879 ]
-"46
-[; ;SSD/SSD.c: 46:     }
+"81
+[; ;SSD/SSD.c: 81:        DigitSelector=(DigitSelector+1)%4;
+[e = _DigitSelector -> % + -> _DigitSelector `ui -> -> 1 `i `ui -> -> 4 `i `ui `E879 ]
+"87
+[; ;SSD/SSD.c: 87: }
+[e :UE 96 ]
 }
-[e :U 96 ]
-"48
-[; ;SSD/SSD.c: 48: }
-[e :UE 95 ]
-}
-"51
-[; ;SSD/SSD.c: 51: void SSD_Display(uint8_t Number)
+"90
+[; ;SSD/SSD.c: 90: void SSD_Display(uint8_t Number)
 [v _SSD_Display `(v ~T0 @X0 1 ef1`uc ]
-"52
-[; ;SSD/SSD.c: 52: {
+"91
+[; ;SSD/SSD.c: 91: {
 {
 [e :U _SSD_Display ]
-"51
-[; ;SSD/SSD.c: 51: void SSD_Display(uint8_t Number)
-[v _Number `uc ~T0 @X0 1 r1 ]
-"52
-[; ;SSD/SSD.c: 52: {
-[f ]
-"54
-[; ;SSD/SSD.c: 54:    switch(Number)
-[e $U 105  ]
-"55
-[; ;SSD/SSD.c: 55:     {
-{
-"56
-[; ;SSD/SSD.c: 56:      case 0:
-[e :U 106 ]
-"57
-[; ;SSD/SSD.c: 57:         PORTD=0b00111111;
-[e = _PORTD -> -> 63 `i `uc ]
-"58
-[; ;SSD/SSD.c: 58:         break;
-[e $U 104  ]
-"60
-[; ;SSD/SSD.c: 60:      case 1:
-[e :U 107 ]
-"61
-[; ;SSD/SSD.c: 61:         PORTD=0b00000110;
-[e = _PORTD -> -> 6 `i `uc ]
-"62
-[; ;SSD/SSD.c: 62:         break;
-[e $U 104  ]
-"64
-[; ;SSD/SSD.c: 64:      case 2:
-[e :U 108 ]
-"65
-[; ;SSD/SSD.c: 65:         PORTD=0b01011011;
-[e = _PORTD -> -> 91 `i `uc ]
-"66
-[; ;SSD/SSD.c: 66:         break;
-[e $U 104  ]
-"68
-[; ;SSD/SSD.c: 68:      case 3:
-[e :U 109 ]
-"69
-[; ;SSD/SSD.c: 69:         PORTD=0b01001111;
-[e = _PORTD -> -> 79 `i `uc ]
-"70
-[; ;SSD/SSD.c: 70:         break;
-[e $U 104  ]
-"72
-[; ;SSD/SSD.c: 72:      case 4:
-[e :U 110 ]
-"73
-[; ;SSD/SSD.c: 73:         PORTD=0b01100110;
-[e = _PORTD -> -> 102 `i `uc ]
-"74
-[; ;SSD/SSD.c: 74:         break;
-[e $U 104  ]
-"76
-[; ;SSD/SSD.c: 76:      case 5:
-[e :U 111 ]
-"77
-[; ;SSD/SSD.c: 77:         PORTD=0b01101101;
-[e = _PORTD -> -> 109 `i `uc ]
-"78
-[; ;SSD/SSD.c: 78:         break;
-[e $U 104  ]
-"80
-[; ;SSD/SSD.c: 80:      case 6:
-[e :U 112 ]
-"81
-[; ;SSD/SSD.c: 81:         PORTD=0b01111101;
-[e = _PORTD -> -> 125 `i `uc ]
-"82
-[; ;SSD/SSD.c: 82:         break;
-[e $U 104  ]
-"84
-[; ;SSD/SSD.c: 84:      case 7:
-[e :U 113 ]
-"85
-[; ;SSD/SSD.c: 85:         PORTD=0b00000111;
-[e = _PORTD -> -> 7 `i `uc ]
-"86
-[; ;SSD/SSD.c: 86:         break;
-[e $U 104  ]
-"88
-[; ;SSD/SSD.c: 88:      case 8:
-[e :U 114 ]
-"89
-[; ;SSD/SSD.c: 89:         PORTD=0b01111111;
-[e = _PORTD -> -> 127 `i `uc ]
 "90
-[; ;SSD/SSD.c: 90:         break;
-[e $U 104  ]
-"92
-[; ;SSD/SSD.c: 92:      case 9:
-[e :U 115 ]
+[; ;SSD/SSD.c: 90: void SSD_Display(uint8_t Number)
+[v _Number `uc ~T0 @X0 1 r1 ]
+"91
+[; ;SSD/SSD.c: 91: {
+[f ]
 "93
-[; ;SSD/SSD.c: 93:         PORTD=0b01101111;
-[e = _PORTD -> -> 111 `i `uc ]
+[; ;SSD/SSD.c: 93:    switch(Number)
+[e $U 109  ]
 "94
-[; ;SSD/SSD.c: 94:         break;
-[e $U 104  ]
+[; ;SSD/SSD.c: 94:     {
+{
+"95
+[; ;SSD/SSD.c: 95:      case 0:
+[e :U 110 ]
 "96
-[; ;SSD/SSD.c: 96:     }
-}
-[e $U 104  ]
-[e :U 105 ]
-[e [\ -> _Number `i , $ -> 0 `i 106
- , $ -> 1 `i 107
- , $ -> 2 `i 108
- , $ -> 3 `i 109
- , $ -> 4 `i 110
- , $ -> 5 `i 111
- , $ -> 6 `i 112
- , $ -> 7 `i 113
- , $ -> 8 `i 114
- , $ -> 9 `i 115
- 104 ]
-[e :U 104 ]
+[; ;SSD/SSD.c: 96:         PORTD=0b0111111;
+[e = _PORTD -> -> 63 `i `uc ]
+"97
+[; ;SSD/SSD.c: 97:         break;
+[e $U 108  ]
 "99
-[; ;SSD/SSD.c: 99: }
-[e :UE 103 ]
+[; ;SSD/SSD.c: 99:      case 1:
+[e :U 111 ]
+"100
+[; ;SSD/SSD.c: 100:         PORTD=0b0000110;
+[e = _PORTD -> -> 6 `i `uc ]
+"101
+[; ;SSD/SSD.c: 101:         break;
+[e $U 108  ]
+"103
+[; ;SSD/SSD.c: 103:      case 2:
+[e :U 112 ]
+"104
+[; ;SSD/SSD.c: 104:         PORTD=0b1011011;
+[e = _PORTD -> -> 91 `i `uc ]
+"105
+[; ;SSD/SSD.c: 105:         break;
+[e $U 108  ]
+"107
+[; ;SSD/SSD.c: 107:      case 3:
+[e :U 113 ]
+"108
+[; ;SSD/SSD.c: 108:         PORTD=0b1001111;
+[e = _PORTD -> -> 79 `i `uc ]
+"109
+[; ;SSD/SSD.c: 109:         break;
+[e $U 108  ]
+"111
+[; ;SSD/SSD.c: 111:      case 4:
+[e :U 114 ]
+"112
+[; ;SSD/SSD.c: 112:         PORTD=0b1100110;
+[e = _PORTD -> -> 102 `i `uc ]
+"113
+[; ;SSD/SSD.c: 113:         break;
+[e $U 108  ]
+"115
+[; ;SSD/SSD.c: 115:      case 5:
+[e :U 115 ]
+"116
+[; ;SSD/SSD.c: 116:         PORTD=0b1101101;
+[e = _PORTD -> -> 109 `i `uc ]
+"117
+[; ;SSD/SSD.c: 117:         break;
+[e $U 108  ]
+"119
+[; ;SSD/SSD.c: 119:      case 6:
+[e :U 116 ]
+"120
+[; ;SSD/SSD.c: 120:         PORTD=0b1111101;
+[e = _PORTD -> -> 125 `i `uc ]
+"121
+[; ;SSD/SSD.c: 121:         break;
+[e $U 108  ]
+"123
+[; ;SSD/SSD.c: 123:      case 7:
+[e :U 117 ]
+"124
+[; ;SSD/SSD.c: 124:         PORTD=0b0000111;
+[e = _PORTD -> -> 7 `i `uc ]
+"125
+[; ;SSD/SSD.c: 125:         break;
+[e $U 108  ]
+"127
+[; ;SSD/SSD.c: 127:      case 8:
+[e :U 118 ]
+"128
+[; ;SSD/SSD.c: 128:         PORTD=0b1111111;
+[e = _PORTD -> -> 127 `i `uc ]
+"129
+[; ;SSD/SSD.c: 129:         break;
+[e $U 108  ]
+"131
+[; ;SSD/SSD.c: 131:      case 9:
+[e :U 119 ]
+"132
+[; ;SSD/SSD.c: 132:         PORTD=0b1101111;
+[e = _PORTD -> -> 111 `i `uc ]
+"133
+[; ;SSD/SSD.c: 133:         break;
+[e $U 108  ]
+"135
+[; ;SSD/SSD.c: 135:     }
+}
+[e $U 108  ]
+[e :U 109 ]
+[e [\ -> _Number `i , $ -> 0 `i 110
+ , $ -> 1 `i 111
+ , $ -> 2 `i 112
+ , $ -> 3 `i 113
+ , $ -> 4 `i 114
+ , $ -> 5 `i 115
+ , $ -> 6 `i 116
+ , $ -> 7 `i 117
+ , $ -> 8 `i 118
+ , $ -> 9 `i 119
+ 108 ]
+[e :U 108 ]
+"138
+[; ;SSD/SSD.c: 138: }
+[e :UE 107 ]
 }

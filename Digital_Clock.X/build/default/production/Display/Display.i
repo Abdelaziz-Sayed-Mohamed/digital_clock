@@ -1891,6 +1891,28 @@ void GPIO_Init(void);
 # 16 "Display/Display_Cfg.h" 2
 # 15 "Display/Display.h" 2
 
+# 1 "Display/../ModeManger/ModeManager.h" 1
+# 14 "Display/../ModeManger/ModeManager.h"
+# 1 "Display/../ModeManger/ModeManager_Cfg.h" 1
+# 14 "Display/../ModeManger/ModeManager.h" 2
+
+
+typedef enum MODE_T
+{
+    Normal_Mode=0,
+    Hours_Mode=1,
+    Minutes_Mode=2
+}MODE_t;
+
+MODE_t MODE;
+
+void ModeManager_Init(void);
+void ModeManager_Update(void);
+# 16 "Display/Display.h" 2
+
+
+
+
 
 typedef enum Display_T
 {
@@ -1899,12 +1921,16 @@ typedef enum Display_T
 }Display_t;
 Display_t Display;
 
+
+extern uint8_t Enable_Minutes;
+extern uint8_t Enable_Hours;
+
 void Display_Init(void);
 void Display_Update(void);
 void Display_Normal(void);
 void Display_Hour_Setting(void);
 void Display_Minutes_Setting(void);
-void Display_Blink(void);
+void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_) ;
 # 9 "Display/Display.c" 2
 
 # 1 "Display/../SSD/SSD.h" 1
@@ -1945,45 +1971,21 @@ void Clock_Hour_Setting(void);
 void Clock_Minutes_Setting(void);
 # 11 "Display/Display.c" 2
 
-# 1 "Display/../ModeManger/ModeManager.h" 1
-# 14 "Display/../ModeManger/ModeManager.h"
-# 1 "Display/../ModeManger/ModeManager_Cfg.h" 1
-# 14 "Display/../ModeManger/ModeManager.h" 2
 
 
-typedef enum MODE_T
-{
-    Normal_Mode=0,
-    Hour_Mode=1,
-    Minutes_Mode=2
-}MODE_T;
-
-MODE_T MODE;
-
-void ModeManager_Init(void);
-void ModeManager_Update(void);
-# 12 "Display/Display.c" 2
-
-
-
-static uint8_t Digit1=0;
-static uint8_t Digit2=0;
-static uint8_t Digit3=0;
-static uint8_t Digit4=0;
-
-
+uint8_t Enable_Minutes;
+uint8_t Enable_Hours;
 
 
 void Display_Init(void)
 {
-Digit1=Clock.Hours/10;
-Digit2=Clock.Hours%10;
-Digit3=Clock.Minutes/10;
-Digit4=Clock.Minutes%10;
-(PORTA&=~(1<<2));
-(PORTA&=~(1<<3));
-(PORTA&=~(1<<4));
-(PORTA&=~(1<<5));
+    Enable_Minutes=1;
+    Enable_Hours=1;
+    (PORTA&=~(1<<2));
+    (PORTA&=~(1<<3));
+    (PORTA&=~(1<<4));
+    (PORTA&=~(1<<5));
+    (PORTD&=~(1<<7));
 }
 
 void Display_Update(void)
@@ -1994,53 +1996,68 @@ void Display_Update(void)
                               Display_Normal();
                               break;
 
-        case Hour_Mode:
-                              Display_Hour_Setting();
+        case Hours_Mode:
+                              Display_Blink(500,Hours_Mode);
+                              Enable_Minutes=1;
+
                               break;
 
         case Minutes_Mode:
-                              Display_Minutes_Setting();
+                              Display_Blink(500,Minutes_Mode);
+                              Enable_Hours=1;
                               break;
     }
-
+    SSD_DigitSelector();
 }
 
 
 
+
+
+
+void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_)
+{
+    static uint16_t Counter=0;
+
+        if(Counter*1==Times_Ms)
+        {
+            if(_MODE_==Minutes_Mode)
+            {
+                if(Enable_Minutes==1)
+                {
+                   Enable_Minutes=0;
+                   (PORTA&=~(1<<4)) ;
+                    (PORTA&=~(1<<5)) ;
+                }
+                else if(Enable_Minutes==0)
+                {
+                   Enable_Minutes=1;
+                }
+
+            }
+            if(_MODE_==Hours_Mode)
+            {
+                if(Enable_Hours==1)
+                {
+                   Enable_Hours=0;
+                   (PORTA&=~(1<<2)) ;
+                    (PORTA&=~(1<<3)) ;
+                }
+                else if(Enable_Hours==0)
+                {
+                   Enable_Hours=1;
+                }
+
+            }
+
+            Counter=1;
+        }
+        Counter++;
+
+}
 
 void Display_Normal(void)
 {
-    Display^=1;
-
-    if(Display==Minutes)
-    {
-        SSD_Display(Clock.Minutes);
-    }
-    else
-    {
-        SSD_Display(Clock.Hours);
-    }
-   SSD_DigitSelector();
-}
-
-
-
-void Display_Hour_Setting(void)
-{
-
-
-}
-
-
-void Display_Minutes_Setting(void)
-{
-
-
-}
-
-
-void Display_Blink(void)
-{
-
-
+  Enable_Minutes=1;
+  Enable_Hours=1;
 }

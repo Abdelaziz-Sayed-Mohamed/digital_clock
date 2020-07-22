@@ -1,12 +1,11 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"22 ./Display/Display.h
-[; ;./Display/Display.h: 22: Display_t Display;
-[c E982 0 1 .. ]
-[n E982 Display_T Minutes Hours  ]
 "23 ./ModeManger/ModeManager.h
-[; ;./ModeManger/ModeManager.h: 23: MODE_T MODE;
-[c E993 0 1 2 .. ]
-[n E993 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+[c E982 0 1 2 .. ]
+[n E982 MODE_T Normal_Mode Hours_Mode Minutes_Mode  ]
+"26 ./Display/Display.h
+[; ;./Display/Display.h: 26: Display_t Display;
+[c E990 0 1 .. ]
+[n E990 Display_T Minutes Hours  ]
 "17 ./Clock/Clock.h
 [; ;./Clock/Clock.h: 17: {
 [s S96 `uc 1 `uc 1 `uc 1 ]
@@ -18,14 +17,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
 "28 ./Interrupt/../Buttons/../gpio/gpio.h
 [v _GPIO_Init `(v ~T0 @X0 0 ef ]
-"24 ./Display/Display.h
-[; ;./Display/Display.h: 24: void Display_Init(void);
+"32 ./Display/Display.h
+[; ;./Display/Display.h: 32: void Display_Init(void);
 [v _Display_Init `(v ~T0 @X0 0 ef ]
 "24 ./Clock/Clock.h
 [; ;./Clock/Clock.h: 24: void Clock_Init(void);
 [v _Clock_Init `(v ~T0 @X0 0 ef ]
 "25 ./ModeManger/ModeManager.h
-[; ;./ModeManger/ModeManager.h: 25: void ModeManager_Init(void);
 [v _ModeManager_Init `(v ~T0 @X0 0 ef ]
 "29 ./Interrupt/../Buttons/Buttons.h
 [; ;./Interrupt/../Buttons/Buttons.h: 29: void Buttons_Init(void);
@@ -233,12 +231,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"22 ./Display/Display.h
-[; ;./Display/Display.h: 22: Display_t Display;
-[v _Display `E982 ~T0 @X0 1 e ]
 "23 ./ModeManger/ModeManager.h
-[; ;./ModeManger/ModeManager.h: 23: MODE_T MODE;
-[v _MODE `E993 ~T0 @X0 1 e ]
+[v _MODE `E982 ~T0 @X0 1 e ]
+"26 ./Display/Display.h
+[; ;./Display/Display.h: 26: Display_t Display;
+[v _Display `E990 ~T0 @X0 1 e ]
 "22 ./Clock/Clock.h
 [; ;./Clock/Clock.h: 22: Clock_t Clock;
 [v _Clock `S96 ~T0 @X0 1 e ]

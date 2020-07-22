@@ -9,27 +9,21 @@
 #include"Display.h"
 #include"../SSD/SSD.h"
 #include"../Clock/Clock.h"
-#include"../ModeManger/ModeManager.h"
 
 
-static uint8_t Digit1=0;
-static uint8_t Digit2=0;
-static uint8_t Digit3=0;
-static uint8_t Digit4=0;
+uint8_t Enable_Minutes;
+uint8_t Enable_Hours; 
 
-
- 
 
 void Display_Init(void)
 {
-Digit1=Clock.Hours/10;
-Digit2=Clock.Hours%10;
-Digit3=Clock.Minutes/10;
-Digit4=Clock.Minutes%10;
-RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
-RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
-RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);
-RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
+    Enable_Minutes=ON;
+    Enable_Hours=ON;
+    RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
+    RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
+    RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);
+    RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
+    RESET_PIN(DOT_PORT,DOT_PIN);
 }
 
 void Display_Update(void)
@@ -40,53 +34,72 @@ void Display_Update(void)
                               Display_Normal();
                               break;
                               
-        case Hour_Mode:
-                              Display_Hour_Setting();
+        case Hours_Mode:
+                              Display_Blink(500,Hours_Mode);
+                              Enable_Minutes=ON;
+  
                               break;                       
        
         case Minutes_Mode:
-                              Display_Minutes_Setting();
+                              Display_Blink(500,Minutes_Mode);
+                              Enable_Hours=ON;
                               break;                         
     }        
-
+    SSD_DigitSelector();
 }
 
 
 
+
+
+
+void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_) 
+{
+    static uint16_t Counter=0;
+       
+        if(Counter*SSD_Blink_TaskPeroid==Times_Ms)
+        {
+            if(_MODE_==Minutes_Mode)
+            {
+                if(Enable_Minutes==ON)
+                {
+              	    Enable_Minutes=OFF;
+              	    RESET_PIN(DIGIT3_PORT,DIGIT3_PIN) ;
+                    RESET_PIN(DIGIT4_PORT,DIGIT4_PIN) ;
+                }
+                else if(Enable_Minutes==OFF)
+                {
+              	    Enable_Minutes=ON;
+                }
+                  
+            }
+            if(_MODE_==Hours_Mode)
+            {
+                if(Enable_Hours==ON)
+                {
+              	    Enable_Hours=OFF;
+              	    RESET_PIN(DIGIT1_PORT,DIGIT1_PIN) ;
+                    RESET_PIN(DIGIT2_PORT,DIGIT2_PIN) ;
+                }
+                else if(Enable_Hours==OFF)
+                {
+              	    Enable_Hours=ON;
+                }
+                  
+            }
+                   
+            Counter=1;
+        }  
+        Counter++;
+      
+}
 
 void Display_Normal(void)
 {
-    Display^=1;
-  
-    if(Display==Minutes)
-    {
-        SSD_Display(Clock.Minutes);  
-    }
-    else
-    {
-        SSD_Display(Clock.Hours);
-    }    
-   SSD_DigitSelector();
+  Enable_Minutes=ON;
+  Enable_Hours=ON;
 }
 
 
 
-void Display_Hour_Setting(void)
-{
 
-
-}
-
-
-void Display_Minutes_Setting(void)
-{
-
-
-}
-
-
-void Display_Blink(void)
-{
-
-
-}

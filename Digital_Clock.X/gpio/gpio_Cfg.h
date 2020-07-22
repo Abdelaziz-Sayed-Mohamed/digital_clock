@@ -15,15 +15,15 @@ extern "C" {
     
 #define _SettingButton_PORT_        PORTB
 #define _SettingButton_DIRECTION_   TRISB
-#define _SettingButton_PIN_         2
+#define _SettingButton_PIN_         0
 
 #define _UpButton_PORT_             PORTB
 #define _UpButton_DIRECTION_        TRISB
-#define _UpButton_PIN_              1
+#define _UpButton_PIN_              2
    
 #define _DownButton_PORT_           PORTB 
 #define _DownButton_DIRECTION_      TRISB
-#define _DownButton_PIN_            0    
+#define _DownButton_PIN_            1    
     
 #define _DIGIT1_PORT_               PORTA
 #define _DIGIT1_DIRECTION_          TRISA    
@@ -41,6 +41,11 @@ extern "C" {
 #define _DIGIT4_PORT_               PORTA
 #define _DIGIT4_DIRECTION_          TRISA     
 #define _DIGIT4_PIN_                5 
+    
+#define _DOT_PORT_                  PORTD
+#define _DOT_DIRECTION_             TRISD     
+#define _DOT_PIN_                   7 
+    
     
 #define _SSD_PORT_                  PORTD
 #define _SSD_PORT_DIRECTION_        TRISD

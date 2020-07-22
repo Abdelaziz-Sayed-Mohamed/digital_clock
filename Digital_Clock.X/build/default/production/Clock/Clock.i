@@ -1937,11 +1937,11 @@ void EXTI_SettingButton_CB(void);
 typedef enum MODE_T
 {
     Normal_Mode=0,
-    Hour_Mode=1,
+    Hours_Mode=1,
     Minutes_Mode=2
-}MODE_T;
+}MODE_t;
 
-MODE_T MODE;
+MODE_t MODE;
 
 void ModeManager_Init(void);
 void ModeManager_Update(void);
@@ -1964,7 +1964,7 @@ void Clock_Update(void)
                               Clock_Normal();
                               break;
 
-        case Hour_Mode:
+        case Hours_Mode:
                               Clock_Hour_Setting();
                               break;
 
@@ -1978,9 +1978,15 @@ void Clock_Update(void)
 
 void Clock_Normal(void)
 {
+    static uint8_t counter=0;
+    counter++;
+    if(counter*1000==1000)
+    {
 
-    Clock.Second++;
+      counter=0;
+    }
 
+     Clock.Second++;
     if(Clock.Second==60)
     {
       Clock.Minutes++;
@@ -2012,9 +2018,9 @@ void Clock_Hour_Setting(void)
         {
             Clock.Hours++;
         }
-
+        ButtonsFlag.UpButton_Flag=0;
     }
-    else if(ButtonsFlag.DownButton_Flag&&ButtonsFlag.UpButton_Flag)
+    else if(ButtonsFlag.DownButton_Flag&&!ButtonsFlag.UpButton_Flag)
     {
          if(Clock.Hours==0)
         {
@@ -2024,6 +2030,7 @@ void Clock_Hour_Setting(void)
         {
          Clock.Hours--;
         }
+        ButtonsFlag.DownButton_Flag=0;
 
     }
 
@@ -2043,9 +2050,9 @@ void Clock_Minutes_Setting(void)
         {
             Clock.Minutes++;
         }
-
+        ButtonsFlag.UpButton_Flag=0;
     }
-    else if(ButtonsFlag.DownButton_Flag&&ButtonsFlag.UpButton_Flag)
+    else if(ButtonsFlag.DownButton_Flag&&!ButtonsFlag.UpButton_Flag)
     {
         if(Clock.Minutes==0)
         {
@@ -2056,6 +2063,7 @@ void Clock_Minutes_Setting(void)
         {
             Clock.Minutes--;
         }
+        ButtonsFlag.DownButton_Flag=0;
     }
 
 

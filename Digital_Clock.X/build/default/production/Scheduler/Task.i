@@ -1897,6 +1897,28 @@ void GPIO_Init(void);
 # 16 "Scheduler/../Display/Display_Cfg.h" 2
 # 15 "Scheduler/../Display/Display.h" 2
 
+# 1 "Scheduler/../Display/../ModeManger/ModeManager.h" 1
+# 14 "Scheduler/../Display/../ModeManger/ModeManager.h"
+# 1 "Scheduler/../Display/../ModeManger/ModeManager_Cfg.h" 1
+# 14 "Scheduler/../Display/../ModeManger/ModeManager.h" 2
+
+
+typedef enum MODE_T
+{
+    Normal_Mode=0,
+    Hours_Mode=1,
+    Minutes_Mode=2
+}MODE_t;
+
+MODE_t MODE;
+
+void ModeManager_Init(void);
+void ModeManager_Update(void);
+# 16 "Scheduler/../Display/Display.h" 2
+
+
+
+
 
 typedef enum Display_T
 {
@@ -1905,32 +1927,18 @@ typedef enum Display_T
 }Display_t;
 Display_t Display;
 
+
+extern uint8_t Enable_Minutes;
+extern uint8_t Enable_Hours;
+
 void Display_Init(void);
 void Display_Update(void);
 void Display_Normal(void);
 void Display_Hour_Setting(void);
 void Display_Minutes_Setting(void);
-void Display_Blink(void);
+void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_) ;
 # 10 "Scheduler/Task.c" 2
 
-# 1 "Scheduler/../ModeManger/ModeManager.h" 1
-# 14 "Scheduler/../ModeManger/ModeManager.h"
-# 1 "Scheduler/../ModeManger/ModeManager_Cfg.h" 1
-# 14 "Scheduler/../ModeManger/ModeManager.h" 2
-
-
-typedef enum MODE_T
-{
-    Normal_Mode=0,
-    Hour_Mode=1,
-    Minutes_Mode=2
-}MODE_T;
-
-MODE_T MODE;
-
-void ModeManager_Init(void);
-void ModeManager_Update(void);
-# 11 "Scheduler/Task.c" 2
 
 # 1 "Scheduler/../Clock/Clock.h" 1
 # 16 "Scheduler/../Clock/Clock.h"
@@ -1980,7 +1988,7 @@ void Scheduler_Task1(void)
 {
 
   Display_Update();
-  (PORTB^=(1<<4));
+
 }
 
 void Scheduler_Task2(void)
@@ -1988,10 +1996,11 @@ void Scheduler_Task2(void)
 
   Buttons_Update();
   ModeManager_Update();
+
 }
 
 void Scheduler_Task3(void)
 {
-  (PORTB^=(1<<3));
-  Clock_Update();
+    Clock_Update();
+
 }

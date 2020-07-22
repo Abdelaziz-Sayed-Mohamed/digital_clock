@@ -1,12 +1,11 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"22 Scheduler/../Display/Display.h
-[; ;Scheduler/../Display/Display.h: 22: Display_t Display;
-[c E882 0 1 .. ]
-[n E882 Display_T Minutes Hours  ]
 "23 Scheduler/../ModeManger/ModeManager.h
-[; ;Scheduler/../ModeManger/ModeManager.h: 23: MODE_T MODE;
-[c E893 0 1 2 .. ]
-[n E893 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+[c E882 0 1 2 .. ]
+[n E882 MODE_T Normal_Mode Hours_Mode Minutes_Mode  ]
+"26 Scheduler/../Display/Display.h
+[; ;Scheduler/../Display/Display.h: 26: Display_t Display;
+[c E890 0 1 .. ]
+[n E890 Display_T Minutes Hours  ]
 "17 Scheduler/../Clock/Clock.h
 [; ;Scheduler/../Clock/Clock.h: 17: {
 [s S95 `uc 1 `uc 1 `uc 1 ]
@@ -15,17 +14,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Scheduler/../Buttons/Buttons.h: 22: {
 [s S96 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S96 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
-"25 Scheduler/../Display/Display.h
-[; ;Scheduler/../Display/Display.h: 25: void Display_Update(void);
+"33 Scheduler/../Display/Display.h
+[; ;Scheduler/../Display/Display.h: 33: void Display_Update(void);
 [v _Display_Update `(v ~T0 @X0 0 ef ]
-"216 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
-[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 216: extern volatile unsigned char PORTB __attribute__((address(0x006)));
-[v _PORTB `Vuc ~T0 @X0 0 e@6 ]
 "30 Scheduler/../Buttons/Buttons.h
 [; ;Scheduler/../Buttons/Buttons.h: 30: void Buttons_Update(void);
 [v _Buttons_Update `(v ~T0 @X0 0 ef ]
 "26 Scheduler/../ModeManger/ModeManager.h
-[; ;Scheduler/../ModeManger/ModeManager.h: 26: void ModeManager_Update(void);
 [v _ModeManager_Update `(v ~T0 @X0 0 ef ]
 "25 Scheduler/../Clock/Clock.h
 [; ;Scheduler/../Clock/Clock.h: 25: void Clock_Update(void);
@@ -226,12 +221,11 @@ Version 4.0 HI-TECH Software Intermediate Code
 "2363
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2363: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"22 Scheduler/../Display/Display.h
-[; ;Scheduler/../Display/Display.h: 22: Display_t Display;
-[v _Display `E882 ~T0 @X0 1 e ]
 "23 Scheduler/../ModeManger/ModeManager.h
-[; ;Scheduler/../ModeManger/ModeManager.h: 23: MODE_T MODE;
-[v _MODE `E893 ~T0 @X0 1 e ]
+[v _MODE `E882 ~T0 @X0 1 e ]
+"26 Scheduler/../Display/Display.h
+[; ;Scheduler/../Display/Display.h: 26: Display_t Display;
+[v _Display `E890 ~T0 @X0 1 e ]
 "22 Scheduler/../Clock/Clock.h
 [; ;Scheduler/../Clock/Clock.h: 22: Clock_t Clock;
 [v _Clock `S95 ~T0 @X0 1 e ]
@@ -249,9 +243,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "20
 [; ;Scheduler/Task.c: 20:   Display_Update();
 [e ( _Display_Update ..  ]
-"21
-[; ;Scheduler/Task.c: 21:   (PORTB^=(1<<4));
-[e =^ _PORTB -> << -> 1 `i -> 4 `i `Vuc ]
 "22
 [; ;Scheduler/Task.c: 22: }
 [e :UE 97 ]
@@ -270,25 +261,22 @@ Version 4.0 HI-TECH Software Intermediate Code
 "28
 [; ;Scheduler/Task.c: 28:   ModeManager_Update();
 [e ( _ModeManager_Update ..  ]
-"29
-[; ;Scheduler/Task.c: 29: }
+"30
+[; ;Scheduler/Task.c: 30: }
 [e :UE 98 ]
 }
-"31
-[; ;Scheduler/Task.c: 31: void Scheduler_Task3(void)
-[v _Scheduler_Task3 `(v ~T0 @X0 1 ef ]
 "32
-[; ;Scheduler/Task.c: 32: {
+[; ;Scheduler/Task.c: 32: void Scheduler_Task3(void)
+[v _Scheduler_Task3 `(v ~T0 @X0 1 ef ]
+"33
+[; ;Scheduler/Task.c: 33: {
 {
 [e :U _Scheduler_Task3 ]
 [f ]
-"33
-[; ;Scheduler/Task.c: 33:   (PORTB^=(1<<3));
-[e =^ _PORTB -> << -> 1 `i -> 3 `i `Vuc ]
 "34
-[; ;Scheduler/Task.c: 34:   Clock_Update();
+[; ;Scheduler/Task.c: 34:     Clock_Update();
 [e ( _Clock_Update ..  ]
-"35
-[; ;Scheduler/Task.c: 35: }
+"36
+[; ;Scheduler/Task.c: 36: }
 [e :UE 99 ]
 }

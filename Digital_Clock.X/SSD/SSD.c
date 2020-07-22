@@ -7,43 +7,82 @@
 
 #include"SSD.h"
 #include"../ModeManger/ModeManager.h"
+#include"../Clock/Clock.h"
+#include"../Display/Display.h"
+
+
+uint8_t Digit1=0;
+uint8_t Digit2=0;
+uint8_t Digit3=0;
+uint8_t Digit4=0;
+
+
+
+
+
+
 
 void SSD_DigitSelector(void)
 {
-    if(MODE==Normal_Mode)
-    {
+  
+ Digit1=Clock.Hours/10;
+ Digit2=Clock.Hours%10;
+ Digit3=Clock.Minutes/10;
+ Digit4=Clock.Minutes%10;
+   
+   
       
       switch(DigitSelector)
       {
-          case Digit_1_:
-                      SET_PIN(DIGIT1_PORT,DIGIT1_PIN);
-                      RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
-                      RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);
-                      RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
+            case Digit_1_:
+                        if(Enable_Hours==ON)
+                        {   
+                            SET_PIN(DIGIT1_PORT,DIGIT1_PIN);
+                        }    
+                        RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
+                        RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);
+                        RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
+                        SSD_Display(Digit1);
+                        break;
             
             case Digit_2_:
-                      SET_PIN(DIGIT2_PORT,DIGIT2_PIN);
-                      RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
-                      RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);
-                      RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
-            
+                        if(Enable_Hours==ON)        
+                        {   
+                            SET_PIN(DIGIT2_PORT,DIGIT2_PIN);
+                        }    
+                        RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
+                        RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);
+                        RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
+                        
+                        SET_PIN(DOT_PORT,DOT_PIN);
+                        SSD_Display(Digit2);
+                        break;
             case Digit_3_:
-                      SET_PIN(DIGIT3_PORT,DIGIT3_PIN);
-                      RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
-                      RESET_PIN(DIGIT2_PORT,DIGIT3_PIN);
-                      RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
-                   
+                        if(Enable_Minutes==ON)
+                        {   
+                            SET_PIN(DIGIT3_PORT,DIGIT3_PIN);
+                        }    
+                        RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
+                        RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
+                        RESET_PIN(DIGIT4_PORT,DIGIT4_PIN);
+                        SSD_Display(Digit3);
+                        break;
             case Digit_4_:
-                      SET_PIN(DIGIT4_PORT,DIGIT4_PIN);
-                      SET_PIN(DIGIT1_PORT,DIGIT1_PIN);
-                      RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
-                      RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);             
-      
+                        if(Enable_Minutes==ON) 
+                        {   
+                            SET_PIN(DIGIT4_PORT,DIGIT4_PIN);
+                        }    
+                        RESET_PIN(DIGIT1_PORT,DIGIT1_PIN);
+                        RESET_PIN(DIGIT2_PORT,DIGIT2_PIN);
+                        RESET_PIN(DIGIT3_PORT,DIGIT3_PIN);             
+                        SSD_Display(Digit4);
+                        break;
       }
-      DigitSelector=(DigitSelector+1)%NumberOfDigits;
+       DigitSelector=(DigitSelector+1)%NumberOfDigits;
+      
+      
     
-    
-    }    
+      
 
 }
 
@@ -97,3 +136,6 @@ void SSD_Display(uint8_t Number)
 
 
 }
+
+
+

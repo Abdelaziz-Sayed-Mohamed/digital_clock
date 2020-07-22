@@ -16,15 +16,17 @@ void ModeManager_Init(void)
 
 void ModeManager_Update(void)
 {
+     
     if(ButtonsFlag.SettingButton_Flag)
     {
+        
         switch(MODE)
         {
             case Normal_Mode: 
-                         MODE=Hour_Mode;
+                         MODE=Hours_Mode;
                          break;
                          
-            case Hour_Mode: 
+            case Hours_Mode: 
                          MODE=Minutes_Mode;
                          break;             
         

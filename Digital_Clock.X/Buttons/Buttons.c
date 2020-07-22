@@ -7,6 +7,7 @@
 #include"Buttons.h"
 #include"../ModeManger/ModeManager.h"
 #include"string.h"
+#include"../gpio/gpio.h"
 
 
 uint8_t Debounce_UpButton[NSamples];
@@ -16,8 +17,10 @@ void Buttons_Init(void)
 {
     memset(Debounce_UpButton,NotPressed,sizeof(Debounce_UpButton));
     memset(Debounce_DownButton,NotPressed,sizeof(Debounce_DownButton));
-    INTCONbits.INTF=0;
+    
+    INTEDG=1;
     INTCONbits.INTE=1;
+    INTCONbits.INTF=0;
 }
 
 
@@ -31,12 +34,14 @@ void Buttons_Update(void)
     if(Debounce_UpButton[0]==Pressed &&Debounce_UpButton[1]==Pressed &&Debounce_UpButton[2]==Pressed )
     {
         ButtonsFlag.UpButton_Flag=1;
+         TOGGLE_PIN(_LED3_PORT_,_LED3_PIN_);
         Debounce_UpButton[0]=NotPressed ;Debounce_UpButton[1]=NotPressed ;Debounce_UpButton[2]=NotPressed ; 
     }
     
     if(Debounce_DownButton[0]==Pressed &&Debounce_DownButton[1]==Pressed &&Debounce_DownButton[2]==Pressed )
     {
         ButtonsFlag.DownButton_Flag=1;
+         TOGGLE_PIN(_LED3_PORT_,_LED3_PIN_);
         Debounce_DownButton[0]=NotPressed ;Debounce_DownButton[1]=NotPressed ;Debounce_DownButton[2]=NotPressed ; 
     }   
     
@@ -45,5 +50,6 @@ void Buttons_Update(void)
 void EXTI_SettingButton_CB(void)
 {  
     ButtonsFlag.SettingButton_Flag=1;
+    
 }
 

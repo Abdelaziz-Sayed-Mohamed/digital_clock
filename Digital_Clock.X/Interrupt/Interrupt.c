@@ -4,12 +4,12 @@
  *
  * Created on July 20, 2020, 10:26 PM
  */
-char value = 0;
 #include"Interrupt.h"
+#include"../gpio/gpio.h"
 
 void __interrupt() ISR(void)
 {
-    if(INTCONbits.TMR0IF==1)
+    if(INTCONbits.TMR0IF)
     {   
       
       TMR0 = 100;                   
@@ -17,7 +17,7 @@ void __interrupt() ISR(void)
       Interrupt_CbStruct.Timer_CB(); 
       
     }
-    else if(INTCONbits.INTF==1)
+    if(INTCONbits.INTF)
     {
       INTCONbits.INTF=0;
       Interrupt_CbStruct.EXTI_CB();

@@ -13,7 +13,11 @@ extern "C" {
 #endif
 
 #include"Display_Cfg.h"
-
+#include"../ModeManger/ModeManager.h"
+    
+#define ON    1
+#define OFF   0
+    
 typedef enum Display_T
 {
      Minutes=0,
@@ -21,12 +25,16 @@ typedef enum Display_T
 }Display_t;
 Display_t Display; 
 
+   
+extern uint8_t Enable_Minutes;
+extern uint8_t Enable_Hours; 
+
 void Display_Init(void);
 void Display_Update(void);
 void Display_Normal(void);
 void Display_Hour_Setting(void);
 void Display_Minutes_Setting(void);
-void Display_Blink(void);
+void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_) ;
 
 #ifdef	__cplusplus
 }

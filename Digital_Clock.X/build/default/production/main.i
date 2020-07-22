@@ -1981,6 +1981,28 @@ void GPIO_Init(void);
 # 16 "./Display/Display_Cfg.h" 2
 # 15 "./Display/Display.h" 2
 
+# 1 "./Display/../ModeManger/ModeManager.h" 1
+# 14 "./Display/../ModeManger/ModeManager.h"
+# 1 "./Display/../ModeManger/ModeManager_Cfg.h" 1
+# 14 "./Display/../ModeManger/ModeManager.h" 2
+
+
+typedef enum MODE_T
+{
+    Normal_Mode=0,
+    Hours_Mode=1,
+    Minutes_Mode=2
+}MODE_t;
+
+MODE_t MODE;
+
+void ModeManager_Init(void);
+void ModeManager_Update(void);
+# 16 "./Display/Display.h" 2
+
+
+
+
 
 typedef enum Display_T
 {
@@ -1989,32 +2011,18 @@ typedef enum Display_T
 }Display_t;
 Display_t Display;
 
+
+extern uint8_t Enable_Minutes;
+extern uint8_t Enable_Hours;
+
 void Display_Init(void);
 void Display_Update(void);
 void Display_Normal(void);
 void Display_Hour_Setting(void);
 void Display_Minutes_Setting(void);
-void Display_Blink(void);
+void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_) ;
 # 11 "main.c" 2
 
-# 1 "./ModeManger/ModeManager.h" 1
-# 14 "./ModeManger/ModeManager.h"
-# 1 "./ModeManger/ModeManager_Cfg.h" 1
-# 14 "./ModeManger/ModeManager.h" 2
-
-
-typedef enum MODE_T
-{
-    Normal_Mode=0,
-    Hour_Mode=1,
-    Minutes_Mode=2
-}MODE_T;
-
-MODE_T MODE;
-
-void ModeManager_Init(void);
-void ModeManager_Update(void);
-# 12 "main.c" 2
 
 # 1 "./Clock/Clock.h" 1
 # 16 "./Clock/Clock.h"
@@ -2077,9 +2085,6 @@ typedef struct Interrupt_CbStruct_T
 
 extern const Interrupt_CbStruct_t Interrupt_CbStruct ;
 # 15 "./Interrupt/Interrupt.h" 2
-
-
-    extern char value;
 # 16 "main.c" 2
 
 

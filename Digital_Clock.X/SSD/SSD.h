@@ -13,19 +13,19 @@ extern "C" {
 #endif
 #include"SSD_Cfg.h"
     
-#define NumberOfDigits 1 
+#define NumberOfDigits 4 
+   
     
-    
-#define SSD_Zero                        0b00111111
-#define SSD_One                         0b00000110
-#define SSD_Two                         0b01011011
-#define SSD_Three                       0b01001111
-#define SSD_Four                        0b01100110
-#define SSD_Five                        0b01101101
-#define SSD_Six                         0b01111101
-#define SSD_Seven                       0b00000111
-#define SSD_Eight                       0b01111111
-#define SSD_Nine                        0b01101111
+#define SSD_Zero                        0b0111111
+#define SSD_One                         0b0000110
+#define SSD_Two                         0b1011011
+#define SSD_Three                       0b1001111
+#define SSD_Four                        0b1100110
+#define SSD_Five                        0b1101101
+#define SSD_Six                         0b1111101
+#define SSD_Seven                       0b0000111
+#define SSD_Eight                       0b1111111
+#define SSD_Nine                        0b1101111
     
     
 typedef enum DigitSelector_T

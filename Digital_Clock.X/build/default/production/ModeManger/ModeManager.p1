@@ -1,14 +1,14 @@
 Version 4.0 HI-TECH Software Intermediate Code
 "23 ModeManger/ModeManager.h
-[; ;ModeManger/ModeManager.h: 23: MODE_T MODE;
+[; ;ModeManger/ModeManager.h: 23: MODE_t MODE;
 [c E2 0 1 2 .. ]
-[n E2 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+[n E2 MODE_T Normal_Mode Hours_Mode Minutes_Mode  ]
 "22 ModeManger/../Buttons/Buttons.h
 [; ;ModeManger/../Buttons/Buttons.h: 22: {
 [s S95 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S95 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
 "23 ModeManger/ModeManager.h
-[; ;ModeManger/ModeManager.h: 23: MODE_T MODE;
+[; ;ModeManger/ModeManager.h: 23: MODE_t MODE;
 [v _MODE `E2 ~T0 @X0 1 e ]
 "21 ModeManger/../Buttons/../gpio/../config.h
 [p x FOSC = HS ]
@@ -232,47 +232,47 @@ Version 4.0 HI-TECH Software Intermediate Code
 {
 [e :U _ModeManager_Update ]
 [f ]
-"19
-[; ;ModeManger/ModeManager.c: 19:     if(ButtonsFlag.SettingButton_Flag)
-[e $ ! != -> . _ButtonsFlag 2 `i -> 0 `i 98  ]
 "20
-[; ;ModeManger/ModeManager.c: 20:     {
-{
+[; ;ModeManger/ModeManager.c: 20:     if(ButtonsFlag.SettingButton_Flag)
+[e $ ! != -> . _ButtonsFlag 2 `i -> 0 `i 98  ]
 "21
-[; ;ModeManger/ModeManager.c: 21:         switch(MODE)
-[e $U 100  ]
-"22
-[; ;ModeManger/ModeManager.c: 22:         {
+[; ;ModeManger/ModeManager.c: 21:     {
 {
 "23
-[; ;ModeManger/ModeManager.c: 23:             case Normal_Mode:
-[e :U 101 ]
+[; ;ModeManger/ModeManager.c: 23:         switch(MODE)
+[e $U 100  ]
 "24
-[; ;ModeManger/ModeManager.c: 24:                          MODE=Hour_Mode;
-[e = _MODE . `E2 1 ]
+[; ;ModeManger/ModeManager.c: 24:         {
+{
 "25
-[; ;ModeManger/ModeManager.c: 25:                          break;
-[e $U 99  ]
+[; ;ModeManger/ModeManager.c: 25:             case Normal_Mode:
+[e :U 101 ]
+"26
+[; ;ModeManger/ModeManager.c: 26:                          MODE=Hours_Mode;
+[e = _MODE . `E2 1 ]
 "27
-[; ;ModeManger/ModeManager.c: 27:             case Hour_Mode:
-[e :U 102 ]
-"28
-[; ;ModeManger/ModeManager.c: 28:                          MODE=Minutes_Mode;
-[e = _MODE . `E2 2 ]
+[; ;ModeManger/ModeManager.c: 27:                          break;
+[e $U 99  ]
 "29
-[; ;ModeManger/ModeManager.c: 29:                          break;
-[e $U 99  ]
+[; ;ModeManger/ModeManager.c: 29:             case Hours_Mode:
+[e :U 102 ]
+"30
+[; ;ModeManger/ModeManager.c: 30:                          MODE=Minutes_Mode;
+[e = _MODE . `E2 2 ]
 "31
-[; ;ModeManger/ModeManager.c: 31:             case Minutes_Mode:
-[e :U 103 ]
-"32
-[; ;ModeManger/ModeManager.c: 32:                          MODE=Normal_Mode;
-[e = _MODE . `E2 0 ]
-"33
-[; ;ModeManger/ModeManager.c: 33:                          break;
+[; ;ModeManger/ModeManager.c: 31:                          break;
 [e $U 99  ]
+"33
+[; ;ModeManger/ModeManager.c: 33:             case Minutes_Mode:
+[e :U 103 ]
 "34
-[; ;ModeManger/ModeManager.c: 34:         }
+[; ;ModeManger/ModeManager.c: 34:                          MODE=Normal_Mode;
+[e = _MODE . `E2 0 ]
+"35
+[; ;ModeManger/ModeManager.c: 35:                          break;
+[e $U 99  ]
+"36
+[; ;ModeManger/ModeManager.c: 36:         }
 }
 [e $U 99  ]
 [e :U 100 ]
@@ -281,14 +281,14 @@ Version 4.0 HI-TECH Software Intermediate Code
  , $ -> . `E2 2 `ui 103
  99 ]
 [e :U 99 ]
-"35
-[; ;ModeManger/ModeManager.c: 35:         ButtonsFlag.SettingButton_Flag=0;
+"37
+[; ;ModeManger/ModeManager.c: 37:         ButtonsFlag.SettingButton_Flag=0;
 [e = . _ButtonsFlag 2 -> -> 0 `i `uc ]
-"36
-[; ;ModeManger/ModeManager.c: 36:     }
+"38
+[; ;ModeManger/ModeManager.c: 38:     }
 }
 [e :U 98 ]
-"38
-[; ;ModeManger/ModeManager.c: 38: }
+"40
+[; ;ModeManger/ModeManager.c: 40: }
 [e :UE 97 ]
 }

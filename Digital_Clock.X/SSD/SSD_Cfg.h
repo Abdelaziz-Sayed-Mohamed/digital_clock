@@ -25,10 +25,16 @@ extern "C" {
    
    
 #define DIGIT4_PORT             _DIGIT4_PORT_                  
-#define DIGIT4_PIN              _DIGIT4_PIN_          
-   
+#define DIGIT4_PIN              _DIGIT4_PIN_  
+    
+#define DOT_PORT              _DOT_PORT_                    
+#define DOT_PIN               _DOT_PIN_                     
+  
 #define SSD_PORT                _SSD_PORT_           
 
+    
+#define SSD_Blink_TaskPeroid 1
+    
 #ifdef	__cplusplus
 }
 #endif

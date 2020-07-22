@@ -1917,11 +1917,11 @@ void EXTI_SettingButton_CB(void);
 typedef enum MODE_T
 {
     Normal_Mode=0,
-    Hour_Mode=1,
+    Hours_Mode=1,
     Minutes_Mode=2
-}MODE_T;
+}MODE_t;
 
-MODE_T MODE;
+MODE_t MODE;
 
 void ModeManager_Init(void);
 void ModeManager_Update(void);
@@ -1982,6 +1982,7 @@ extern char * strrichr(const char *, int);
 
 
 
+
 uint8_t Debounce_UpButton[3];
 uint8_t Debounce_DownButton[3];
 
@@ -1989,27 +1990,31 @@ void Buttons_Init(void)
 {
     memset(Debounce_UpButton,1,sizeof(Debounce_UpButton));
     memset(Debounce_DownButton,1,sizeof(Debounce_DownButton));
-    INTCONbits.INTF=0;
+
+    INTEDG=1;
     INTCONbits.INTE=1;
+    INTCONbits.INTF=0;
 }
 
 
 void Buttons_Update(void)
 {
     static uint8_t Debounce_Counter=0;
-    Debounce_UpButton[Debounce_Counter]=(PORTB&(1<<1));
-    Debounce_DownButton[Debounce_Counter]=(PORTB&(1<<0));
+    Debounce_UpButton[Debounce_Counter]=(PORTB&(1<<2));
+    Debounce_DownButton[Debounce_Counter]=(PORTB&(1<<1));
 
     Debounce_Counter=(Debounce_Counter+1)%3;
     if(Debounce_UpButton[0]==0 &&Debounce_UpButton[1]==0 &&Debounce_UpButton[2]==0 )
     {
         ButtonsFlag.UpButton_Flag=1;
+         (PORTB^=(1<<3));
         Debounce_UpButton[0]=1 ;Debounce_UpButton[1]=1 ;Debounce_UpButton[2]=1 ;
     }
 
     if(Debounce_DownButton[0]==0 &&Debounce_DownButton[1]==0 &&Debounce_DownButton[2]==0 )
     {
         ButtonsFlag.DownButton_Flag=1;
+         (PORTB^=(1<<3));
         Debounce_DownButton[0]=1 ;Debounce_DownButton[1]=1 ;Debounce_DownButton[2]=1 ;
     }
 
@@ -2018,4 +2023,5 @@ void Buttons_Update(void)
 void EXTI_SettingButton_CB(void)
 {
     ButtonsFlag.SettingButton_Flag=1;
+
 }

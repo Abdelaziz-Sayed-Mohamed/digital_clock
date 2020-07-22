@@ -26,7 +26,7 @@ void Clock_Update(void)
                               Clock_Normal();
                               break;
                               
-        case Hour_Mode:
+        case Hours_Mode:
                               Clock_Hour_Setting();
                               break;                       
        
@@ -37,12 +37,18 @@ void Clock_Update(void)
  
 }
 
-
+#define Task_Peroid  1000
 void Clock_Normal(void)
 {
-
-    Clock.Second++;
-        
+    static uint8_t counter=0;
+    counter++;
+    if(counter*Task_Peroid==1000)
+    {
+      
+      counter=0;
+    }    
+    
+     Clock.Second++;   
     if(Clock.Second==60)
     {
       Clock.Minutes++;
@@ -74,9 +80,9 @@ void Clock_Hour_Setting(void)
         {
             Clock.Hours++;
         }
-      
+        ButtonsFlag.UpButton_Flag=0;
     }
-    else if(ButtonsFlag.DownButton_Flag&&ButtonsFlag.UpButton_Flag)
+    else if(ButtonsFlag.DownButton_Flag&&!ButtonsFlag.UpButton_Flag)
     {   
          if(Clock.Hours==0)
         {
@@ -85,7 +91,8 @@ void Clock_Hour_Setting(void)
         else
         {
          Clock.Hours--; 
-        }    
+        }
+        ButtonsFlag.DownButton_Flag=0; 
                    
     }
     
@@ -105,9 +112,9 @@ void Clock_Minutes_Setting(void)
         {
             Clock.Minutes++;
         }    
-        
+        ButtonsFlag.UpButton_Flag=0;
     }
-    else if(ButtonsFlag.DownButton_Flag&&ButtonsFlag.UpButton_Flag)
+    else if(ButtonsFlag.DownButton_Flag&&!ButtonsFlag.UpButton_Flag)
     {
         if(Clock.Minutes==0)
         {
@@ -118,6 +125,7 @@ void Clock_Minutes_Setting(void)
         {
             Clock.Minutes--;
         } 
+        ButtonsFlag.DownButton_Flag=0;
     }
        
 

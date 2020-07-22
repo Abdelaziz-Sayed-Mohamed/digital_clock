@@ -9,8 +9,8 @@ Display/Display.h  \
 Display/Display_Cfg.h  \
 Display/../gpio/gpio.h  \
 Display/../gpio/gpio_Cfg.h  \
-ModeManger/ModeManager.h  \
-ModeManger/ModeManager_Cfg.h  \
+Display/../ModeManger/ModeManager.h  \
+Display/../ModeManger/ModeManager_Cfg.h  \
 Clock/Clock.h  \
 Interrupt/Interrupt.h  \
 Interrupt/Interrupt_Cfg.h  \

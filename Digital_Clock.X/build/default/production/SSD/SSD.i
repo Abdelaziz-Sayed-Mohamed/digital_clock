@@ -1915,53 +1915,136 @@ void SSD_Display(uint8_t Number);
 typedef enum MODE_T
 {
     Normal_Mode=0,
-    Hour_Mode=1,
+    Hours_Mode=1,
     Minutes_Mode=2
-}MODE_T;
+}MODE_t;
 
-MODE_T MODE;
+MODE_t MODE;
 
 void ModeManager_Init(void);
 void ModeManager_Update(void);
 # 9 "SSD/SSD.c" 2
 
+# 1 "SSD/../Clock/Clock.h" 1
+# 16 "SSD/../Clock/Clock.h"
+typedef struct Clock_T
+{
+    uint8_t Second;
+    uint8_t Minutes;
+    uint8_t Hours;
+}Clock_t;
+Clock_t Clock;
+
+void Clock_Init(void);
+void Clock_Update(void);
+void Clock_Normal(void);
+void Clock_Hour_Setting(void);
+void Clock_Minutes_Setting(void);
+# 10 "SSD/SSD.c" 2
+
+# 1 "SSD/../Display/Display.h" 1
+# 15 "SSD/../Display/Display.h"
+# 1 "SSD/../Display/Display_Cfg.h" 1
+# 15 "SSD/../Display/Display.h" 2
+
+
+
+
+
+
+typedef enum Display_T
+{
+     Minutes=0,
+     Hours=1
+}Display_t;
+Display_t Display;
+
+
+extern uint8_t Enable_Minutes;
+extern uint8_t Enable_Hours;
+
+void Display_Init(void);
+void Display_Update(void);
+void Display_Normal(void);
+void Display_Hour_Setting(void);
+void Display_Minutes_Setting(void);
+void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_) ;
+# 11 "SSD/SSD.c" 2
+
+
+
+uint8_t Digit1=0;
+uint8_t Digit2=0;
+uint8_t Digit3=0;
+uint8_t Digit4=0;
+
+
+
+
+
+
 
 void SSD_DigitSelector(void)
 {
-    if(MODE==Normal_Mode)
-    {
+
+ Digit1=Clock.Hours/10;
+ Digit2=Clock.Hours%10;
+ Digit3=Clock.Minutes/10;
+ Digit4=Clock.Minutes%10;
+
+
 
       switch(DigitSelector)
       {
-          case Digit_1_:
-                      (PORTA|=(1<<2));
-                      (PORTA&=~(1<<3));
-                      (PORTA&=~(1<<4));
-                      (PORTA&=~(1<<5));
+            case Digit_1_:
+                        if(Enable_Hours==1)
+                        {
+                            (PORTA|=(1<<2));
+                        }
+                        (PORTA&=~(1<<3));
+                        (PORTA&=~(1<<4));
+                        (PORTA&=~(1<<5));
+                        SSD_Display(Digit1);
+                        break;
 
             case Digit_2_:
-                      (PORTA|=(1<<3));
-                      (PORTA&=~(1<<2));
-                      (PORTA&=~(1<<4));
-                      (PORTA&=~(1<<5));
+                        if(Enable_Hours==1)
+                        {
+                            (PORTA|=(1<<3));
+                        }
+                        (PORTA&=~(1<<2));
+                        (PORTA&=~(1<<4));
+                        (PORTA&=~(1<<5));
 
+                        (PORTD|=(1<<7));
+                        SSD_Display(Digit2);
+                        break;
             case Digit_3_:
-                      (PORTA|=(1<<4));
-                      (PORTA&=~(1<<2));
-                      (PORTA&=~(1<<4));
-                      (PORTA&=~(1<<5));
-
+                        if(Enable_Minutes==1)
+                        {
+                            (PORTA|=(1<<4));
+                        }
+                        (PORTA&=~(1<<2));
+                        (PORTA&=~(1<<3));
+                        (PORTA&=~(1<<5));
+                        SSD_Display(Digit3);
+                        break;
             case Digit_4_:
-                      (PORTA|=(1<<5));
-                      (PORTA|=(1<<2));
-                      (PORTA&=~(1<<3));
-                      (PORTA&=~(1<<4));
-
+                        if(Enable_Minutes==1)
+                        {
+                            (PORTA|=(1<<5));
+                        }
+                        (PORTA&=~(1<<2));
+                        (PORTA&=~(1<<3));
+                        (PORTA&=~(1<<4));
+                        SSD_Display(Digit4);
+                        break;
       }
-      DigitSelector=(DigitSelector+1)%1;
+       DigitSelector=(DigitSelector+1)%4;
 
 
-    }
+
+
 
 }
 
@@ -1972,43 +2055,43 @@ void SSD_Display(uint8_t Number)
    switch(Number)
     {
      case 0:
-        PORTD=0b00111111;
+        PORTD=0b0111111;
         break;
 
      case 1:
-        PORTD=0b00000110;
+        PORTD=0b0000110;
         break;
 
      case 2:
-        PORTD=0b01011011;
+        PORTD=0b1011011;
         break;
 
      case 3:
-        PORTD=0b01001111;
+        PORTD=0b1001111;
         break;
 
      case 4:
-        PORTD=0b01100110;
+        PORTD=0b1100110;
         break;
 
      case 5:
-        PORTD=0b01101101;
+        PORTD=0b1101101;
         break;
 
      case 6:
-        PORTD=0b01111101;
+        PORTD=0b1111101;
         break;
 
      case 7:
-        PORTD=0b00000111;
+        PORTD=0b0000111;
         break;
 
      case 8:
-        PORTD=0b01111111;
+        PORTD=0b1111111;
         break;
 
      case 9:
-        PORTD=0b01101111;
+        PORTD=0b1101111;
         break;
 
     }

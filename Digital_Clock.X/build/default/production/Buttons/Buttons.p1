@@ -4,13 +4,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 [s S95 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S95 ButtonsFlag_T UpButton_Flag DownButton_Flag SettingButton_Flag ]
 "23 Buttons/../ModeManger/ModeManager.h
-[; ;Buttons/../ModeManger/ModeManager.h: 23: MODE_T MODE;
+[; ;Buttons/../ModeManger/ModeManager.h: 23: MODE_t MODE;
 [c E888 0 1 2 .. ]
-[n E888 MODE_T Normal_Mode Hour_Mode Minutes_Mode  ]
+[n E888 MODE_T Normal_Mode Hours_Mode Minutes_Mode  ]
 "16 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\include\c90\string.h
 [; ;C:\Program Files (x86)\Microchip\xc8\v2.20\pic\include\c90\string.h: 16: extern void * memset(void *, int, size_t);
 [v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
-"460 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
+"2602 C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h
+[; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 2602: extern volatile __bit INTEDG __attribute__((address(0x40E)));
+[v _INTEDG `Vb ~T0 @X0 0 e@1038 ]
+"460
 [; ;C:/Program Files (x86)/Microchip/MPLABX/v5.40/packs/Microchip/PIC16Fxxx_DFP/1.2.33/xc8\pic\include\proc\pic16f877a.h: 460:     struct {
 [s S18 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S18 . RBIF INTF TMR0IF RBIE INTE TMR0IE PEIE GIE ]
@@ -228,113 +231,122 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Buttons/Buttons.h: 27: ButtonsFlag_t ButtonsFlag;
 [v _ButtonsFlag `S95 ~T0 @X0 1 e ]
 "23 Buttons/../ModeManger/ModeManager.h
-[; ;Buttons/../ModeManger/ModeManager.h: 23: MODE_T MODE;
+[; ;Buttons/../ModeManger/ModeManager.h: 23: MODE_t MODE;
 [v _MODE `E888 ~T0 @X0 1 e ]
-"12 Buttons/Buttons.c
-[; ;Buttons/Buttons.c: 12: uint8_t Debounce_UpButton[3];
+"13 Buttons/Buttons.c
+[; ;Buttons/Buttons.c: 13: uint8_t Debounce_UpButton[3];
 [v _Debounce_UpButton `uc ~T0 @X0 -> 3 `i e ]
-"13
-[; ;Buttons/Buttons.c: 13: uint8_t Debounce_DownButton[3];
+"14
+[; ;Buttons/Buttons.c: 14: uint8_t Debounce_DownButton[3];
 [v _Debounce_DownButton `uc ~T0 @X0 -> 3 `i e ]
-"15
-[; ;Buttons/Buttons.c: 15: void Buttons_Init(void)
-[v _Buttons_Init `(v ~T0 @X0 1 ef ]
 "16
-[; ;Buttons/Buttons.c: 16: {
+[; ;Buttons/Buttons.c: 16: void Buttons_Init(void)
+[v _Buttons_Init `(v ~T0 @X0 1 ef ]
+"17
+[; ;Buttons/Buttons.c: 17: {
 {
 [e :U _Buttons_Init ]
 [f ]
-"17
-[; ;Buttons/Buttons.c: 17:     memset(Debounce_UpButton,1,sizeof(Debounce_UpButton));
-[e ( _memset (3 , , -> &U _Debounce_UpButton `*v -> 1 `i -> # _Debounce_UpButton `ui ]
 "18
-[; ;Buttons/Buttons.c: 18:     memset(Debounce_DownButton,1,sizeof(Debounce_DownButton));
-[e ( _memset (3 , , -> &U _Debounce_DownButton `*v -> 1 `i -> # _Debounce_DownButton `ui ]
+[; ;Buttons/Buttons.c: 18:     memset(Debounce_UpButton,1,sizeof(Debounce_UpButton));
+[e ( _memset (3 , , -> &U _Debounce_UpButton `*v -> 1 `i -> # _Debounce_UpButton `ui ]
 "19
-[; ;Buttons/Buttons.c: 19:     INTCONbits.INTF=0;
-[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
-"20
-[; ;Buttons/Buttons.c: 20:     INTCONbits.INTE=1;
-[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
+[; ;Buttons/Buttons.c: 19:     memset(Debounce_DownButton,1,sizeof(Debounce_DownButton));
+[e ( _memset (3 , , -> &U _Debounce_DownButton `*v -> 1 `i -> # _Debounce_DownButton `ui ]
 "21
-[; ;Buttons/Buttons.c: 21: }
+[; ;Buttons/Buttons.c: 21:     INTEDG=1;
+[e = _INTEDG -> -> 1 `i `b ]
+"22
+[; ;Buttons/Buttons.c: 22:     INTCONbits.INTE=1;
+[e = . . _INTCONbits 0 4 -> -> 1 `i `uc ]
+"23
+[; ;Buttons/Buttons.c: 23:     INTCONbits.INTF=0;
+[e = . . _INTCONbits 0 1 -> -> 0 `i `uc ]
+"24
+[; ;Buttons/Buttons.c: 24: }
 [e :UE 96 ]
 }
-"24
-[; ;Buttons/Buttons.c: 24: void Buttons_Update(void)
+"27
+[; ;Buttons/Buttons.c: 27: void Buttons_Update(void)
 [v _Buttons_Update `(v ~T0 @X0 1 ef ]
-"25
-[; ;Buttons/Buttons.c: 25: {
+"28
+[; ;Buttons/Buttons.c: 28: {
 {
 [e :U _Buttons_Update ]
 [f ]
-"26
-[; ;Buttons/Buttons.c: 26:     static uint8_t Debounce_Counter=0;
+"29
+[; ;Buttons/Buttons.c: 29:     static uint8_t Debounce_Counter=0;
 [v F985 `uc ~T0 @X0 1 s Debounce_Counter ]
 [i F985
 -> -> 0 `i `uc
 ]
-"27
-[; ;Buttons/Buttons.c: 27:     Debounce_UpButton[Debounce_Counter]=(PORTB&(1<<1));
-[e = *U + &U _Debounce_UpButton * -> F985 `ux -> -> # *U &U _Debounce_UpButton `ui `ux -> & -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
-"28
-[; ;Buttons/Buttons.c: 28:     Debounce_DownButton[Debounce_Counter]=(PORTB&(1<<0));
-[e = *U + &U _Debounce_DownButton * -> F985 `ux -> -> # *U &U _Debounce_DownButton `ui `ux -> & -> _PORTB `i << -> 1 `i -> 0 `i `uc ]
 "30
-[; ;Buttons/Buttons.c: 30:     Debounce_Counter=(Debounce_Counter+1)%3;
-[e = F985 -> % + -> F985 `i -> 1 `i -> 3 `i `uc ]
+[; ;Buttons/Buttons.c: 30:     Debounce_UpButton[Debounce_Counter]=(PORTB&(1<<2));
+[e = *U + &U _Debounce_UpButton * -> F985 `ux -> -> # *U &U _Debounce_UpButton `ui `ux -> & -> _PORTB `i << -> 1 `i -> 2 `i `uc ]
 "31
-[; ;Buttons/Buttons.c: 31:     if(Debounce_UpButton[0]==0 &&Debounce_UpButton[1]==0 &&Debounce_UpButton[2]==0 )
-[e $ ! && && == -> *U + &U _Debounce_UpButton * -> -> -> 0 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i == -> *U + &U _Debounce_UpButton * -> -> -> 1 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i == -> *U + &U _Debounce_UpButton * -> -> -> 2 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i 98  ]
-"32
-[; ;Buttons/Buttons.c: 32:     {
-{
+[; ;Buttons/Buttons.c: 31:     Debounce_DownButton[Debounce_Counter]=(PORTB&(1<<1));
+[e = *U + &U _Debounce_DownButton * -> F985 `ux -> -> # *U &U _Debounce_DownButton `ui `ux -> & -> _PORTB `i << -> 1 `i -> 1 `i `uc ]
 "33
-[; ;Buttons/Buttons.c: 33:         ButtonsFlag.UpButton_Flag=1;
-[e = . _ButtonsFlag 0 -> -> 1 `i `uc ]
+[; ;Buttons/Buttons.c: 33:     Debounce_Counter=(Debounce_Counter+1)%3;
+[e = F985 -> % + -> F985 `i -> 1 `i -> 3 `i `uc ]
 "34
-[; ;Buttons/Buttons.c: 34:         Debounce_UpButton[0]=1 ;Debounce_UpButton[1]=1 ;Debounce_UpButton[2]=1 ;
+[; ;Buttons/Buttons.c: 34:     if(Debounce_UpButton[0]==0 &&Debounce_UpButton[1]==0 &&Debounce_UpButton[2]==0 )
+[e $ ! && && == -> *U + &U _Debounce_UpButton * -> -> -> 0 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i == -> *U + &U _Debounce_UpButton * -> -> -> 1 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i == -> *U + &U _Debounce_UpButton * -> -> -> 2 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux `i -> 0 `i 98  ]
+"35
+[; ;Buttons/Buttons.c: 35:     {
+{
+"36
+[; ;Buttons/Buttons.c: 36:         ButtonsFlag.UpButton_Flag=1;
+[e = . _ButtonsFlag 0 -> -> 1 `i `uc ]
+"37
+[; ;Buttons/Buttons.c: 37:          (PORTB^=(1<<3));
+[e =^ _PORTB -> << -> 1 `i -> 3 `i `Vuc ]
+"38
+[; ;Buttons/Buttons.c: 38:         Debounce_UpButton[0]=1 ;Debounce_UpButton[1]=1 ;Debounce_UpButton[2]=1 ;
 [e = *U + &U _Debounce_UpButton * -> -> -> 0 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux -> -> 1 `i `uc ]
 [e = *U + &U _Debounce_UpButton * -> -> -> 1 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux -> -> 1 `i `uc ]
 [e = *U + &U _Debounce_UpButton * -> -> -> 2 `i `ui `ux -> -> # *U &U _Debounce_UpButton `ui `ux -> -> 1 `i `uc ]
-"35
-[; ;Buttons/Buttons.c: 35:     }
+"39
+[; ;Buttons/Buttons.c: 39:     }
 }
 [e :U 98 ]
-"37
-[; ;Buttons/Buttons.c: 37:     if(Debounce_DownButton[0]==0 &&Debounce_DownButton[1]==0 &&Debounce_DownButton[2]==0 )
+"41
+[; ;Buttons/Buttons.c: 41:     if(Debounce_DownButton[0]==0 &&Debounce_DownButton[1]==0 &&Debounce_DownButton[2]==0 )
 [e $ ! && && == -> *U + &U _Debounce_DownButton * -> -> -> 0 `i `ui `ux -> -> # *U &U _Debounce_DownButton `ui `ux `i -> 0 `i == -> *U + &U _Debounce_DownButton * -> -> -> 1 `i `ui `ux -> -> # *U &U _Debounce_DownButton `ui `ux `i -> 0 `i == -> *U + &U _Debounce_DownButton * -> -> -> 2 `i `ui `ux -> -> # *U &U _Debounce_DownButton `ui `ux `i -> 0 `i 99  ]
-"38
-[; ;Buttons/Buttons.c: 38:     {
+"42
+[; ;Buttons/Buttons.c: 42:     {
 {
-"39
-[; ;Buttons/Buttons.c: 39:         ButtonsFlag.DownButton_Flag=1;
+"43
+[; ;Buttons/Buttons.c: 43:         ButtonsFlag.DownButton_Flag=1;
 [e = . _ButtonsFlag 1 -> -> 1 `i `uc ]
-"40
-[; ;Buttons/Buttons.c: 40:         Debounce_DownButton[0]=1 ;Debounce_DownButton[1]=1 ;Debounce_DownButton[2]=1 ;
+"44
+[; ;Buttons/Buttons.c: 44:          (PORTB^=(1<<3));
+[e =^ _PORTB -> << -> 1 `i -> 3 `i `Vuc ]
+"45
+[; ;Buttons/Buttons.c: 45:         Debounce_DownButton[0]=1 ;Debounce_DownButton[1]=1 ;Debounce_DownButton[2]=1 ;
 [e = *U + &U _Debounce_DownButton * -> -> -> 0 `i `ui `ux -> -> # *U &U _Debounce_DownButton `ui `ux -> -> 1 `i `uc ]
 [e = *U + &U _Debounce_DownButton * -> -> -> 1 `i `ui `ux -> -> # *U &U _Debounce_DownButton `ui `ux -> -> 1 `i `uc ]
 [e = *U + &U _Debounce_DownButton * -> -> -> 2 `i `ui `ux -> -> # *U &U _Debounce_DownButton `ui `ux -> -> 1 `i `uc ]
-"41
-[; ;Buttons/Buttons.c: 41:     }
+"46
+[; ;Buttons/Buttons.c: 46:     }
 }
 [e :U 99 ]
-"43
-[; ;Buttons/Buttons.c: 43: }
+"48
+[; ;Buttons/Buttons.c: 48: }
 [e :UE 97 ]
 }
-"45
-[; ;Buttons/Buttons.c: 45: void EXTI_SettingButton_CB(void)
+"50
+[; ;Buttons/Buttons.c: 50: void EXTI_SettingButton_CB(void)
 [v _EXTI_SettingButton_CB `(v ~T0 @X0 1 ef ]
-"46
-[; ;Buttons/Buttons.c: 46: {
+"51
+[; ;Buttons/Buttons.c: 51: {
 {
 [e :U _EXTI_SettingButton_CB ]
 [f ]
-"47
-[; ;Buttons/Buttons.c: 47:     ButtonsFlag.SettingButton_Flag=1;
+"52
+[; ;Buttons/Buttons.c: 52:     ButtonsFlag.SettingButton_Flag=1;
 [e = . _ButtonsFlag 2 -> -> 1 `i `uc ]
-"48
-[; ;Buttons/Buttons.c: 48: }
+"54
+[; ;Buttons/Buttons.c: 54: }
 [e :UE 100 ]
 }

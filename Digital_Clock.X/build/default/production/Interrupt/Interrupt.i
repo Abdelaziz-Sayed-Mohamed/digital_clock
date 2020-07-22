@@ -13,8 +13,6 @@
 
 
 
-char value = 0;
-
 # 1 "Interrupt/Interrupt.h" 1
 # 15 "Interrupt/Interrupt.h"
 # 1 "Interrupt/Interrupt_Cfg.h" 1
@@ -1936,15 +1934,13 @@ typedef struct Interrupt_CbStruct_T
 
 extern const Interrupt_CbStruct_t Interrupt_CbStruct ;
 # 15 "Interrupt/Interrupt.h" 2
+# 7 "Interrupt/Interrupt.c" 2
 
-
-    extern char value;
-# 8 "Interrupt/Interrupt.c" 2
 
 
 void __attribute__((picinterrupt(("")))) ISR(void)
 {
-    if(INTCONbits.TMR0IF==1)
+    if(INTCONbits.TMR0IF)
     {
 
       TMR0 = 100;
@@ -1952,7 +1948,7 @@ void __attribute__((picinterrupt(("")))) ISR(void)
       Interrupt_CbStruct.Timer_CB();
 
     }
-    else if(INTCONbits.INTF==1)
+    if(INTCONbits.INTF)
     {
       INTCONbits.INTF=0;
       Interrupt_CbStruct.EXTI_CB();

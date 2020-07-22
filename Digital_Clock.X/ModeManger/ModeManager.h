@@ -16,11 +16,11 @@ extern "C" {
 typedef enum MODE_T
 {
     Normal_Mode=0,
-    Hour_Mode=1,
+    Hours_Mode=1,
     Minutes_Mode=2        
-}MODE_T;
+}MODE_t;
 
-MODE_T MODE;
+MODE_t MODE;
 
 void ModeManager_Init(void);
 void ModeManager_Update(void);

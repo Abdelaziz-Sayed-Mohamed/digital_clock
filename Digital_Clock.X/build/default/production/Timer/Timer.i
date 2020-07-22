@@ -1935,9 +1935,6 @@ typedef struct Interrupt_CbStruct_T
 
 extern const Interrupt_CbStruct_t Interrupt_CbStruct ;
 # 15 "Timer/../Interrupt/Interrupt.h" 2
-
-
-    extern char value;
 # 8 "Timer/Timer.c" 2
 
 # 1 "Timer/../Scheduler/Scheduler.h" 1
