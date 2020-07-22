@@ -33,7 +33,7 @@ extern "C" {
 #define SSD_PORT                _SSD_PORT_           
 
     
-#define SSD_Blink_TaskPeroid 1
+#define SSD_Blink_TaskPeroid 5
     
 #ifdef	__cplusplus
 }

@@ -109,11 +109,11 @@ Hours 1
 [v _Clock_Init Clock_Init `(v  1 e 1 0 ]
 "31
 [v _Clock_Update Clock_Update `(v  1 e 1 0 ]
-"52
+"50
 [v _Clock_Normal Clock_Normal `(v  1 e 1 0 ]
-"82
+"74
 [v _Clock_Hour_Setting Clock_Hour_Setting `(v  1 e 1 0 ]
-"113
+"105
 [v _Clock_Minutes_Setting Clock_Minutes_Setting `(v  1 e 1 0 ]
 "20 E:\study\Repos\Digital_Clock\Digital_Clock.X\Display/Display.c
 [v _Display_Init Display_Init `(v  1 e 1 0 ]
@@ -139,9 +139,9 @@ Hours 1
 [v _Scheduler_Update Scheduler_Update `(v  1 e 1 0 ]
 "17 E:\study\Repos\Digital_Clock\Digital_Clock.X\Scheduler/Task.c
 [v _Scheduler_Task1 Scheduler_Task1 `(v  1 e 1 0 ]
-"24
+"22
 [v _Scheduler_Task2 Scheduler_Task2 `(v  1 e 1 0 ]
-"32
+"28
 [v _Scheduler_Task3 Scheduler_Task3 `(v  1 e 1 0 ]
 "20 E:\study\Repos\Digital_Clock\Digital_Clock.X\SSD/SSD.c
 [v _SSD_DigitSelector SSD_DigitSelector `(v  1 e 1 0 ]
@@ -291,13 +291,13 @@ Hours 1
 {
 [v memset@p1 p1 `*.4v  1 a 1 wreg ]
 "15
-[v memset@p p `*.4uc  1 a 1 17 ]
+[v memset@p p `*.4uc  1 a 1 16 ]
 "8
 [v memset@p1 p1 `*.4v  1 a 1 wreg ]
-[v memset@c c `i  1 p 2 13 ]
-[v memset@n n `ui  1 p 2 15 ]
+[v memset@c c `i  1 p 2 12 ]
+[v memset@n n `ui  1 p 2 14 ]
 "18
-[v memset@p1 p1 `*.4v  1 a 1 18 ]
+[v memset@p1 p1 `*.4v  1 a 1 17 ]
 "22
 } 0
 "10 E:\study\Repos\Digital_Clock\Digital_Clock.X\Interrupt/Interrupt.c
@@ -314,14 +314,14 @@ Hours 1
 [v _Scheduler_Update Scheduler_Update `(v  1 e 1 0 ]
 {
 "19
-[v Scheduler_Update@i i `uc  1 a 1 8 ]
+[v Scheduler_Update@i i `uc  1 a 1 7 ]
 "30
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\llmod.c
 [v ___llmod __llmod `(ul  1 e 4 0 ]
 {
 "10
-[v ___llmod@counter counter `uc  1 a 1 1 ]
+[v ___llmod@counter counter `uc  1 a 1 0 ]
 "5
 [v ___llmod@divisor divisor `ul  1 p 4 3 ]
 [v ___llmod@dividend dividend `ul  1 p 4 7 ]
@@ -340,25 +340,25 @@ Hours 1
 [v ___bmul@multiplier multiplier `uc  1 a 1 2 ]
 "51
 } 0
-"24 E:\study\Repos\Digital_Clock\Digital_Clock.X\Scheduler/Task.c
+"22 E:\study\Repos\Digital_Clock\Digital_Clock.X\Scheduler/Task.c
 [v _Scheduler_Task2 Scheduler_Task2 `(v  1 e 1 0 ]
 {
-"30
+"26
 } 0
 "17
 [v _Scheduler_Task1 Scheduler_Task1 `(v  1 e 1 0 ]
 {
-"22
+"20
 } 0
-"32
+"28
 [v _Scheduler_Task3 Scheduler_Task3 `(v  1 e 1 0 ]
 {
-"37
+"31
 } 0
 "31 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
 [v _Clock_Update Clock_Update `(v  1 e 1 0 ]
 {
-"49
+"47
 } 0
 "5 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\awdiv.c
 [v ___awdiv __awdiv `(i  1 e 2 0 ]
@@ -373,32 +373,20 @@ Hours 1
 [v ___awdiv@dividend dividend `i  1 p 2 2 ]
 "41
 } 0
-"52 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
+"50 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
 [v _Clock_Normal Clock_Normal `(v  1 e 1 0 ]
 {
-"54
-[v Clock_Normal@counter counter `uc  1 s 1 counter ]
-"79
+"71
 } 0
-"15 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
-[v ___wmul __wmul `(ui  1 e 2 0 ]
-{
-"17
-[v ___wmul@product product `ui  1 a 2 4 ]
-"15
-[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
-[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
-"53
-} 0
-"113 E:\study\Repos\Digital_Clock\Digital_Clock.X\Clock/Clock.c
+"105
 [v _Clock_Minutes_Setting Clock_Minutes_Setting `(v  1 e 1 0 ]
 {
-"143
+"135
 } 0
-"82
+"74
 [v _Clock_Hour_Setting Clock_Hour_Setting `(v  1 e 1 0 ]
 {
-"111
+"103
 } 0
 "17 E:\study\Repos\Digital_Clock\Digital_Clock.X\ModeManger/ModeManager.c
 [v _ModeManager_Update ModeManager_Update `(v  1 e 1 0 ]
@@ -449,11 +437,21 @@ Hours 1
 "59
 [v _Display_Blink Display_Blink `(v  1 e 1 0 ]
 {
-[v Display_Blink@Times_Ms Times_Ms `ui  1 p 2 0 ]
-[v Display_Blink@_MODE_ _MODE_ `E879  1 p 1 2 ]
+[v Display_Blink@Times_Ms Times_Ms `ui  1 p 2 6 ]
+[v Display_Blink@_MODE_ _MODE_ `E879  1 p 1 8 ]
 "61
 [v Display_Blink@Counter Counter `ui  1 s 2 Counter ]
 "98
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
 } 0
 "50 E:\study\Repos\Digital_Clock\Digital_Clock.X\Buttons/Buttons.c
 [v _EXTI_SettingButton_CB EXTI_SettingButton_CB `(v  1 e 1 0 ]

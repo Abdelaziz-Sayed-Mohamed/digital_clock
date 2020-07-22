@@ -2027,7 +2027,7 @@ void Display_Blink(uint16_t Times_Ms,MODE_t _MODE_)
 {
     static uint16_t Counter=0;
 
-        if(Counter*1==Times_Ms)
+        if(Counter*5==Times_Ms)
         {
             if(_MODE_==Minutes_Mode)
             {

@@ -218,7 +218,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _Tasks
 :U ..
 :U ..
--> -> 1 `ul `ui
+-> -> 5 `ul `ui
 &U _Scheduler_Task1
 ..
 :U ..
@@ -226,7 +226,7 @@ Version 4.0 HI-TECH Software Intermediate Code
 &U _Scheduler_Task2
 ..
 :U ..
--> -> 100 `ul `ui
+-> -> 1000 `ul `ui
 &U _Scheduler_Task3
 ..
 ..

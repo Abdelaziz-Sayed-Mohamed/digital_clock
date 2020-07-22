@@ -29,13 +29,11 @@ void Clock_Init(void)
 }
 
 void Clock_Update(void)
-{      
+{ 
+    
+    Clock_Normal();
     switch(MODE)
-    {
-        case Normal_Mode:
-                              Clock_Normal();
-                              break;
-                              
+    {                       
         case Hours_Mode:
                               Clock_Hour_Setting();
                               break;                       
@@ -44,22 +42,16 @@ void Clock_Update(void)
                               Clock_Minutes_Setting();
                               break;                         
     }
-    Digit1=Clock.Minutes/10; Digit2=Clock.Minutes%10;  Digit3=Clock.Second/10;  Digit4=Clock.Second%10;
+    Digit1=Clock.Hours/10; Digit2=Clock.Hours%10;  Digit3=Clock.Minutes/10;  Digit4=Clock.Minutes%10;
  
 }
 
 #define Task_Peroid  100
 void Clock_Normal(void)
 {
-    static uint8_t counter=0;
-    counter++;
-    if(counter*Task_Peroid==1000)
-    {
-       Clock.Second++;
-       counter=0;
-    }    
+
+    Clock.Second++;
     
-       
     if(Clock.Second==60)
     {
       Clock.Minutes++;

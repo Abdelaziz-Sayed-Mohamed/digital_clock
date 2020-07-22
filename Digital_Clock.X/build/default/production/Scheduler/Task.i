@@ -1991,22 +1991,16 @@ void EXTI_SettingButton_CB(void);
 
 void Scheduler_Task1(void)
 {
-
   Display_Update();
-
 }
 
 void Scheduler_Task2(void)
 {
-  (PORTB^=(1<<3));
   Buttons_Update();
   ModeManager_Update();
-
 }
 
 void Scheduler_Task3(void)
 {
-
-    Clock_Update();
-
+  Clock_Update();
 }

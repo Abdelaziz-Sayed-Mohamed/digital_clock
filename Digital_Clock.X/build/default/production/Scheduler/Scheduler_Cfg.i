@@ -1956,7 +1956,7 @@ uint8_t Task_Flag[(3UL)];
 
 const Tasks_t Tasks[(3UL)]={
                                       {
-                                       .Task_Peroid=(1UL),
+                                       .Task_Peroid=(5UL),
                                        .Task=Scheduler_Task1
                                       },
                                       {
@@ -1965,7 +1965,7 @@ const Tasks_t Tasks[(3UL)]={
                                       },
 
                                       {
-                                       .Task_Peroid=(100UL),
+                                       .Task_Peroid=(1000UL),
                                        .Task=Scheduler_Task3
                                       }
                                  };

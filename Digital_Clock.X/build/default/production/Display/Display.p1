@@ -362,8 +362,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 -> -> 0 `i `ui
 ]
 "63
-[; ;Display/Display.c: 63:         if(Counter*1==Times_Ms)
-[e $ ! == * F934 -> -> 1 `i `ui _Times_Ms 104  ]
+[; ;Display/Display.c: 63:         if(Counter*5==Times_Ms)
+[e $ ! == * F934 -> -> 5 `i `ui _Times_Ms 104  ]
 "64
 [; ;Display/Display.c: 64:         {
 {

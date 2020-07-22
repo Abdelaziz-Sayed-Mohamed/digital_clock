@@ -14,25 +14,19 @@
 #include"../gpio/gpio.h"
 
 
-void Scheduler_Task1(void)   //1 ms
+void Scheduler_Task1(void)   //5 ms
 { 
- 
   Display_Update();
-  
 }
 
 void Scheduler_Task2(void)  //20 ms
 {
-  TOGGLE_PIN(_LED3_PORT_,_LED3_PIN_);
   Buttons_Update();
   ModeManager_Update();
-  
 }
 
-void Scheduler_Task3(void)  //100 ms
+void Scheduler_Task3(void)  //1000 ms
 {
-    
-    Clock_Update();
-  
+  Clock_Update();
 }
 
